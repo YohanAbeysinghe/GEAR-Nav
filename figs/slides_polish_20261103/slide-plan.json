@@ -1,0 +1,2867 @@
+[
+  {
+    "slide_id": "p",
+    "number": 1,
+    "start": 0,
+    "end": 8,
+    "duration_seconds": 8,
+    "title": "GEAR-Nav",
+    "narration": "GEAR-Nav learns navigation from local geometric corrections. At deployment, it refines a candidate path from vision and a navigation goal.",
+    "editing_notes": "00:00–00:08. Play all three original muted videos at 1× in the deck. Opening sources use seconds 3–11. The title follows the project naming instruction; the manuscript currently uses a different expanded title. No author identity or unverified release URL is inserted.",
+    "sources": [],
+    "layout_id": "p2",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "p",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0001",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0002",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0003",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0004",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0005",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0006",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0007",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0008",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0009",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_02",
+    "number": 2,
+    "start": 8,
+    "end": 20,
+    "duration_seconds": 12,
+    "title": "Learning from video without target paths",
+    "narration": "In-the-wild video provides diverse navigation scenes, but no robot actions or target paths. We use reconstructed geometry to teach how a candidate path should change.",
+    "editing_notes": "00:08–00:20. Reveal the scene, then the question. The action-free claim concerns navigation adaptation, not the pretrained VLA backbone.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Introduction and Action-Free Navigation Conditions",
+      "figs/pipeline/assets/rgb.jpg"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_02",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0010",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0011",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0012",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0013",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0014",
+        "type": "image",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0015",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0016",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0017",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0018",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_03",
+    "number": 3,
+    "start": 20,
+    "end": 28,
+    "duration_seconds": 8,
+    "title": "Geometry defines the training signal",
+    "narration": "During training, geometric energy measures goal-directed progress, clearance around the robot footprint, and motion regularity. Its local descent direction provides supervision.",
+    "editing_notes": "00:20–00:28. Reveal goal/progress, then obstacle terms, then motion regularity. Energy terms are a formulation; this slide does not claim every term has a nonzero weight in every run.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Geometric Trajectory Energy",
+      "figs/pipeline/assets/scene_data.npz"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_03",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0019",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0020",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0021",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0022",
+        "type": "image",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0023",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0024",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0025",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0026",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0027",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0028",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0029",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0030",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0031",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0032",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0033",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0034",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0035",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0036",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0037",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0038",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0039",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0040",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0041",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0042",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0043",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0044",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0045",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0046",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0047",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0048",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0049",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0050",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0051",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0052",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0053",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0054",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0055",
+        "type": "star",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0056",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0057",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0058",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0059",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0060",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0061",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0062",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0063",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0064",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0065",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0066",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0067",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0068",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0069",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0070",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0071",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0072",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0073",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0074",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0075",
+        "type": "text",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0076",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_04",
+    "number": 4,
+    "start": 28,
+    "end": 36,
+    "duration_seconds": 8,
+    "title": "Learn waypoint corrections",
+    "narration": "The energy oracle supplies a projection-aware correction at the current candidate path. GEAR learns to predict this correction from the image, goal, and path.",
+    "editing_notes": "00:28–00:36. Reveal the oracle arrow first; then reveal the learned model and regression connection. The plotted oracle arrows are cached directions scaled for display, not final projected displacements.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Projection-Aware Energy Oracle",
+      "figs/model_variant_utils.py: Scene.oracle_glyph"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_04",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0077",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0078",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0079",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0080",
+        "type": "image",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0081",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0082",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0083",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0084",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0085",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0086",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0087",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0088",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0089",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0090",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0091",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0092",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0093",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0094",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0095",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0096",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0097",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0098",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0099",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0100",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0101",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0102",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0103",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0104",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0105",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0106",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0107",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0108",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0109",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0110",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0111",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0112",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0113",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0114",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0115",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0116",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0117",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0118",
+        "type": "star",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0119",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0120",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0121",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0122",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0123",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0124",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0125",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0126",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0127",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0128",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0129",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0130",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0131",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0132",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0133",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0134",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0135",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0136",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_05",
+    "number": 5,
+    "start": 36,
+    "end": 45,
+    "duration_seconds": 9,
+    "title": "Aggregate labels along model rollouts",
+    "narration": "Each model update changes the next candidate path. We query new correction labels at these visited paths and retain earlier rounds in a shared replay dataset.",
+    "editing_notes": "00:36–00:45. Reveal the four steps left to right, the return arrow, then the replay banks. Initial paths come from the goal-biased unicycle prior. Training collection uses projected energy backtracking; deployment removes this guard.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Energy-Based Dataset Aggregation"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_05",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0137",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0138",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0139",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0140",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0141",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0142",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0143",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0144",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0145",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0146",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0147",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0148",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0149",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0150",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0151",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0152",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0153",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0154",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0155",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0156",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0157",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0158",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0159",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0160",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0161",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0162",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0163",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0164",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0165",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0166",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0167",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0168",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0169",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_06",
+    "number": 6,
+    "start": 45,
+    "end": 55,
+    "duration_seconds": 10,
+    "title": "Refine a path from vision",
+    "narration": "At deployment, visual and goal context condition the waypoint expert. It predicts a correction, applies a bounded path update, and repeats. No ESDF or energy query is required.",
+    "editing_notes": "00:45–00:55. Reveal inputs, model, bounded update, then the feedback arrow. Keep training-only geometry absent. The backbone is pretrained; the recorded example uses adapter-only training.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Model-Only Trajectory Refinement at Inference"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_06",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0170",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0171",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0172",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0173",
+        "type": "image",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0174",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0175",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0176",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0177",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0178",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0179",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0180",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0181",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0182",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0183",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0184",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0185",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0186",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0187",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0188",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0189",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0190",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0191",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_07",
+    "number": 7,
+    "start": 55,
+    "end": 65,
+    "duration_seconds": 10,
+    "title": "Recorded model-only refinement",
+    "narration": "This checkpoint example shows the initial path and learned states at six and fourteen updates. The displayed distance field is a reference; it is not queried by the model.",
+    "editing_notes": "00:55–01:05. Reveal initial, six-update, and fourteen-update panels. Initial and final paths come from the original model-only capture. The sixth state is the verified same-checkpoint continuation resumed from saved depth 3; its receipt reports a 0.04256 m max difference at depth 7 from the original batch. These are qualitative checkpoint states, not an exact single uninterrupted trace or the paper’s fixed 12-step evaluation. Do not infer benchmark or safety metrics. ESDF is a visualization reference only.",
+    "sources": [
+      "figs/pipeline/assets/scene_data.npz",
+      "figs/model/plots/sixth_iteration.npz",
+      "figs/model/plots/sixth_iteration.json"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_07",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0192",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0193",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0194",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0195",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0196",
+        "type": "image",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0197",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0198",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0199",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0200",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0201",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0202",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0203",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0204",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0205",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0206",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0207",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0208",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0209",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0210",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0211",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0212",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0213",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0214",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0215",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0216",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0217",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0218",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0219",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0220",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0221",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0222",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0223",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0224",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0225",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0226",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0227",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0228",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0229",
+        "type": "star",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0230",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0231",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0232",
+        "type": "image",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0233",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0234",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0235",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0236",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0237",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0238",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0239",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0240",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0241",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0242",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0243",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0244",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0245",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0246",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0247",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0248",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0249",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0250",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0251",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0252",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0253",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0254",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0255",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0256",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0257",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0258",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0259",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0260",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0261",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0262",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0263",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0264",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0265",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0266",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0267",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0268",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0269",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0270",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0271",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0272",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0273",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0274",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0275",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0276",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0277",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0278",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0279",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0280",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0281",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0282",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0283",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0284",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0285",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0286",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0287",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0288",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0289",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0290",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0291",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0292",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0293",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0294",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0295",
+        "type": "star",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0296",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0297",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0298",
+        "type": "image",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0299",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0300",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0301",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0302",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0303",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0304",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0305",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0306",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0307",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0308",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0309",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0310",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0311",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0312",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0313",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0314",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0315",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0316",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0317",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0318",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0319",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0320",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0321",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0322",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0323",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0324",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0325",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0326",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0327",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0328",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0329",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0330",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0331",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0332",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0333",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0334",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0335",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0336",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0337",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0338",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0339",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0340",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0341",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0342",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0343",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0344",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0345",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0346",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0347",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0348",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0349",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0350",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0351",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0352",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0353",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0354",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0355",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0356",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0357",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0358",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0359",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0360",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0361",
+        "type": "star",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0362",
+        "type": "ellipse",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0363",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0364",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0365",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0366",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0367",
+        "type": "line",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0368",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0369",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_08",
+    "number": 8,
+    "start": 65,
+    "end": 90,
+    "duration_seconds": 25,
+    "title": "Around an\nintervening chair",
+    "narration": "The first scenario approaches a person beyond an intervening chair. These separate recordings show how GEAR-Nav and OmniVLA navigate the cluttered space.",
+    "editing_notes": "01:05–01:30. Autoplay both muted excerpts. GEAR shows source 0–32.4 s at 1.5×; OmniVLA shows source 15–50 s at 1.5×. Hold the final frames to the cut. These are representative separate trials, not synchronized experiments. The label is a scene description, not a transcription of the original goal prompt. TIC-VLA is omitted because no recording identity has been verified; NaVILA scenario-1 raw footage is not verified in the supplied folder.",
+    "sources": [
+      "GEAR Scene 1/IMG_4558.MOV",
+      "Baseline Scene1/OmniVLA/IMG_3131.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_08",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0370",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0371",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0372",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0373",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0374",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0375",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0376",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0377",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0378",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0379",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0380",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_09",
+    "number": 9,
+    "start": 90,
+    "end": 115,
+    "duration_seconds": 25,
+    "title": "Past a moving\nperson",
+    "narration": "The second scenario approaches a blue chair while a person moves through the lounge. The continuous recordings keep the encounter and destination visible.",
+    "editing_notes": "01:30–01:55. Autoplay both muted excerpts at 1.5×. GEAR source 0–29.6 s; OmniVLA source 0–34.5 s. Separate trials and lighting conditions. Do not infer exact collisions or success from an ambiguous frame. The goal label is descriptive, not a recorded command. No TIC-VLA or unverified NaVILA raw footage is substituted.",
+    "sources": [
+      "GEAR Scene 2/IMG_4552.MOV",
+      "Baseline Scene2/OnmiVLA/IMG_3150.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_09",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0381",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0382",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0383",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0384",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0385",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0386",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0387",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0388",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0389",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0390",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0391",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_10",
+    "number": 10,
+    "start": 115,
+    "end": 145,
+    "duration_seconds": 30,
+    "title": "Scooter goal among pedestrians",
+    "narration": "Outdoors, the destination is a scooter beyond the pedestrians. The comparison shows representative GEAR-Nav, OmniVLA, and NaVILA recordings from separate trials.",
+    "editing_notes": "01:55–02:25. Autoplay all three muted clips at 2×. GEAR source 0–55.4 s; OmniVLA and NaVILA source 0–58 s. GEAR ends at about 27.7 s, baselines at about 29 s. Hold to the cut. Do not interpret playback or selected intervals as comparative completion times. Do not label an exact collision without review of the full source.",
+    "sources": [
+      "GEAR Scene 3/IMG_4546.MOV",
+      "Baseline Scene3/OmniVLA/IMG_3188.MOV",
+      "Baseline Scene3/Navilla/IMG_3193.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_10",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0392",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0393",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0394",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0395",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0396",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0397",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0398",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0399",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0400",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0401",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0402",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_11",
+    "number": 11,
+    "start": 145,
+    "end": 165,
+    "duration_seconds": 20,
+    "title": "Additional robot deployments",
+    "narration": "Additional recordings show GEAR-Nav navigating the indoor, lounge, and outdoor settings.",
+    "editing_notes": "02:25–02:45. Use the additional-deployment fallback. The deck plays all original clips at 1×. Final-video edit targets are 2× indoor, 2× lounge, and 3× outdoor. Available simulation clips use privileged exact goals and are omitted from benchmark evidence.",
+    "sources": [
+      "GEAR Scene 1/IMG_4560.MOV",
+      "GEAR Scene 2/IMG_4554.MOV",
+      "GEAR Scene 3/IMG_4547.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_11",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0403",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0404",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0405",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0406",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0407",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0408",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0409",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0410",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0411",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0412",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0413",
+        "type": "video",
+        "action": "keep/edit",
+        "reason": "retain native video source and playback"
+      },
+      {
+        "object_id": "gv_0414",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_12",
+    "number": 12,
+    "start": 165,
+    "end": 175,
+    "duration_seconds": 10,
+    "title": "From geometric supervision to visual refinement",
+    "narration": "Geometry supplies local correction labels during training. Aggregation covers model-visited paths. At deployment, the learned field repeatedly refines a path from visual inputs.",
+    "editing_notes": "02:45–02:55. Reveal the three contributions in order. No success percentages or collision reductions are inserted: GEAR real-world entries remain pending and supplied simulation metrics require provenance verification.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Contributions and Methodology",
+      "GEAR-Nav Overleaf/BASELINE_RESULTS.md"
+    ],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_12",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0415",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0416",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0417",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0418",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0419",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0420",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0421",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0422",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0423",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0424",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0425",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0426",
+        "type": "rect",
+        "action": "delete",
+        "reason": "remove redundant decoration/text, or replace old ESDF viewport with the shared calibrated reference"
+      },
+      {
+        "object_id": "gv_0427",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0428",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0429",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0430",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  },
+  {
+    "slide_id": "gear_video_13",
+    "number": 13,
+    "start": 175,
+    "end": 180,
+    "duration_seconds": 5,
+    "title": "GEAR-Nav",
+    "narration": "GEAR-Nav: action-free spatial trajectory refinement via energy-based aggregation.",
+    "editing_notes": "02:55–03:00. Hold the project title and scope. Add a project URL only after release and anonymity requirements are settled.",
+    "sources": [],
+    "layout_id": "p12",
+    "construction": "Edit existing native slide in place",
+    "exemplar_slide_id": "gear_video_13",
+    "native_video_policy": "Original DRIVE videos retained, muted, autoplay, 1×; final-video acceleration is a production instruction only.",
+    "element_mapping": [
+      {
+        "object_id": "gv_0431",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0432",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0433",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0434",
+        "type": "rect",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      },
+      {
+        "object_id": "gv_0435",
+        "type": "text",
+        "action": "keep/edit",
+        "reason": "reuse native element for its narrative role"
+      }
+    ]
+  }
+]

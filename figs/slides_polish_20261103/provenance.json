@@ -1,0 +1,30 @@
+{
+  "presentation_id": "1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "source_revision": "v5Vg3MyVmQUL3w",
+  "slide_count": 13,
+  "new_inference": false,
+  "native_videos_retained": 13,
+  "refinement_depths": [
+    0,
+    6,
+    14
+  ],
+  "sixth_state": "Same-checkpoint continuation from saved depth 3; see receipt",
+  "esdf_bounds": [
+    -0.15,
+    5.4,
+    -1.9137931034482758,
+    1.9137931034482758
+  ],
+  "esdf_range_m": [
+    -3,
+    3
+  ],
+  "sources_sha256": {
+    "pipeline/assets/scene_data.npz": "94a74eb8bf2522b31a986e321b537539de75003bb200790998280fb2b4ff1d04",
+    "pipeline/assets/rgb.jpg": "7bca81ebad39e059396d4a255844394d7596a8467d38579ae27c2520aa1324f6",
+    "model/plots/sixth_iteration.npz": "6aaa4315cb293a65af6989045f129ecf5e0abe2129a71ad73a4916cb060854a9",
+    "model/plots/sixth_iteration.json": "ce72e3c607dc14f2a92a150801f68e037788aae41bbb48a593a026d1fa74fb66",
+    "figure_style.py": "1071a6392fa53e4dbc78c8e64a5b7b4c8d5877a28332cf54bf27beaf8d097b6e"
+  }
+}

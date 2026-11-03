@@ -1,0 +1,103 @@
+{
+  "presentation_id": "1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "url": "https://docs.google.com/presentation/d/1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "revision_id": "VuDT_ZsgXIVpAw",
+  "date": "2026-11-03",
+  "slide_count": 13,
+  "native_video_instances": 13,
+  "all_videos_retained": true,
+  "notes_verified": 13,
+  "order_preserved": true,
+  "interactive_playback_verified": false,
+  "all_final_slides_visually_reviewed": true,
+  "repair_passes": 1,
+  "static_issue_checker_findings": 0,
+  "final_pdf_sha256": "0e0d035afbf3772d35c48694c991d6e54b8e64de0bb004a61d76b340d7d637f2",
+  "video_geometry": "9:16; all sources fitted without cropping or stretching",
+  "new_inference": false,
+  "refinement_depths": [
+    0,
+    6,
+    14
+  ],
+  "videos": [
+    {
+      "slide": "p",
+      "object_id": "gv_0006",
+      "source": "DRIVE",
+      "source_id": "1iNn2hLJkvppVhpiwezUJyZ7uQELhlSzd"
+    },
+    {
+      "slide": "p",
+      "object_id": "gv_0007",
+      "source": "DRIVE",
+      "source_id": "14IeNfbRFPpCozextFXlNfIMTJWSixYS6"
+    },
+    {
+      "slide": "p",
+      "object_id": "gv_0008",
+      "source": "DRIVE",
+      "source_id": "1Ve0yzvZJzcnpK7OO8mtCYsMESxPlM44v"
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gv_0377",
+      "source": "DRIVE",
+      "source_id": "1iNn2hLJkvppVhpiwezUJyZ7uQELhlSzd"
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gv_0379",
+      "source": "DRIVE",
+      "source_id": "1yfl-FETbNrNagnUWGY5BANHYunj8ZpmG"
+    },
+    {
+      "slide": "gear_video_09",
+      "object_id": "gv_0388",
+      "source": "DRIVE",
+      "source_id": "14IeNfbRFPpCozextFXlNfIMTJWSixYS6"
+    },
+    {
+      "slide": "gear_video_09",
+      "object_id": "gv_0390",
+      "source": "DRIVE",
+      "source_id": "1BymE4cPI5LY74QCY9dUB8Px0AK9Q2PJW"
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0397",
+      "source": "DRIVE",
+      "source_id": "1Ve0yzvZJzcnpK7OO8mtCYsMESxPlM44v"
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0399",
+      "source": "DRIVE",
+      "source_id": "1k3FtETSCrRwDuqOLeTI3R8MZFmb19WvY"
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0401",
+      "source": "DRIVE",
+      "source_id": "1MymeKaYxjzdTvXmHdJhOTOO95XHQ3ekw"
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0407",
+      "source": "DRIVE",
+      "source_id": "1RuRhMknoqL5BPj53wzHTvH-ZqWLycUKL"
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0410",
+      "source": "DRIVE",
+      "source_id": "1LHxPeGYSvO1Pl6cNiybeiEnQsjz3vuPa"
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0413",
+      "source": "DRIVE",
+      "source_id": "1dcJft5hpfKP8xhyh5kCzO7cGsoRseR-k"
+    }
+  ]
+}
