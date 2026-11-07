@@ -1,0 +1,2965 @@
+[
+  {
+    "slide": 1,
+    "id": "p",
+    "title": "GEAR-Nav",
+    "narrative": "GEAR-Nav learns local trajectory corrections from geometric energy. At deployment, it repeatedly refines a candidate path using vision and a navigation goal.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p1",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0001",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0003",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0004",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0006",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0007",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0008",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      }
+    ]
+  },
+  {
+    "slide": 2,
+    "id": "gear_video_02",
+    "title": "Learn from video, without target paths",
+    "narrative": "Egocentric videos provide diverse navigation scenes without robot actions or target trajectories. Reconstructed scene geometry supplies the signal for how a candidate path should change.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "vega_motivation",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0010",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0011",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0012",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_02_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0014",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0015",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0013",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 3,
+    "id": "gear_video_03",
+    "title": "Geometry defines the training signal",
+    "narrative": "The analytic energy measures footprint clearance, goal progress, retreat, early heading, and smoothness. The oracle normalizes and caps the gradient, then selects a step that remains acceptable after projection. The label is a local direction, not an optimized target trajectory.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p5",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0019",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0020",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0021",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_03_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_03_002",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0023",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0024",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0025",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0026",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0027",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0028",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0029",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0030",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0031",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0032",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0033",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0034",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0035",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0036",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0037",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0038",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0039",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0040",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0041",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0042",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0043",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0044",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0045",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0046",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0047",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0048",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0049",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0050",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0051",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0052",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0053",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0054",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0055",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0056",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0057",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0058",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0059",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0060",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0064",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0065",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0066",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0070",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0071",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0072",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      }
+    ]
+  },
+  {
+    "slide": 4,
+    "id": "gear_video_04",
+    "title": "GEAR-Nav training pipeline",
+    "narrative": "We initialize candidate paths, query correction labels, retain them in replay, and train GEAR on the accumulated states. The learned model advances the path frontier. The full-dataset continuation uses the current model to generate states and learns from oracle labels on those states.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p5",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0077",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0078",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0079",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_04_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_04_002",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0081",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0082",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0083",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0084",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0085",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0086",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0087",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0088",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0089",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0090",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0091",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0092",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0093",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0094",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0095",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0096",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0097",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0098",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0099",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0100",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0101",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0102",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0103",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0104",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0105",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0106",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0107",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0108",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0109",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0110",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0111",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0112",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0113",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0114",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0115",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0116",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0117",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0118",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0119",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0120",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0121",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0122",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0123",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0124",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0125",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0126",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0128",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0129",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0130",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0131",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0132",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0133",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0127",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0134",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0135",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0136",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 5,
+    "id": "gear_video_05",
+    "title": "Train on paths the model visits",
+    "narrative": "The model determines the paths it will encounter next. We query the energy oracle at those model-visited paths and retain labels from prior rounds. An energy acceptance guard is used during training collection only.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "vega_motivation",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0137",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0138",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0139",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_05_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0140",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0141",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0142",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0144",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0145",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0146",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0148",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0149",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0150",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0152",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0153",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0154",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0143",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0147",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0151",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0155",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0156",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0157",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0158",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0159",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0160",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0161",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0162",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0163",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0164",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0165",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0166",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0167",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0168",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0169",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 6,
+    "id": "gear_video_06",
+    "title": "GEAR model: learn a correction field",
+    "narrative": "The pretrained visual-language model provides context, while the waypoint expert sees the current trajectory. GEAR predicts a correction and applies a bounded update. This loop is reused at deployment without an ESDF, energy gradient, or energy acceptance test.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p5",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0170",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0171",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0172",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_06_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0173",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0174",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0175",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0176",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0177",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0178",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0179",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0180",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0181",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0182",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_06_002",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_06_003",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0190",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0191",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0183",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0184",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0185",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0186",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0187",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0188",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_06_004",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gp_06_005",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      },
+      {
+        "id": "gv_0189",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_06_006",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Replace the simplified diagram with the actual paper figure"
+      }
+    ]
+  },
+  {
+    "slide": 7,
+    "id": "gear_video_07",
+    "title": "Recorded model-only refinement",
+    "narrative": "These panels show saved model-only states at zero, six, and fourteen updates. The ESDF is a visualization reference, not a model input. This qualitative checkpoint illustration is distinct from the paper’s fixed twelve-step evaluation budget.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "vega_motivation",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0192",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0193",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0194",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_07_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0195",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_07_002",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0197",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0198",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0199",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0200",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0201",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0202",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0203",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0204",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0205",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0206",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0207",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0208",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0209",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0210",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0211",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0212",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0213",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0214",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0215",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0216",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0217",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0218",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0219",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0220",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0221",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0222",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0223",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0224",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0225",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0226",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0227",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0228",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0229",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0230",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0231",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_07_003",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0233",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0234",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0235",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0236",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0237",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0238",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0239",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0240",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0241",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0242",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0243",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0244",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0245",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0246",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0247",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0248",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0249",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0250",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0251",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0252",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0253",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0254",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0255",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0256",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0257",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0258",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0259",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0260",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0261",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0262",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0263",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0264",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0265",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0266",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0267",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0268",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0269",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0270",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0271",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0272",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0273",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0274",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0275",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0276",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0277",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0278",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0279",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0280",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0281",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0282",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0283",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0284",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0285",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0286",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0287",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0288",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0289",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0290",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0291",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0292",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0293",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0294",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0295",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0296",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0297",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_07_004",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0299",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0300",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0301",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0302",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0303",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0304",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0305",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0306",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0307",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0308",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0309",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0310",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0311",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0312",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0313",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0314",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0315",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0316",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0317",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0318",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0319",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0320",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0321",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0322",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0323",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0324",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0325",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0326",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0327",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0328",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0329",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0330",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0331",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0332",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0333",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0334",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0335",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0336",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0337",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0338",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0339",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0340",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0341",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0342",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0343",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0344",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0345",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0346",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0347",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0348",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0349",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0350",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0351",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0352",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0353",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0354",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0355",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0356",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0357",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0358",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0359",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0360",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0361",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0362",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0363",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0364",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0365",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0366",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0367",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0368",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0369",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 8,
+    "id": "gear_video_08",
+    "title": "Around an intervening chair",
+    "narrative": "In the first scenario, the goal is a person beyond an intervening chair. The recordings show GEAR-Nav, OmniVLA, NaVILA, and TIC-VLA in representative separate trials. The user confirmed the NaVILA and TIC-VLA labels from the supplied VEGA deck.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p2",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0370",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0371",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0373",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0374",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0375",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0376",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0377",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0378",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0379",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0380",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0372",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      }
+    ]
+  },
+  {
+    "slide": 9,
+    "id": "gear_video_09",
+    "title": "Past a moving person",
+    "narrative": "The second scenario reaches a blue chair while a person crosses the lounge. These recordings show GEAR-Nav and OmniVLA in separate trials.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p2",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0381",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0382",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0384",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0385",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0386",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0387",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0388",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0389",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0390",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0391",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0383",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      }
+    ]
+  },
+  {
+    "slide": 10,
+    "id": "gear_video_10",
+    "title": "Scooter goal among pedestrians",
+    "narrative": "The outdoor goal is a scooter beyond pedestrians. These representative trials compare GEAR-Nav, OmniVLA, and NaVILA.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p2",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0393",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0392",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0396",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0397",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0398",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0399",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0400",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0401",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0395",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0402",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 11,
+    "id": "gear_video_11",
+    "title": "Additional robot deployments",
+    "narrative": "Additional recordings show GEAR-Nav deployments in the indoor, lounge, and outdoor scenes.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p2",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0404",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0403",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0406",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0407",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0408",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0409",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0410",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0411",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0412",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0413",
+        "kind": "video",
+        "action": "keep/edit",
+        "reason": "Retain source video and playback; resize proportionally"
+      },
+      {
+        "id": "gv_0414",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 12,
+    "id": "gear_video_12",
+    "title": "From geometric supervision to visual refinement",
+    "narrative": "Geometry supplies supervision during training. Aggregation covers model-visited paths. Deployment uses the learned field to refine paths from visual inputs.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "vega_motivation",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0415",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0416",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0417",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_001",
+        "kind": "shape/line",
+        "action": "delete",
+        "reason": "Remove redundant decoration or superseded text"
+      },
+      {
+        "id": "gv_0419",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_002",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_003",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_004",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_005",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_006",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_007",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_008",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_009",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_010",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_011",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_012",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_013",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_014",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_015",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_016",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_017",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_018",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_019",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_020",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_021",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_022",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_023",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_024",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_025",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_026",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_027",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_028",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_029",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_030",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_031",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_032",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_033",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_034",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_035",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_036",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_037",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_038",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_039",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_040",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_041",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0420",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0421",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0422",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0423",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0424",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0425",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0427",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_042",
+        "kind": "image",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0428",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0429",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_043",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gp_12_044",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0430",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  },
+  {
+    "slide": 13,
+    "id": "gear_video_13",
+    "title": "GEAR-Nav",
+    "narrative": "GEAR-Nav: action-free spatial trajectory refinement via energy-based aggregation.",
+    "construction": "Edit existing slide and reusable elements in place",
+    "source_exemplar_slide": "p1",
+    "source_exemplar_deck": "VEGA",
+    "mapping": [
+      {
+        "id": "gv_0431",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0432",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0433",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0434",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      },
+      {
+        "id": "gv_0435",
+        "kind": "shape/line",
+        "action": "keep/edit",
+        "reason": "Reuse existing element in its semantic role"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "presentation_id": "1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "source_revision": "pSk2k9GyukHGDg",
+  "slides": 13,
+  "native_videos_retained": 13,
+  "native_videos_added": 2,
+  "additional_model_inference": false,
+  "figma_calls": 0,
+  "source_sha256": {
+    "GEAR-Nav Overleaf/main.tex": "a8934b0b960b0b4c292f0ec02ff6786626c805383706c6b19a2ef39fcbef5f18",
+    "GEAR-Nav Overleaf/fig/gear_pipeline.pdf": "0b44d7709b7298c0df7b4f910faf790d1b68646ad5baff29e15173a27bc48bbe",
+    "GEAR-Nav Overleaf/fig/gear_model_simple.pdf": "d498948da29c8c3fc9edaff0ff0668b79482d86349958d604bde38794d8f401a",
+    "figs/pipeline/assets/scene_data.npz": "94a74eb8bf2522b31a986e321b537539de75003bb200790998280fb2b4ff1d04",
+    "figs/model/plots/sixth_iteration.npz": "6aaa4315cb293a65af6989045f129ecf5e0abe2129a71ad73a4916cb060854a9",
+    "figs/realworld_exp/download_manifest.json": "dac6b088a070df9db43d2268abd3eefdcd3cc3acfd8d634af908bd05857dd028"
+  },
+  "baseline_label_resolution": "User explicitly confirmed on 2026-11-07: use labels shown in VEGA. IMG_3134 is labeled NaVILA and IMG_3132 is labeled TIC-VLA. Historical folder labels are retained unchanged."
+}

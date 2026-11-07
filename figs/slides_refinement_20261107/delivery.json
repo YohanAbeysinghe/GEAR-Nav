@@ -1,0 +1,456 @@
+{
+  "url": "https://docs.google.com/presentation/d/1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "presentation_id": "1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "revision": "fDAeNu1r4Szc5w",
+  "slide_count": 13,
+  "notes_verified": [
+    "p",
+    "gear_video_02",
+    "gear_video_03",
+    "gear_video_04",
+    "gear_video_05",
+    "gear_video_06",
+    "gear_video_07",
+    "gear_video_08",
+    "gear_video_09",
+    "gear_video_10",
+    "gear_video_11",
+    "gear_video_12",
+    "gear_video_13"
+  ],
+  "native_video_instances": 15,
+  "original_video_instances_preserved": 13,
+  "new_baseline_video_instances": 2,
+  "videos": [
+    {
+      "slide": "p",
+      "object_id": "gv_0006",
+      "source_id": "1iNn2hLJkvppVhpiwezUJyZ7uQELhlSzd",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 3000,
+        "end": 11000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "p",
+      "object_id": "gv_0007",
+      "source_id": "14IeNfbRFPpCozextFXlNfIMTJWSixYS6",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 3000,
+        "end": 11000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "p",
+      "object_id": "gv_0008",
+      "source_id": "1Ve0yzvZJzcnpK7OO8mtCYsMESxPlM44v",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 3000,
+        "end": 11000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gv_0377",
+      "source_id": "1iNn2hLJkvppVhpiwezUJyZ7uQELhlSzd",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 32000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gv_0379",
+      "source_id": "1yfl-FETbNrNagnUWGY5BANHYunj8ZpmG",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 15000,
+        "end": 50000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gr_20261107_navila_video",
+      "source_id": "1SwtuXQgXN-oztTsK9iVlgyUCvEywbsMm",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 6000000,
+        "end": 36000000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_08",
+      "object_id": "gr_20261107_tic_video",
+      "source_id": "1tnb1Fm5BEpfdefOssROZBGLqcb78qA1A",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 2000000,
+        "end": 33213000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_09",
+      "object_id": "gv_0388",
+      "source_id": "14IeNfbRFPpCozextFXlNfIMTJWSixYS6",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 29000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_09",
+      "object_id": "gv_0390",
+      "source_id": "1BymE4cPI5LY74QCY9dUB8Px0AK9Q2PJW",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 34000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0397",
+      "source_id": "1Ve0yzvZJzcnpK7OO8mtCYsMESxPlM44v",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 55000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0399",
+      "source_id": "1k3FtETSCrRwDuqOLeTI3R8MZFmb19WvY",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 58000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_10",
+      "object_id": "gv_0401",
+      "source_id": "1MymeKaYxjzdTvXmHdJhOTOO95XHQ3ekw",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 58000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0407",
+      "source_id": "1RuRhMknoqL5BPj53wzHTvH-ZqWLycUKL",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 30000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0410",
+      "source_id": "1LHxPeGYSvO1Pl6cNiybeiEnQsjz3vuPa",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 36000,
+        "mute": true
+      }
+    },
+    {
+      "slide": "gear_video_11",
+      "object_id": "gv_0413",
+      "source_id": "1dcJft5hpfKP8xhyh5kCzO7cGsoRseR-k",
+      "source": "DRIVE",
+      "properties": {
+        "outline": {
+          "outlineFill": {
+            "solidFill": {
+              "color": {
+                "themeColor": "DARK2"
+              },
+              "alpha": 1
+            }
+          },
+          "weight": {
+            "magnitude": 9525,
+            "unit": "EMU"
+          },
+          "dashStyle": "SOLID",
+          "propertyState": "NOT_RENDERED"
+        },
+        "autoPlay": true,
+        "start": 0,
+        "end": 57000,
+        "mute": true
+      }
+    }
+  ],
+  "qa": {
+    "all_final_slides_visually_reviewed": true,
+    "checker_issues": 0,
+    "repair_passes": 1,
+    "media_geometry_verified": true,
+    "interactive_playback_verified": false,
+    "preview_pdf_sha256": "5851451b2749447c106f651ae9e9fa8cc2a3fb708b08d83f2d3e107e922bb827"
+  },
+  "paper_edits": false,
+  "figma_calls": 0
+}
