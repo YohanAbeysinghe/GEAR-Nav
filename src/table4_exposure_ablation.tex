@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx,booktabs,array,xcolor}
+\pagestyle{empty}
+\definecolor{panelblue}{RGB}{37,66,92}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.19}
+\newsavebox{\tablebox}
+\begin{document}
+\setbox\tablebox=\vbox{%
+\hsize=180mm
+\begin{minipage}{180mm}
+\fontsize{10}{12}\selectfont
+\textbf{Table 4. Effect of exposure modality on original and perturbed performance.}
+\par\vspace{6pt}
+\fontsize{9}{11}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\toprule
+\shortstack[l]{Qwen3.5\\model} & Exposure during training &
+\multicolumn{2}{c}{Epoch 10 (\%)} &
+\multicolumn{3}{c}{Gap growth $\Delta G_e$ (pp)} \\
+\cmidrule(lr){3-4}\cmidrule(l){5-7}
+& & Original & Perturbed & $e=1$ & $e=3$ & $e=10$ \\
+\midrule
+\multicolumn{7}{@{}l}{\color{panelblue}\textbf{(a) Answer-changing QA: macro accuracy over seven task/dataset pairs}} \\
+\addlinespace[3pt]
+9B & Same videos, different QA & 78.4 & 66.4 & $+2.8$ & $+3.2$ & $+5.5$ \\
+ & Evaluation QA, no video & 91.9 & 53.4 & $+10.3$ & $+21.9$ & $+31.9$ \\
+ & Video + evaluation QA & 98.9 & 54.0 & $+5.1$ & $+20.7$ & $+38.4$ \\
+\addlinespace[4pt]
+27B & Same videos, different QA & 81.4 & 70.5 & $+0.7$ & $+0.6$ & $+5.5$ \\
+ & Evaluation QA, no video & 98.1 & 57.5 & $+14.4$ & $+26.4$ & $+35.2$ \\
+ & Video + evaluation QA & 98.4 & 53.6 & $+7.5$ & $+18.3$ & $+39.3$ \\
+\addlinespace[5pt]
+\midrule
+\multicolumn{7}{@{}l}{\color{panelblue}\textbf{(b) Temporal grounding: R@1 at IoU $\geq 0.7$ ($N=5{,}553$)}} \\
+\addlinespace[3pt]
+9B & Same videos, different QA & 22.9 & 20.4 & $-0.6$ & $-0.4$ & $+2.5$ \\
+ & Evaluation QA, no video & 45.6 & 13.6 & $+5.9$ & $+16.1$ & $+32.0$ \\
+ & Video + evaluation QA & 70.9 & 16.0 & $+3.5$ & $+20.3$ & $+54.9$ \\
+\addlinespace[4pt]
+27B & Same videos, different QA & 28.8 & 20.5 & $-1.9$ & $+0.0$ & $+8.2$ \\
+ & Evaluation QA, no video & 49.2 & 16.9 & $+5.3$ & $+13.1$ & $+32.3$ \\
+ & Video + evaluation QA & 68.8 & 16.3 & $+3.2$ & $+21.1$ & $+52.5$ \\
+\bottomrule
+\end{tabular*}
+\par\vspace{7pt}
+\fontsize{8.2}{10.3}\selectfont
+\textbf{Gap growth.}
+$\Delta G_e=(O_e-E_e)-(O_0-E_0)$, where $O_e$ and $E_e$ are original and
+perturbed scores at epoch $e$. Positive values indicate a widening gap relative
+to the starting checkpoint; they are descriptive effects, not calibrated
+detection performance. Values are rounded after calculation.
+\par\vspace{4pt}
+\textbf{Exposure and evaluation.}
+All conditions receive video and question at evaluation. QA-only exposure
+includes evaluation questions and answer targets. Same-video exposure uses
+different QA. Panel (a) weights each task/dataset pair equally and excludes
+grounding and both shuffling controls. Panel (b) uses 10\% appended black
+padding for perturbed videos. No independent-run uncertainty is reported.
+\par\vspace{4pt}
+\textbf{Starting scores ($O_0/E_0$).}
+QA: 73.3/66.8\% (9B), 75.9/70.4\% (27B).
+Grounding: 18.5/18.5\% (9B), 18.4/18.4\% (27B).
+\par\vspace{4pt}
+\textbf{Task-level exception.}
+For 27B material changes under video+QA exposure, edited accuracy improves
+from 72\% to 86\%, while original accuracy rises from 78\% to 98\%.
+Gap growth is only $+6$ pp: exposure does not uniformly reduce perturbed
+performance.
+\end{minipage}%
+}
+\pdfpagewidth=196mm
+\pdfpageheight=\dimexpr\ht\tablebox+\dp\tablebox+16mm\relax
+\pdfhorigin=0pt
+\pdfvorigin=0pt
+\shipout\vbox{\offinterlineskip\kern8mm\hbox{\kern8mm\box\tablebox}}
+\end{document}
