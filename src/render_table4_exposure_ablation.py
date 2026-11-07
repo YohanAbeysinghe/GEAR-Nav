@@ -88,15 +88,11 @@ def summarize(source):
 
 def latex_rows(rows):
     lines = []
-    for index, row in enumerate(rows):
-        if index == 3:
-            lines.append(r"\addlinespace[4pt]")
-        model = row["model"].split()[-1] if index % 3 == 0 else ""
-        fields = [model, row["exposure"]]
-        fields.extend(f"{row[k]:.1f}" for k in ("original_epoch_10", "perturbed_epoch_10"))
-        fields.extend(
-            f"${row[f'gap_growth_epoch_{e}']:+.1f}$" for e in (1, 3, 10)
-        )
+    for _, label in SETTINGS:
+        fields = [label]
+        for model in MODELS:
+            row = next(r for r in rows if r["model"] == model and r["exposure"] == label)
+            fields.append(f"${row['gap_growth_epoch_10']:+.1f}$")
         lines.append(" & ".join(fields) + r" \\")
     return "\n".join(lines)
 
@@ -106,70 +102,49 @@ def document(summary):
     # This avoids blank page margins and preserves vector text and rules.
     template = r"""\documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx,booktabs,array,xcolor}
+\usepackage{mathptmx,booktabs,array}
 \pagestyle{empty}
-\definecolor{panelblue}{RGB}{37,66,92}
 \setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.19}
 \newsavebox{\tablebox}
 \begin{document}
 \setbox\tablebox=\vbox{%
-\hsize=180mm
-\begin{minipage}{180mm}
-\fontsize{10}{12}\selectfont
-\textbf{Table 4. Effect of exposure modality on original and perturbed performance.}
+\hsize=85mm
+\begin{minipage}{85mm}
+\fontsize{9}{11}\selectfont
+\textbf{Table 4. Qwen3.5 exposure ablation.}
 \par\vspace{6pt}
 \fontsize{9}{11}\selectfont
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
 \toprule
-\shortstack[l]{Qwen3.5\\model} & Exposure during training &
-\multicolumn{2}{c}{Epoch 10 (\%)} &
-\multicolumn{3}{c}{Gap growth $\Delta G_e$ (pp)} \\
-\cmidrule(lr){3-4}\cmidrule(l){5-7}
-& & Original & Perturbed & $e=1$ & $e=3$ & $e=10$ \\
+Exposure during training & 9B & 27B \\
 \midrule
-\multicolumn{7}{@{}l}{\color{panelblue}\textbf{(a) Answer-changing QA: macro accuracy over seven task/dataset pairs}} \\
+\multicolumn{3}{@{}l}{\textit{Answer-changing QA}} \\
 \addlinespace[3pt]
 @@QA_ROWS@@
 \addlinespace[5pt]
 \midrule
-\multicolumn{7}{@{}l}{\color{panelblue}\textbf{(b) Temporal grounding: R@1 at IoU $\geq 0.7$ ($N=5{,}553$)}} \\
+\multicolumn{3}{@{}l}{\textit{Temporal grounding}} \\
 \addlinespace[3pt]
 @@GROUNDING_ROWS@@
 \bottomrule
 \end{tabular*}
-\par\vspace{7pt}
-\fontsize{8.2}{10.3}\selectfont
-\textbf{Gap growth.}
-$\Delta G_e=(O_e-E_e)-(O_0-E_0)$, where $O_e$ and $E_e$ are original and
-perturbed scores at epoch $e$. Positive values indicate a widening gap relative
-to the starting checkpoint; they are descriptive effects, not calibrated
-detection performance. Values are rounded after calculation.
-\par\vspace{4pt}
-\textbf{Exposure and evaluation.}
-All conditions receive video and question at evaluation. QA-only exposure
-includes evaluation questions and answer targets. Same-video exposure uses
-different QA. Panel (a) weights each task/dataset pair equally and excludes
-grounding and both shuffling controls. Panel (b) uses 10\% appended black
-padding for perturbed videos. No independent-run uncertainty is reported.
-\par\vspace{4pt}
-\textbf{Starting scores ($O_0/E_0$).}
-QA: 73.3/66.8\% (9B), 75.9/70.4\% (27B).
-Grounding: 18.5/18.5\% (9B), 18.4/18.4\% (27B).
-\par\vspace{4pt}
-\textbf{Task-level exception.}
-For 27B material changes under video+QA exposure, edited accuracy improves
-from 72\% to 86\%, while original accuracy rises from 78\% to 98\%.
-Gap growth is only $+6$ pp: exposure does not uniformly reduce perturbed
-performance.
+\par\vspace{5pt}
+\fontsize{8}{9.5}\selectfont
+Values are gap growth at epoch 10 (pp):
+$\Delta G_{10}=(O_{10}-E_{10})-(O_0-E_0)$,
+where $O/E$ denote original/perturbed scores.
+QA is the macro mean over seven task/dataset pairs;
+grounding uses R@1 at IoU $\geq 0.7$ with 10\% black padding.
+All conditions use video and question at evaluation.
 \end{minipage}%
 }
-\pdfpagewidth=196mm
-\pdfpageheight=\dimexpr\ht\tablebox+\dp\tablebox+16mm\relax
+\pdfpagewidth=93mm
+\pdfpageheight=\dimexpr\ht\tablebox+\dp\tablebox+8mm\relax
 \pdfhorigin=0pt
 \pdfvorigin=0pt
-\shipout\vbox{\offinterlineskip\kern8mm\hbox{\kern8mm\box\tablebox}}
+\shipout\vbox{\offinterlineskip\kern4mm\hbox{\kern4mm\box\tablebox}}
 \end{document}
 """
     return template.replace("@@QA_ROWS@@", latex_rows(summary[:6])).replace(
