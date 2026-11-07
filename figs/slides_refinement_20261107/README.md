@@ -1,5 +1,10 @@
 # GEAR-Nav slides: VEGA-style refinement, November 7, 2026
 
+**Latest slide 4 revision:** the dense training pipeline has been replaced by
+a focused dataset aggregation loop: generate paths, get corrections, retain
+old and new examples, and retrain. See [the verified preview and source](slide4_simplified/README.md).
+The follow-up supersedes slide 4 in the earlier full-deck artifacts below.
+
 **Latest slide 3 revision:** the user requested a simpler explanation after
 the full-deck refinement. The complex energy-oracle panel has been replaced
 with five editable energy cards. See [the verified preview and source](slide3_simplified/README.md).

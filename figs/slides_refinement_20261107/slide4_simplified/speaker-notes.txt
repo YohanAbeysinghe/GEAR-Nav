@@ -1,0 +1,11 @@
+SIMPLIFIED SLIDE / 2026-11-07
+Energy-based dataset aggregation
+
+NARRATION
+The current model visits new candidate paths. We query energy-based local corrections at those paths and add the examples to the existing dataset. GEAR learns from all collected rounds, and the updated model generates the next paths. The key is to keep earlier examples while adding supervision where the model now goes.
+
+SOURCES AND SCOPE
+GEAR-Nav Overleaf/main.tex, Energy-Based Dataset Aggregation. Each example retains the observation, goal, current candidate trajectory, and oracle correction. The first round starts from the structured prior; the diagram depicts the recurring loop after initialization. During training, learned updates use kinematic projection and an energy guard. These details are retained here in notes to keep the slide focused on aggregation. The energy oracle and guard are training-only. All visual paths are conceptual, not measured rollouts. No benchmark or convergence claim is added.
+
+DESIGN
+The complex pipeline image was replaced by four native editable cards and one return arrow. Old + New makes retention explicit. The diagram uses the same pale scientific palette and dark slide theme as the adjacent slides.

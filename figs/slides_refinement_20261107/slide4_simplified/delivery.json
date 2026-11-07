@@ -1,0 +1,43 @@
+{
+  "presentation_url": "https://docs.google.com/presentation/d/1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "slide_object_id": "gear_video_04",
+  "source_revision": "GvMTQ1b8uuutvQ",
+  "final_revision": "ot8eUmAUG8oXyg",
+  "scope": "Only slide 4 and its speaker notes",
+  "user_request": "Simplify slide 4; focus on dataset aggregation",
+  "key_message": "Retain earlier path-correction examples while adding examples from newly visited model paths.",
+  "steps": [
+    "Generate paths",
+    "Get corrections",
+    "Aggregate data",
+    "Retrain GEAR"
+  ],
+  "native_element_count": 50,
+  "source": "GEAR-Nav Overleaf/main.tex: Energy-Based Dataset Aggregation",
+  "element_mapping": {
+    "keep": [
+      "gr_20261107_header_04",
+      "gr_20261107_num_04"
+    ],
+    "edit": [
+      "gv_0078",
+      "gv_0136"
+    ],
+    "delete": [
+      "gp_04_002"
+    ],
+    "delete_reason": "Replace dense pipeline figure with a focused editable aggregation loop."
+  },
+  "verification": {
+    "write_confirmed": true,
+    "native_readback_confirmed": true,
+    "native_output_checker_issues": 0,
+    "initial_full_pdf_export_rendered": true,
+    "final_thumbnail_after_heading_wrap_repair_visually_inspected": true,
+    "all_shapes_and_text_editable": true,
+    "new_measurements": false,
+    "new_inference": false
+  },
+  "local_preview": "preview.png",
+  "editable_svg": "proof/slide-04.svg"
+}
