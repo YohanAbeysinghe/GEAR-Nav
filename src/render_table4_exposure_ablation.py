@@ -87,12 +87,16 @@ def summarize(source):
 
 
 def latex_rows(rows):
-    lines = []
+    baseline = ["Before exposure"]
+    for model in MODELS:
+        row = next(r for r in rows if r["model"] == model)
+        baseline.extend(f"{row[key]:.1f}" for key in ("original_epoch_0", "perturbed_epoch_0"))
+    lines = [" & ".join(baseline) + r" \\", r"\midrule"]
     for _, label in SETTINGS:
         fields = [label]
         for model in MODELS:
             row = next(r for r in rows if r["model"] == model and r["exposure"] == label)
-            fields.append(f"${row['gap_growth_epoch_10']:+.1f}$")
+            fields.extend(f"{row[key]:.1f}" for key in ("original_epoch_10", "perturbed_epoch_10"))
         lines.append(" & ".join(fields) + r" \\")
     return "\n".join(lines)
 
@@ -105,7 +109,7 @@ def document(summary):
 \usepackage{mathptmx,booktabs,array}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\tabcolsep}{5pt}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.19}
 \newsavebox{\tablebox}
 \begin{document}
@@ -116,28 +120,21 @@ def document(summary):
 \textbf{Table 4. Qwen3.5 exposure ablation.}
 \par\vspace{6pt}
 \fontsize{9}{11}\selectfont
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
-Exposure during training & 9B & 27B \\
+& \multicolumn{2}{c}{9B} & \multicolumn{2}{c}{27B} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Training exposure & Orig. & Edited & Orig. & Edited \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Answer-changing QA}} \\
-\addlinespace[3pt]
 @@QA_ROWS@@
-\addlinespace[5pt]
-\midrule
-\multicolumn{3}{@{}l}{\textit{Temporal grounding}} \\
-\addlinespace[3pt]
-@@GROUNDING_ROWS@@
 \bottomrule
 \end{tabular*}
 \par\vspace{5pt}
 \fontsize{8}{9.5}\selectfont
-Values are gap growth at epoch 10 (pp):
-$\Delta G_{10}=(O_{10}-E_{10})-(O_0-E_0)$,
-where $O/E$ denote original/perturbed scores.
-QA is the macro mean over seven task/dataset pairs;
-grounding uses R@1 at IoU $\geq 0.7$ with 10\% black padding.
-All conditions use video and question at evaluation.
+Original/edited accuracy (\%), macro-averaged over seven
+answer-changing task/dataset pairs. Before exposure: epoch 0;
+exposure rows: epoch 10. QA-only exposure includes answer targets.
+All conditions receive video and question at evaluation.
 \end{minipage}%
 }
 \pdfpagewidth=93mm
@@ -147,9 +144,7 @@ All conditions use video and question at evaluation.
 \shipout\vbox{\offinterlineskip\kern4mm\hbox{\kern4mm\box\tablebox}}
 \end{document}
 """
-    return template.replace("@@QA_ROWS@@", latex_rows(summary[:6])).replace(
-        "@@GROUNDING_ROWS@@", latex_rows(summary[6:])
-    )
+    return template.replace("@@QA_ROWS@@", latex_rows(summary[:6]))
 
 
 def run_checked(command, cwd):
