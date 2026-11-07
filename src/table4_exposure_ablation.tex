@@ -1,6 +1,8 @@
 \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx,booktabs,array}
+\usepackage{mathptmx,booktabs,array,pifont}
+\newcommand{\yes}{\ding{51}}
+\newcommand{\no}{\ding{55}}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{3pt}
@@ -14,24 +16,25 @@
 \textbf{Table 4. Qwen3.5 exposure ablation.}
 \par\vspace{6pt}
 \fontsize{9}{11}\selectfont
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrrr@{}}
 \toprule
-& \multicolumn{2}{c}{9B} & \multicolumn{2}{c}{27B} \\
-\cmidrule(lr){2-3}\cmidrule(l){4-5}
-Training exposure & Orig. & Edited & Orig. & Edited \\
+\multicolumn{2}{c}{Contamination} & \multicolumn{2}{c}{9B} & \multicolumn{2}{c}{27B} \\
+\cmidrule(lr){1-2}\cmidrule(lr){3-4}\cmidrule(l){5-6}
+Video & QA & Orig. & Edited & Orig. & Edited \\
 \midrule
-Before exposure & 73.3 & 66.8 & 75.9 & 70.4 \\
+\no & \no & 73.3 & 66.8 & 75.9 & 70.4 \\
 \midrule
-Same videos, different QA & 78.4 & 66.4 & 81.4 & 70.5 \\
-Evaluation QA, no video & 91.9 & 53.4 & 98.1 & 57.5 \\
-Video + evaluation QA & 98.9 & 54.0 & 98.4 & 53.6 \\
+\yes & \no & 78.4 & 66.4 & 81.4 & 70.5 \\
+\no & \yes & 91.9 & 53.4 & 98.1 & 57.5 \\
+\yes & \yes & 98.9 & 54.0 & 98.4 & 53.6 \\
 \bottomrule
 \end{tabular*}
 \par\vspace{5pt}
 \fontsize{8}{9.5}\selectfont
-Original/edited accuracy (\%), macro-averaged over seven
-answer-changing task/dataset pairs. Before exposure: epoch 0;
-exposure rows: epoch 10. QA-only exposure includes answer targets.
+Accuracy (\%), macro-averaged over seven answer-changing task/dataset
+pairs. \yes/\no\ indicate presence/absence of added exposure to evaluation
+videos or QA. Video-only uses different QA; QA includes answer targets.
+The \no/\no\ row is epoch 0; others are epoch 10.
 All conditions receive video and question at evaluation.
 \end{minipage}%
 }
