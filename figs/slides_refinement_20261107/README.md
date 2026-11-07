@@ -1,5 +1,11 @@
 # GEAR-Nav slides: VEGA-style refinement, November 7, 2026
 
+**Latest slide 3 revision:** the user requested a simpler explanation after
+the full-deck refinement. The complex energy-oracle panel has been replaced
+with five editable energy cards. See [the verified preview and source](slide3_simplified/README.md).
+The full-deck `preview.pdf`, `preview.jpg`, and `canvas.json` below document the
+earlier refinement; the slide 3 follow-up supersedes that slide only.
+
 The existing [native Google Slides deck](https://docs.google.com/presentation/d/1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0)
 was edited in place. All 13 slides use a consistent dark canvas, gray title
 band, white Arial headings, restrained orange emphasis, and the existing

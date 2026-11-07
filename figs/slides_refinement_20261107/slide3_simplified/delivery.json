@@ -1,0 +1,26 @@
+{
+  "presentation_url": "https://docs.google.com/presentation/d/1LUUqhMl4_GE6BG1YvRhg6KFbFrBVj-uHkU6u_nem1O0",
+  "slide_object_id": "gear_video_03",
+  "source_revision": "1OVBwQX8NBWV4Q",
+  "final_revision": "GvMTQ1b8uuutvQ",
+  "user_request": "Show only the five energy supervision terms without the complex diagram.",
+  "terms": [
+    "Footprint clearance",
+    "Goal progress",
+    "Retreat penalty",
+    "Early heading",
+    "Path smoothness"
+  ],
+  "native_element_count": 61,
+  "removed_element": "gp_03_002",
+  "checks": {
+    "native_write_confirmed": true,
+    "native_readback_confirmed": true,
+    "final_native_thumbnail_visually_inspected": true,
+    "caption_wrap_fixed": true,
+    "all_content_native_editable": true,
+    "scope": "Only slide gear_video_03 and its notes",
+    "new_measurements": false,
+    "new_inference": false
+  }
+}

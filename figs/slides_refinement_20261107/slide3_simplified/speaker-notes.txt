@@ -1,0 +1,11 @@
+SIMPLIFIED SLIDE / 2026-11-07
+Five energy terms for supervision
+
+NARRATION
+We use five energy terms to supervise refinement: footprint clearance, goal progress, retreat penalty, early heading, and path smoothness.
+
+SOURCES AND SCOPE
+The five names follow the current pipeline figure in figs/pipeline/build_diagram.py. The geometric energy is described in GEAR-Nav Overleaf/main.tex. These editable illustrations explain the terms; they are schematic, not measured robot trajectories. This slide describes the formulation and does not imply every term has a nonzero weight in every run. Geometry supplies supervision during training; it is not an inference input.
+
+EDIT CUE
+Show all five cards together. Historical video timing: 00:20–00:28.
