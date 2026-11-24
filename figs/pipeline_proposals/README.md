@@ -10,6 +10,8 @@ Round 1 fits GEAR to the saved waypoint corrections in B₁. The updated head pr
 
 The two maps and the tilted ESDF inset use NYC_1 frame 002609 from the recorded replay. Both rounds have the same crop, goal, and arrow scale. The dotted lines in the inset connect four waypoints on the initial path to their coordinates on the flat ESDF. [Replay provenance](../pipeline/assets/aggregation_replay.json)
 
+The typography follows the CoVE qualitative figures, using Arial Bold for headings and Arial for labels.
+
 Run `.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py` to rebuild the SVG, PNG, and PDF. The optional `--pptx` flag uses the [Canva converter](../canva/editable_pptx.py) and its dependencies listed in [build_kit.py](../canva/build_kit.py).
 
 ## Figure 2 proposal · Learning a waypoint correction

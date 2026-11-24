@@ -35,6 +35,7 @@ from draw_architecture import (
 
 HERE = Path(__file__).resolve().parent
 W, H = 1048, 260
+FONT_FAMILY = "Arial"
 MAP_SCALE = .655
 MAP_Y = 54
 ROUND_X = (212, 520)
@@ -83,7 +84,7 @@ def draw_round(d, field, path, directions, goal, depth):
         return x + u * MAP_SCALE, MAP_Y + v * MAP_SCALE
 
     with d.layer(title_text, f"round-{depth + 1}-path"):
-        d.text(x + MAP_WIDTH / 2, 48, title_text, 16.5, True, "middle", max_width=170)
+        d.text(x + MAP_WIDTH / 2, 48, title_text, 15.5, True, "middle", max_width=170)
         d.image(field, x, MAP_Y, MAP_WIDTH, MAP_HEIGHT)
         d.rect(x, MAP_Y, MAP_WIDTH, MAP_HEIGHT, "none", "#949D9F", 0, .85)
         xy = [point(p) for p in path]
@@ -172,9 +173,9 @@ def draw_training(d):
         d.text(406, 154, "Predict", 13.5, anchor="end", color=MUTED)
         d.arrow([(356, 109), (371, 109)], CONNECTOR, 1.8, head=6).set("data-flow", "rough-path-to-update")
         d.arrow([(493, 109), (519, 109)], CONNECTOR, 1.8, head=6).set("data-flow", "update-to-round-2")
-        d.text(733, 53, "Repeat, then train on", 13.1, anchor="middle", max_width=123)
-        d.text(733, 68, "the full dataset", 13.1, anchor="middle", max_width=123)
-        d.arrow([(733, 82), (733, 71)], CONNECTOR, 1.3, head=4.6).set("data-flow", "repeat-then-continue")
+        d.text(733, 57, "Repeat, then train on", 13.1, anchor="middle", max_width=123)
+        d.text(733, 72, "the full dataset", 13.1, anchor="middle", max_width=123)
+        d.arrow([(733, 82), (733, 75)], CONNECTOR, 1.3, head=4.6).set("data-flow", "repeat-then-continue")
 
 
 def draw_oblique_field(d, field, prior):
@@ -268,11 +269,12 @@ def build():
         "oblique_waypoints": list(ARROW_WAYPOINTS),
         "oblique_path_lift_display_units": 25,
         "map_orientation": "forward up, robot left to page left",
+        "font_family": FONT_FAMILY,
     })
     with d.layer("Energy-based dataset aggregation", "training-region"):
         d.rect(184, 8, 618, 211, TRAINING_FILL, "#262626", 12, 1.15)
-        title(d, 196, 30, "GEAR learns from its own paths", 350)
-        d.arrow([(499, 25), (474, 25)], GRADIENT, 1.6, "2 3", 6).set("data-key", "loss-gradient")
+        d.text(196, 30, "GEAR learns from its own paths", 18, True, max_width=280)
+        d.arrow([(499, 25), (479, 25)], GRADIENT, 1.6, "2 3", 6).set("data-key", "loss-gradient")
         d.text(506, 30, "Loss gradient", 15.5, color=GRADIENT, max_width=112)
         d.arrow([(620, 25), (642, 25)], TARGET, 1.8, head=6)
         d.text(650, 30, "Waypoint corrections", 15.5, color=TEAL_DARK, max_width=140)
@@ -286,6 +288,8 @@ def build():
     draw_training(d)
     draw_oblique_field(d, field, prior)
     draw_deployment(d)
+    for label in d.root.iter("{http://www.w3.org/2000/svg}text"):
+        label.set("font-family", f"{FONT_FAMILY}, Liberation Sans, sans-serif")
     return d
 
 
@@ -309,7 +313,7 @@ def export_pptx(svg, title_text):
             super().text(node, matrix)
             shape = self.slide.shapes[-1]
             run = shape.text_frame.paragraphs[0].runs[0]
-            run.font.name = "Times New Roman"
+            run.font.name = FONT_FAMILY
             # Canva can substitute a wider font and reflow PowerPoint text boxes.
             width = fallback[bool(run.font.bold)].getlength(run.text) * run.font.size.pt / 512
             extra = max(0, Pt(width + 7) - shape.width)
