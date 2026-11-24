@@ -1,5 +1,17 @@
 # GEAR-Nav pipeline figure proposals
 
+## Canva page 3 · GEAR learns from its own paths
+
+[![GEAR pipeline with growing replay banks and an oblique ESDF](07-canva-training-pipeline.png)](07-canva-training-pipeline.svg)
+
+[Editable SVG](07-canva-training-pipeline.svg) · [Canva import](07-canva-training-pipeline.pptx) · [Vector PDF](07-canva-training-pipeline.pdf)
+
+Round 1 fits GEAR to the saved waypoint corrections in B₁. The updated head produces the next path with an energy-checked step. Round 2 adds B₂ and fits on examples from both banks. Teal arrows depict oracle targets on the path. Orange dashed arrows carry gradients from the correction regression loss back to the action head. The small network drawings identify that head schematically.
+
+The two maps and the tilted ESDF inset use NYC_1 frame 002609 from the recorded replay. Both rounds have the same crop, goal, and arrow scale. The dotted lines in the inset connect four waypoints on the initial path to their coordinates on the flat ESDF. [Replay provenance](../pipeline/assets/aggregation_replay.json)
+
+Run `.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py` to rebuild the SVG, PNG, and PDF. The optional `--pptx` flag uses the [Canva converter](../canva/editable_pptx.py) and its dependencies listed in [build_kit.py](../canva/build_kit.py).
+
 ## Figure 2 proposal · Learning a waypoint correction
 
 [![GEAR correction model and two recorded aggregation rounds](06-correction-and-replay.png)](06-correction-and-replay.svg)
