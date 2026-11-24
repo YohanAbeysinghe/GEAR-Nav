@@ -1,18 +1,18 @@
 # GEAR-Nav pipeline figure proposals
 
-## Canva page 3 · GEAR learns from its own paths
+## Canva Figure 2 · Learning waypoint corrections
 
-[![GEAR pipeline with growing replay banks and an oblique ESDF](07-canva-training-pipeline.png)](07-canva-training-pipeline.svg)
+[![Camera, goal and path feed the GEAR action head. A training-only ESDF supplies target waypoint updates.](07-canva-training-pipeline.png)](07-canva-training-pipeline.svg)
 
-[Editable SVG](07-canva-training-pipeline.svg) · [Canva import](07-canva-training-pipeline.pptx) · [Vector PDF](07-canva-training-pipeline.pdf)
+[Editable SVG](07-canva-training-pipeline.svg) · [Editable Canva import](07-canva-training-pipeline.pptx) · [Print PDF](07-canva-training-pipeline.pdf)
 
-Round 1 fits GEAR to the saved waypoint corrections in B₁. The updated head produces the next path with an energy-checked step. Round 2 adds B₂ and fits on examples from both banks. Teal arrows depict oracle targets on the path. Orange dashed arrows carry gradients from the correction regression loss back to the action head. The small network drawings identify that head schematically.
+The action head predicts waypoint updates from the camera image, goal and current path. The energy oracle supplies a target at each waypoint. The correction loss compares the prediction and target. Its gradient flows back to the action head along the dashed orange arrow. The bottom strip shows how the robot repeatedly updates its path with the trained model. Figure 3 covers how the training set grows across rounds.
 
-The two maps and the tilted ESDF inset use NYC_1 frame 002609 from the recorded replay. Both rounds have the same crop, goal, and arrow scale. The dotted lines in the inset connect four waypoints on the initial path to their coordinates on the flat ESDF. [Replay provenance](../pipeline/assets/aggregation_replay.json)
+The photo, path, map and four teal arrows come from NYC_1 frame 002609, archived batch 53, slot 2, depth 0. Each teal arrow shows the stored oracle correction at waypoint 8, 10, 12 or 15 with a common display multiplier of 0.34. Dotted stems connect those waypoints to their locations on the tilted ESDF. The input path and the path above the map use the same 16 coordinates. [Replay provenance](../pipeline/assets/aggregation_replay.json)
 
-The typography follows the CoVE qualitative figures, using Arial Bold for headings and Arial for labels.
+The figure uses the CoVE typeface, Arial, with bold headings and regular labels. The editable Canva page is 1048 × 260 px. The vector PDF is 178 mm wide.
 
-Run `.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py` to rebuild the SVG, PNG, and PDF. The optional `--pptx` flag uses the [Canva converter](../canva/editable_pptx.py) and its dependencies listed in [build_kit.py](../canva/build_kit.py).
+Run `.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py` to rebuild the SVG, PNG and PDF. Add `--pptx` for the editable Canva import. [Converter](../canva/editable_pptx.py) · [Converter dependencies](../canva/build_kit.py)
 
 ## Figure 2 proposal · Learning a waypoint correction
 

@@ -1,4 +1,4 @@
-"""Render the GEAR training diagram for page 3 of the Canva design."""
+"""Render Figure 2 for the GEAR-Nav Canva design and the paper."""
 
 from __future__ import annotations
 
@@ -22,7 +22,6 @@ from draw_architecture import (
     MAP_H,
     MAP_W,
     ORANGE,
-    PRIOR,
     TARGET,
     VECTOR_SCALE,
     WAYPOINT_FILL,
@@ -36,152 +35,73 @@ from draw_architecture import (
 HERE = Path(__file__).resolve().parent
 W, H = 1048, 260
 FONT_FAMILY = "Arial"
-MAP_SCALE = .655
-MAP_Y = 54
-ROUND_X = (212, 520)
-MAP_WIDTH = MAP_W * MAP_SCALE
-MAP_HEIGHT = MAP_H * MAP_SCALE
-ROUND2_LABEL_WAYPOINT = 12
-TEAL_DARK = "#134B52"
-MUTED = "#464F57"
-CONNECTOR = "#242F37"
-TRAINING_FILL = "#D5D5D5"
+MUTED = "#424950"
+CONNECTOR = "#242A30"
+TRAINING_FILL = "#DADADA"
 ESDF_PANEL = "#F1E1C8"
-ORACLE_FILL = "#FAEAD0"
-GRADIENT = "#B84C09"
-REPLAY_EDGE = "#9676AB"
+GRADIENT = "#B64C0B"
+PATH_LIFT = 22
 
 
-def title(d, x, y, label, width=None, **kwargs):
-    d.text(x, y, label, 19, True, max_width=width, **kwargs)
+def draw_inputs(d, path, goal):
+    with d.layer("Camera image, goal and current path", "inputs"):
+        d.text(14, 33, "Navigation inputs", 21, True)
+        d.image(ASSETS / "aggregation_replay_rgb.jpg", 14, 53, 128, 72)
+        d.rect(14, 53, 128, 72, "none", "#899296", 0, .85)
+        d.text(78, 148, "Camera image", 16, anchor="middle")
 
+        def project(p):
+            forward, left = p
+            return 164 - 21.5 * left, 125 - 21.5 * forward
 
-def draw_inputs(d, prior):
-    with d.layer("Image, goal and starting path", "inputs"):
-        title(d, 21, 30, "Image and goal", 140)
-        d.image(ASSETS / "aggregation_replay_rgb.jpg", 21, 42, 140, 78.75)
-        d.rect(21, 42, 140, 78.75, "none", "#8F9DA7", 0, .8)
-        d.star(26, 137, 6)
-        d.text(38, 142, "Goal", 16, True)
-        d.text(21, 161, "Text · Image region", 15, max_width=140)
-        d.text(21, 178, "Waypoint", 15)
-
-        points = [(24 + 21 * forward, 195 - 6 * left) for forward, left in prior]
-        d.line(points, PRIOR, 1.8, "4 3")
-        d.circle(*points[0], 3, "white", INK, 1)
-        d.text(76, 203, "Rough path", 15, max_width=87)
-        d.arrow([(155, 197), (179, 197), (179, 109), (212, 109)],
-                CONNECTOR, 1.7, head=6.5).set("data-flow", "rough-path-round-1")
-
-
-def draw_round(d, field, path, directions, goal, depth):
-    x = ROUND_X[depth]
-    title_text = "Round 1 · Rough path" if depth == 0 else "Round 2 · GEAR’s path"
-    color = PRIOR if depth == 0 else ORANGE
-
-    def point(position):
-        u, v = map_point(0, 0, position)
-        return x + u * MAP_SCALE, MAP_Y + v * MAP_SCALE
-
-    with d.layer(title_text, f"round-{depth + 1}-path"):
-        d.text(x + MAP_WIDTH / 2, 48, title_text, 15.5, True, "middle", max_width=170)
-        d.image(field, x, MAP_Y, MAP_WIDTH, MAP_HEIGHT)
-        d.rect(x, MAP_Y, MAP_WIDTH, MAP_HEIGHT, "none", "#949D9F", 0, .85)
-        xy = [point(p) for p in path]
-        d.line(xy, "white", 5 if depth else 4)
-        d.line(xy, color, 3 if depth else 2.15, None if depth else "5 3").set("data-path-depth", str(depth))
-        for index in (2, 5, *ARROW_WAYPOINTS):
-            d.circle(*xy[index], 2.05, WAYPOINT_FILL if depth else "white", color, .8)
-        d.star(*point(goal), 5.2)
-        for index in ARROW_WAYPOINTS:
-            origin = xy[index]
-            tip = point(path[index] + directions[index] * VECTOR_SCALE)
-            length = float(np.linalg.norm(np.subtract(tip, origin)))
-            head = min(6.2, length * .64)
-            stroke = min(2.25, .8 + length * .34)
-            d.arrow([origin, tip], "white", stroke + 1.7, head=head + .75)
-            node = d.arrow([origin, tip], TARGET, stroke, head=head)
-            node.set("data-target-waypoint", str(index))
-            node.set("data-target-depth", str(depth))
+        xy = [project(p) for p in path]
+        d.line(xy, ORANGE, 2.75).set("data-path-depth", "0")
+        for idx in (3, 6, 9, 12, 15):
+            d.circle(*xy[idx], 2.25, WAYPOINT_FILL, INK, .8)
         d.circle(*xy[0], 3, "white", INK, 1)
-        if depth == 1:
-            index = ROUND2_LABEL_WAYPOINT
-            tip = point(path[index] + directions[index] * VECTOR_SCALE)
-            d.line([tip, (586, 93), (591, 93)], TEAL_DARK, .85)
-            d.rect(591, 83, 66, 16, "white", "none", 2).set("opacity", ".85")
-            d.text(595, 94.5, "New target", 12.5, color=TEAL_DARK, max_width=59)
-
-
-def bank(d, x, y, label, membership, fresh):
-    fill = "#EEE5F4" if fresh else "#F4EDF7"
-    edge = "#815D98" if fresh else REPLAY_EDGE
-    card = d.rect(x, y, 106, 18, fill, edge, 3, 1.4 if fresh else 1)
-    card.set("data-replay-membership", membership)
-    d.text(x + 53, y + 13.8, label, 15, True, "middle", color="#543C64")
-
-
-def action_head(d, x, y):
-    d.rect(x, y, 120, 46, "#E9E9E9", "#595959", 5, 1.15)
-    # A small network glyph identifies the learned head.
-    left = [(x + 13, y + 17), (x + 13, y + 30)]
-    middle = [(x + 24, y + 12), (x + 24, y + 23.5), (x + 24, y + 35)]
-    right = [(x + 35, y + 17), (x + 35, y + 30)]
-    for starts, ends in ((left, middle), (middle, right)):
-        for start in starts:
-            for end in ends:
-                d.line([start, end], "#484848", .7)
-    for point in (*left, *middle, *right):
-        d.circle(*point, 2.65, "white", "#3D3D3D", .85)
-    d.text(x + 43, y + 20, "GEAR", 16.5, True)
-    d.text(x + 43, y + 37, "Action head", 14, max_width=72)
-
-
-def loss(d, center, suffix, round_id):
-    x = center - 60
-    d.rect(x, 174, 120, 30, "#F7F7F7", "#6B6B6B", 4, 1)
-    d.text(center, 187, "Correction loss", 14.5, True, "middle", max_width=113)
-    d.text(center, 199, suffix, 12.4, anchor="middle", color=MUTED)
-    d.arrow([(center - 21, 130), (center - 21, 173)], CONNECTOR,
-            1.35, head=5.5).set("data-flow", f"round-{round_id}-predictions")
-    d.arrow([(center + 16, 173), (center + 16, 130)], GRADIENT, 1.6, "2 3",
-            6).set("data-gradient", f"round-{round_id}-correction-loss-to-GEAR")
-    d.text(center + 22, 157, "∇L", 14, color=GRADIENT)
+        d.star(*project(goal), 5.5)
+        d.text(189, 148, "Current path", 16, anchor="middle")
+        d.star(21, 172, 5.5)
+        d.text(34, 178, "Goal", 17, True)
+        d.text(14, 199, "Text, image region or waypoint", 15.5)
 
 
 def draw_training(d):
-    with d.layer("Training on retained examples", "replay"):
-        # Each map contributes only its new bank. Round 2 shows both as inputs to training.
-        d.arrow([(265, 165.5), (265, 178)], CONNECTOR, 1.45, head=5.5).set("data-flow", "round-1-save-B1")
-        d.arrow([(525, 165.5), (525, 201), (539, 201)], CONNECTOR, 1.45,
-                head=5.5).set("data-flow", "round-2-save-B2")
-        bank(d, 230, 179, "B₁", "round-1:B1", False)
-        bank(d, 540, 170, "B₁", "round-2:B1", False)
-        bank(d, 540, 192, "B₂", "round-2:B2", True)
-        d.text(212, 212, "Saved paths + corrections", 14.2, color=MUTED, max_width=155)
+    with d.layer("Train the GEAR waypoint action head", "training"):
+        d.rect(249, 8, 424, 201, TRAINING_FILL, "#3E4142", 12, 1.15)
+        d.text(264, 33, "Learn waypoint corrections", 21, True)
 
-        d.arrow([(337, 188), (371, 188)], CONNECTOR, 1.6, head=5.5).set("data-flow", "B1-to-loss")
-        d.line([(647, 179), (656, 179), (656, 201), (647, 201)], CONNECTOR, 1.55)
-        d.arrow([(656, 190), (672, 190)], CONNECTOR, 1.6,
-                head=5.5).set("data-flow", "B1-B2-to-loss")
+        x, y = 268, 70
+        d.rect(x, y, 143, 77, "#F4F4F4", "#565B5E", 6, 1.15)
+        left = [(x + 13, y + 29), (x + 13, y + 48)]
+        middle = [(x + 25, y + 20), (x + 25, y + 38.5), (x + 25, y + 57)]
+        right = [(x + 37, y + 29), (x + 37, y + 48)]
+        for starts, ends in ((left, middle), (middle, right)):
+            for start in starts:
+                for end in ends:
+                    d.line([start, end], "#474B4C", .85)
+        for point in (*left, *middle, *right):
+            d.circle(*point, 2.8, "white", "#3D4142", .9)
+        d.text(x + 45, y + 35, "GEAR VLA", 17.5, True)
+        d.text(x + 45, y + 56, "Action head", 15.5)
 
-    with d.layer("Predict corrections and backpropagate the loss", "model-updates"):
-        action_head(d, 372, 83)
-        action_head(d, 673, 83)
-        loss(d, 432, "Fit Round 1", 1)
-        loss(d, 733, "Fit both rounds", 2)
-        d.text(432, 74, "Energy-checked step", 14.5, anchor="middle", max_width=124)
-        d.text(406, 154, "Predict", 13.5, anchor="end", color=MUTED)
-        d.arrow([(356, 109), (371, 109)], CONNECTOR, 1.8, head=6).set("data-flow", "rough-path-to-update")
-        d.arrow([(493, 109), (519, 109)], CONNECTOR, 1.8, head=6).set("data-flow", "update-to-round-2")
-        d.text(733, 57, "Repeat, then train on", 13.1, anchor="middle", max_width=123)
-        d.text(733, 72, "the full dataset", 13.1, anchor="middle", max_width=123)
-        d.arrow([(733, 82), (733, 75)], CONNECTOR, 1.3, head=4.6).set("data-flow", "repeat-then-continue")
+        d.rect(540, y, 116, 77, "#F4F4F4", "#565B5E", 6, 1.15)
+        d.text(598, 105, "Correction", 18, True, "middle")
+        d.text(598, 128, "loss", 18, True, "middle")
+
+        d.arrow([(228, 107), (267, 107)], CONNECTOR, 1.9, head=7).set("data-flow", "inputs-to-head")
+        d.text(475, 84, "Prediction", 15.5, anchor="middle")
+        d.arrow([(412, 95), (539, 95)], CONNECTOR, 1.9, head=7).set("data-flow", "predictions-to-loss")
+        d.arrow([(539, 123), (412, 123)], GRADIENT, 1.95, "5 3.2",
+                head=7.5).set("data-gradient", "correction-loss-to-action-head")
+        d.text(475, 146, "Loss gradient", 15.5, anchor="middle", color=GRADIENT)
+        d.text(264, 191, "Train on paths collected across rounds.", 16, color=MUTED)
 
 
-def draw_oblique_field(d, field, prior):
-    """Tilt the shared raster and put each dotted stem over its real waypoint."""
-    left, top = 830, 65
-    width, height, shear = 164, 72, 31
+def draw_oracle(d, field, path, directions):
+    """Project one archived path and its local correction targets over the ESDF."""
+    left, top = 804, 72
+    width, height, shear = 190, 81, 30
     oversample = 3
     warped = field.convert("RGBA").transform(
         ((width + shear) * oversample, height * oversample),
@@ -197,53 +117,63 @@ def draw_oblique_field(d, field, prior):
         resample=Image.Resampling.BILINEAR,
     )
 
-    def project(point):
-        u, v = map_point(0, 0, point)
-        return left + shear + (u / MAP_W) * width - (v / MAP_H) * shear, top + (v / MAP_H) * height
+    def project(position, above_plane=0):
+        u, v = map_point(0, 0, position)
+        return (left + shear + width * u / MAP_W - shear * v / MAP_H,
+                top + height * v / MAP_H - above_plane)
 
-    with d.layer("Training-only ESDF", "esdf-inset"):
-        d.rect(812, 8, 228, 211, ESDF_PANEL, "#282522", 12, 1.15)
-        title(d, 825, 30, "Obstacle distance", 145)
-        d.text(1028, 48, "Training only", 13.5, anchor="end", color="#75501A", max_width=80)
+    with d.layer("Training targets from scene geometry", "energy-oracle"):
+        d.rect(684, 8, 356, 201, ESDF_PANEL, "#4E453A", 12, 1.15)
+        d.text(700, 33, "Energy oracle", 21, True)
+        d.text(1024, 32, "Training only", 15.5, anchor="end", color="#63481F")
+        d.text(700, 55, "Map + goal + current path", 15.5, color=MUTED)
+
         d.image(warped, left, top, width + shear, height, fit="none").set("data-map-projection", "oblique")
-        d.line(
-            [(left + shear, top), (left + shear + width, top),
-             (left + width, top + height), (left, top + height), (left + shear, top)],
-            "#7D8382", .95,
-        )
+        d.line([(left + shear, top), (left + shear + width, top),
+                (left + width, top + height), (left, top + height), (left + shear, top)],
+               "#858B8F", 1)
         for index in ARROW_WAYPOINTS:
-            x, y = project(prior[index])
-            d.line([(x, y - 25), (x, y)], INK, 1.3, "1 3").set("data-projected-waypoint", str(index))
-            d.circle(x, y, 2.45, "white", INK, .85)
-        hover = [(x, y - 25) for x, y in map(project, prior)]
-        d.line(hover, "white", 4.1)
-        d.line(hover, PRIOR, 2.35)
+            ground = project(path[index])
+            d.line([project(path[index], PATH_LIFT), ground], INK, 1.4, "1.4 2.8").set(
+                "data-projected-waypoint", str(index))
+            d.circle(*ground, 2.35, "white", INK, .85)
+
+        hover = [project(p, PATH_LIFT) for p in path]
+        d.line(hover, "white", 4.8)
+        d.line(hover, ORANGE, 2.8).set("data-inset-path-depth", "0")
+        d.circle(*hover[0], 2.9, "white", INK, .95)
         for index in ARROW_WAYPOINTS:
-            d.circle(*hover[index], 2.9, WAYPOINT_FILL, INK, .9)
+            start = hover[index]
+            end = project(path[index] + VECTOR_SCALE * directions[index], PATH_LIFT)
+            length = hypot(end[0] - start[0], end[1] - start[1])
+            head = min(7, .58 * length)
+            d.arrow([start, end], "white", 3.9, head=head + 1)
+            d.arrow([start, end], TARGET, 2.25, head=head).set("data-target-waypoint", str(index))
+            d.circle(*start, 2.6, WAYPOINT_FILL, INK, .85)
 
-        colors = np.uint8(ESDF_CMAP(np.linspace(0, 1, 363))[None, :, :3] * 255)
-        # Match the displayed aspect ratio so Canva imports the whole scale.
-        bar = Image.fromarray(np.repeat(colors, 24, axis=0))
-        d.text(827, 157, "ESDF (m)", 14.2, color=MUTED)
-        d.image(bar, 896, 149, 121, 8, fit="none").set("data-range-m", "-3,3")
-        for x, label in ((896, "−3"), (956.5, "0"), (1017, "+3")):
-            d.line([(x, 157), (x, 160)], INK, .8)
-            d.text(x, 173, label, 13.5, anchor="middle")
+        d.text(751, 99, "Target updates", 15.5, anchor="middle", color=TARGET)
+        d.arrow([(814, 110), (657, 110)], TARGET, 2, head=7.5).set("data-flow", "oracle-targets-to-loss")
 
-        d.rect(825, 180, 202, 30, ORACLE_FILL, "#A68154", 4, 1)
-        d.text(926, 193, "Energy oracle", 15, True, "middle")
-        d.text(926, 206, "Map + goal + path → targets", 13.6, anchor="middle", max_width=193)
+        bar_x, bar_y, bar_w, bar_h = 804, 173, 206, 9
+        d.text(700, 184, "ESDF (m)", 16, color=MUTED)
+        colors = np.uint8(ESDF_CMAP(np.linspace(0, 1, bar_w * 3))[None, :, :3] * 255)
+        bar = Image.fromarray(np.repeat(colors, bar_h * 3, axis=0))
+        d.image(bar, bar_x, bar_y, bar_w, bar_h, fit="none").set("data-range-m", "-3,3")
+        for x, label in ((bar_x, "−3"), (bar_x + bar_w / 2, "0"), (bar_x + bar_w, "+3")):
+            d.line([(x, bar_y + bar_h), (x, bar_y + bar_h + 3)], INK, .9)
+            d.text(x, 201, label, 15, anchor="middle")
 
 
 def draw_deployment(d):
     with d.layer("Model-only path refinement on the robot", "deployment"):
-        d.rect(8, 228, 1032, 24, "#F1F1F1", "#A6A6A6", 5, 1)
-        d.text(21, 245, "On the robot", 16.5, True)
-        d.text(133, 245, "Camera + goal + current path", 16)
-        d.arrow([(350, 240), (382, 240)], CONNECTOR, 1.7, head=6)
-        d.text(397, 245, "Trained GEAR", 16, True)
-        d.arrow([(512, 240), (553, 240)], CONNECTOR, 1.7, head=6)
-        d.text(568, 245, "Update path and repeat", 16)
+        d.rect(8, 219, 1032, 33, "#F2F2F2", "#A3A6A6", 5, 1)
+        d.text(21, 242, "On the robot", 18, True)
+        d.line([(145, 226), (145, 245)], "#A1A5A8", 1)
+        d.text(164, 242, "Camera + goal + current path", 17)
+        d.arrow([(400, 236), (447, 236)], CONNECTOR, 1.8, head=7)
+        d.text(466, 242, "Trained GEAR", 17.5, True)
+        d.arrow([(600, 236), (647, 236)], CONNECTOR, 1.8, head=7)
+        d.text(667, 242, "Update the path and repeat", 17)
 
 
 def build():
@@ -251,11 +181,13 @@ def build():
     rgb_hash = hashlib.sha256((ASSETS / "aggregation_replay_rgb.jpg").read_bytes()).hexdigest()
     if rgb_hash not in proof["source_files"].values():
         raise ValueError("The RGB photograph must match the archived training condition.")
+    row = data["depths"].tolist().index(0)
+    path = data["paths"][row]
     d = Diagram(
-        W, H, "GEAR learns to improve its own paths",
-        "Two consecutive training rounds from the same recorded condition. "
-        "Round 1 trains on B1. Round 2 trains on retained B1 and new B2. "
-        "The ESDF inset shows where the starting path queries the map.",
+        W, H, "GEAR learns waypoint corrections",
+        "One training example. GEAR predicts waypoint updates from the camera image, goal and "
+        "current path. The map-derived energy oracle supplies target updates. The correction "
+        "loss trains the action head. On the robot, GEAR repeatedly updates the current path.",
         width_mm=178,
     )
     d.el("metadata").text = json.dumps({
@@ -263,30 +195,17 @@ def build():
         "cache": "../pipeline/assets/aggregation_replay.npz",
         "cache_sha256": proof["cache_sha256"],
         "rgb_sha256": rgb_hash,
-        "archive_depths": [0, 1],
+        "archive_depths": [0],
         "oracle_vector_display_scale": VECTOR_SCALE,
         "esdf_range_m": [-3, 3],
         "oblique_waypoints": list(ARROW_WAYPOINTS),
-        "oblique_path_lift_display_units": 25,
+        "oblique_path_lift_display_units": PATH_LIFT,
         "map_orientation": "forward up, robot left to page left",
         "font_family": FONT_FAMILY,
     })
-    with d.layer("Energy-based dataset aggregation", "training-region"):
-        d.rect(184, 8, 618, 211, TRAINING_FILL, "#262626", 12, 1.15)
-        d.text(196, 30, "GEAR learns from its own paths", 18, True, max_width=280)
-        d.arrow([(499, 25), (479, 25)], GRADIENT, 1.6, "2 3", 6).set("data-key", "loss-gradient")
-        d.text(506, 30, "Loss gradient", 15.5, color=GRADIENT, max_width=112)
-        d.arrow([(620, 25), (642, 25)], TARGET, 1.8, head=6)
-        d.text(650, 30, "Waypoint corrections", 15.5, color=TEAL_DARK, max_width=140)
-    field = field_crop(data)
-    indices = data["depths"].tolist()
-    prior = data["paths"][indices.index(0)]
-    draw_inputs(d, prior)
-    for depth in (0, 1):
-        row = indices.index(depth)
-        draw_round(d, field, data["paths"][row], data["directions"][row], data["goal"], depth)
+    draw_inputs(d, path, data["goal"])
     draw_training(d)
-    draw_oblique_field(d, field, prior)
+    draw_oracle(d, field_crop(data), path, data["directions"][row])
     draw_deployment(d)
     for label in d.root.iter("{http://www.w3.org/2000/svg}text"):
         label.set("font-family", f"{FONT_FAMILY}, Liberation Sans, sans-serif")
@@ -358,7 +277,7 @@ def main():
     svg = HERE / "07-canva-training-pipeline.svg"
     build().export(svg, png_width=W * 2)
     if args.pptx:
-        export_pptx(svg, "GEAR learns to improve its own paths")
+        export_pptx(svg, "GEAR learns waypoint corrections")
 
 
 if __name__ == "__main__":
