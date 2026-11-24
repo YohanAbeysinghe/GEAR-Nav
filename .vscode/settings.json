@@ -1,0 +1,6 @@
+{
+    "git.ignoredRepositories": [
+        "NavigationStack",
+        "third_party/openpi"
+    ]
+}
