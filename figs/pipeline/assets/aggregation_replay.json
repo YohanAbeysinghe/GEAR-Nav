@@ -1,0 +1,76 @@
+{
+  "source": "checkpoints/astar_clearance025_prefix_a6000x4_20260924_eval35000/aggregation_state_00035000.npz",
+  "source_sha256": "c3bc84bd1f92559b6c86d5c0e47e496cc16b0e088be9efef835521c6e513c3fe",
+  "cache_sha256": "06b6f3d82510fa2056dd427d7beb45be357ca6b1d48b232090cccd0e75f4ad3a",
+  "depths": [
+    0,
+    1,
+    2,
+    13
+  ],
+  "condition_batch": 53,
+  "condition_slot": 2,
+  "condition_batch_fingerprint": "6638238646dab68b06ab54c0bd4cbcc2ed9c6f0eb5d75e8d9c9207230bcd9ce5",
+  "complete_condition_fingerprint_verified": true,
+  "identity_scope": "Complete observation leaves and all sanitized oracle metric tensors, original CUDA loader arithmetic",
+  "scene": {
+    "clip_id": "NYC_1",
+    "sample_id": "002609",
+    "goal_kind": "sampled",
+    "goal_index": 2,
+    "dataset_index": 2659105
+  },
+  "goal_xy_m": [
+    2.9100000858306885,
+    -0.3100000023841858
+  ],
+  "robot_radius_m": 0.5,
+  "source_files": {
+    "/fs/nexus-projects/REAL2SIM3/project-VEGA/ASTAR/checkpoints/astar_clearance025_prefix_a6000x4_20260924_eval35000/aggregation_state_00035000.npz": "c3bc84bd1f92559b6c86d5c0e47e496cc16b0e088be9efef835521c6e513c3fe",
+    "/fs/nexus-projects/REAL2SIM3/project-VEGA/ASTAR/checkpoints/astar_clearance025_prefix_a6000x4_20260924_eval35000/monitoring/configuration.json": "7906d3e805c92bf61c1d580823d01fdb3049cae23c8ba9c120b5a646f5c6a775",
+    "/fs/nexus-projects/REAL2SIM3/project-VEGA/data/NYC_1/esdf_fix/002609.npy": "447c12ab28c7513e6d6e7cb1bb7f32e4c8924b988cdd9c0867f8ce64f03aba12",
+    "/fs/nexus-projects/REAL2SIM3/project-VEGA/data/NYC_1/images/002609.jpg": "8712326a6c53d3b817a19027e74fd16a90186edba194190f8577a592d179110e"
+  },
+  "source_code_sha256": {
+    "figs/pipeline/select_replay.py": "3a5bbff5c90604c87a2d47de8c62e54960ce7a204ef490d458c4b9a467a9e984",
+    "src/astar/dataloader.py": "24b00fa327d291858657c59d1ef918a5fb19a828b67e8785314d92f0b83ed0d3",
+    "src/astar/training/aggregation.py": "fe8567260a88f19b63c824eb612be87ae3500722d5f4b910e2245a080b9a8d6e"
+  },
+  "path_diagnostics": [
+    {
+      "arc_length_m": 2.539414405822754,
+      "minimum_footprint_clearance_m": -0.9618139266967773,
+      "fraction_samples_below_025m_margin": 1.0,
+      "fraction_samples_negative_footprint_clearance": 1.0,
+      "segment_sampling_spacing_m": 0.02,
+      "segment_sample_count": 135
+    },
+    {
+      "arc_length_m": 3.1384148597717285,
+      "minimum_footprint_clearance_m": -0.5,
+      "fraction_samples_below_025m_margin": 0.6982248520710059,
+      "fraction_samples_negative_footprint_clearance": 0.5502958579881657,
+      "segment_sampling_spacing_m": 0.02,
+      "segment_sample_count": 169
+    },
+    {
+      "arc_length_m": 3.1170737743377686,
+      "minimum_footprint_clearance_m": -0.5,
+      "fraction_samples_below_025m_margin": 0.6946107784431138,
+      "fraction_samples_negative_footprint_clearance": 0.5089820359281437,
+      "segment_sampling_spacing_m": 0.02,
+      "segment_sample_count": 167
+    },
+    {
+      "arc_length_m": 3.0252156257629395,
+      "minimum_footprint_clearance_m": -0.5,
+      "fraction_samples_below_025m_margin": 0.75,
+      "fraction_samples_negative_footprint_clearance": 0.5,
+      "segment_sampling_spacing_m": 0.02,
+      "segment_sample_count": 160
+    }
+  ],
+  "diagnostic_note": "Segment samples at <=0.02 m; full path including origin. Descriptive selection diagnostics, not a performance experiment or collision-free guarantee.",
+  "model_inference_performed": false,
+  "new_oracle_queries_performed": false
+}
