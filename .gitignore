@@ -250,3 +250,6 @@ Overleaf--VEGA/
 # Keep local paper and navigation checkouts out of this repository.
 /GEAR-Nav Overleaf/
 /NavigationStack/
+
+# Local-only dataset aggregation animation assets.
+/figs/video/
