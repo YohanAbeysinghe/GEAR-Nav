@@ -1,18 +1,37 @@
 # GEAR-Nav pipeline figure proposals
 
-## Canva Figure 2 · Learning waypoint corrections
+## Figure 2 · How GEAR learns a waypoint update
 
-[![Camera, goal and path feed the GEAR action head. A training-only ESDF supplies target waypoint updates.](07-canva-training-pipeline.png)](07-canva-training-pipeline.svg)
+[![The rainy-sidewalk frame, goal and current path feed GEAR. An oblique map shows the waypoint targets.](07-canva-training-pipeline.png)](07-canva-training-pipeline.svg)
 
-[Editable SVG](07-canva-training-pipeline.svg) · [Editable Canva import](07-canva-training-pipeline.pptx) · [Print PDF](07-canva-training-pipeline.pdf)
+[Editable SVG](07-canva-training-pipeline.svg) · [Editable Canva import](07-canva-training-pipeline.pptx) · [Paper PDF, 178 mm wide](07-canva-training-pipeline.pdf)
 
-The action head predicts waypoint updates from the camera image, goal and current path. The energy oracle supplies a target at each waypoint. The correction loss compares the prediction and target. Its gradient flows back to the action head along the dashed orange arrow. The bottom strip shows how the robot repeatedly updates its path with the trained model. Figure 3 covers how the training set grows across rounds.
+The camera image, goal and current path feed the VLA. Its action head predicts an update for each waypoint. At training time, an energy oracle uses the scene geometry, metric goal, robot radius and candidate path to supply the local target. The dashed orange arrow shows the gradient of the correction loss flowing back to the model. The robot starts from a sampled path and repeats bounded updates with the trained VLA.
 
-The photo, path, map and four teal arrows come from NYC_1 frame 002609, archived batch 53, slot 2, depth 0. Each teal arrow shows the stored oracle correction at waypoint 8, 10, 12 or 15 with a common display multiplier of 0.34. Dotted stems connect those waypoints to their locations on the tilted ESDF. The input path and the path above the map use the same 16 coordinates. [Replay provenance](../pipeline/assets/aggregation_replay.json)
+The photo and signed Euclidean distance field (ESDF) are from the rainy sidewalk in teaser panel (b), Japan_5 frame 000398. The current and updated paths are consecutive saved model outputs at steps 2 and 3. The oracle was evaluated on the step-2 path for this illustration of the training rule on a held-out frame. Four dotted stems connect the path to its true map coordinates. Teal arrows show the local targets before rollout projection. The yellow star marks the recorded goal. The full field of view in the diagram is 15 m forward by 12 m across. [Scene data and source hashes](method_examples/provenance.json)
 
-The figure uses the CoVE typeface, Arial, with bold headings and regular labels. The editable Canva page is 1048 × 260 px. The vector PDF is 178 mm wide.
+## Figure 3 · Growing the training set
 
-Run `.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py` to rebuild the SVG, PNG and PDF. Add `--pptx` for the editable Canva import. [Converter](../canva/editable_pptx.py) · [Converter dependencies](../canva/build_kit.py)
+[![Three recorded paths and growing replay banks above the full-data training sequence and measured energy curve.](08-canva-aggregation.png)](08-canva-aggregation.svg)
+
+[Editable SVG](08-canva-aggregation.svg) · [Editable Canva import](08-canva-aggregation.pptx) · [Paper PDF, 86 mm wide](08-canva-aggregation.pdf)
+
+The three maps show the same Ottawa image, goal and fixed starting waypoint in consecutive training rounds. The oracle labels each visited path. Round 1 creates B₁. Round 2 keeps B₁ and adds B₂. Round 3 keeps both and adds B₃. After each round, GEAR fits on all saved banks and takes an energy-checked step to generate the next paths. The paths, goal and target vectors shown here come from Ottawa_1 frame 001351 in batch 53, slot 3 of the archived training run. Each map shows 13 m forward by 12 m across at the same scale. The target vectors get smaller in round 3. [Matched training samples](method_examples/provenance.json)
+
+The graph uses all 1,024 training paths per round. At round 0 it shows mean energy on the initial paths. Each of the next 14 points is the logged mean after the model's energy-checked update. Mean path energy fell from 10.68 to 1.49 during this aggregation run. The adjacent full-dataset training panel shows what happens next. A fixed aggregation checkpoint generates paths at sampled depths for training images and goals. The energy oracle labels those paths and the student learns their updates. [Archived values](method_examples/ottawa-replay.npz) · [Aggregation](../../src/astar/training/aggregation.py) · [Full-dataset training](../../src/astar/training/continuation.py)
+
+### Styling and reproduction
+
+Both figures use the CoVE Canva font, Arial. The gray model panel, sand training panel, black forward connectors and dashed orange gradient follow the layout of ViPlanner's Figure 2. Both maps use one blue-to-red distance scale from −3 to +3 m. The dark contour is the 0 m obstacle boundary. Lighter contours mark −2, −1, +1 and +2 m. All contours are computed from the saved 2 cm ESDF cells. The teal vectors use the same 0.8 display multiplier at waypoint indices 5, 8, 11 and 15 in both figures. Labels, paths, waypoint markers, connectors, banks and the measured energy curve are editable in Canva and the SVG masters. [ViPlanner, Fig. 2](https://arxiv.org/pdf/2310.00982#page=3) · [iPlanner, Fig. 2](https://arxiv.org/pdf/2302.11434#page=3)
+
+Run each renderer from the repository root. The committed example files are sufficient. Add `--pptx` for editable, one-page Canva imports at 1048 × 260 px and 1400 × 1273 px. [Converter](../canva/editable_pptx.py) · [Converter dependencies](../canva/build_kit.py)
+
+```bash
+.venv/bin/python figs/pipeline_proposals/draw_canva_page3.py
+.venv/bin/python figs/pipeline_proposals/draw_canva_aggregation.py
+```
+
+To re-extract the examples on a checkout containing the original dataset, teaser captures and training checkpoint, run `JAX_PLATFORMS=cpu .venv/bin/python figs/pipeline_proposals/prepare_method_examples.py "$PWD"`. The extraction verifies the source hashes, checks all three Ottawa paths and labels against the training archive, and tests the rainy-sidewalk oracle settings against an independently captured label.
 
 ## Figure 2 proposal · Learning a waypoint correction
 
