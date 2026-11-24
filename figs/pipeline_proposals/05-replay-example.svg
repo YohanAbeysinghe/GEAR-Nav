@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="178mm" height="76.724mm" viewBox="0 0 1160 500" font-family="STIX Two Text, Liberation Serif, Times New Roman, serif">
+  <title>GEAR-Nav pipeline concept 5. What goes into the training set?</title>
+  <desc>Layout proposal. All scenes, paths, distance fields and corrections are schematic.</desc>
+  <defs>
+    <linearGradient id="open-space" x1="0%" x2="100%" y1="0%" y2="13%">
+      <stop offset="0%" stop-color="#c6d4eb" />
+      <stop offset="34%" stop-color="#f1ede3" />
+      <stop offset="76%" stop-color="#f3c0a6" />
+      <stop offset="100%" stop-color="#f3cbb7" />
+    </linearGradient>
+    <radialGradient id="pillar-field" cx="34.5%" cy="52.3%" r="51%">
+      <stop offset="0%" stop-color="#99b3d5" stop-opacity="1" />
+      <stop offset="32%" stop-color="#bacfea" stop-opacity="0.92" />
+      <stop offset="60%" stop-color="#edf0f1" stop-opacity="0.76" />
+      <stop offset="100%" stop-color="#f8e5d7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="1160" height="500" rx="0" fill="white" stroke="none" stroke-width="1.2" />
+  <g id="title-band">
+    <rect x="23" y="14" width="39" height="32" rx="2" fill="#232931" stroke="none" stroke-width="1.2" />
+    <text x="42.5" y="37" font-size="22" font-weight="bold" text-anchor="middle" fill="white" font-style="normal">05</text>
+    <text x="78" y="39" font-size="32" font-weight="bold" text-anchor="start" fill="#232931" font-style="normal">What goes into the training set?</text>
+    <text x="1135" y="36" font-size="17" font-weight="normal" text-anchor="end" fill="#505b65" font-style="normal">GEAR-Nav  /  Schematic</text>
+    <polyline points="24.00,58.00 1136.00,58.00" fill="none" stroke="#c8cdd1" stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round" />
+  </g>
+  <g id="make-an-example">
+    <text x="27" y="91" font-size="23" font-weight="bold" text-anchor="start" fill="#232931" font-style="normal">Make a label</text>
+    <g transform="translate(29 110) scale(0.89)">
+      <rect x="0" y="0" width="200" height="126" rx="0" fill="#ebefed" stroke="none" stroke-width="1.2" />
+      <polygon points="0.00,0.00 83.00,38.00 83.00,73.00 0.00,126.00" fill="#bdc8cb" />
+      <polygon points="200.00,0.00 124.00,38.00 124.00,73.00 200.00,126.00" fill="#d8c7ac" />
+      <polygon points="0.00,126.00 83.00,70.00 124.00,70.00 200.00,126.00" fill="#efe4d2" />
+      <rect x="83" y="38" width="41" height="34" rx="0" fill="#e2e6e0" stroke="none" stroke-width="1.2" />
+      <rect x="107" y="43" width="13" height="28" rx="0" fill="#82928d" stroke="none" stroke-width="1.2" />
+      <rect x="109" y="45" width="9" height="26" rx="0" fill="#556767" stroke="none" stroke-width="1.2" />
+      <polyline points="8.00,126.00 88.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="72.00,126.00 98.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="161.00,126.00 114.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="200.00,115.00 123.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="27.00,107.00 176.00,107.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="57.00,88.00 148.00,88.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polygon points="23.00,8.00 31.00,12.00 31.00,104.00 23.00,110.00" fill="#a2b0b4" />
+      <polygon points="156.00,23.00 168.00,18.00 168.00,102.00 156.00,94.00" fill="#b8a78d" />
+      <polygon points="52.00,21.00 64.00,25.00 64.00,89.00 52.00,88.00" fill="#889fae" />
+      <polygon points="64.00,25.00 71.00,22.00 71.00,85.00 64.00,89.00" fill="#577480" />
+      <polygon points="116.00,66.00 117.55,69.86 121.71,70.15 118.51,72.82 119.53,76.85 116.00,74.64 112.47,76.85 113.49,72.82 110.29,70.15 114.45,69.86" fill="#ffc52f" stroke="#232931" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="126" rx="0" fill="none" stroke="#9da7a9" stroke-width="1.2" />
+    </g>
+    <text x="29" y="247" font-size="18" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Sample a candidate path.</text>
+    <rect x="29" y="265" width="206" height="62" rx="3" fill="#fff0cc" stroke="#c8cdd1" stroke-width="1.2" />
+    <text x="132.0" y="297.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Energy oracle</text>
+    <text x="132.0" y="316.0" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">ESDF, goal and path</text>
+    <polyline points="236.00,295.00 267.00,295.00" fill="none" stroke="#232931" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="267.00,295.00 259.00,298.60 259.00,291.40" fill="#232931" />
+  </g>
+  <g id="replay-record">
+    <text x="277" y="91" font-size="23" font-weight="bold" text-anchor="start" fill="#232931" font-style="normal">One retained example</text>
+    <rect x="292" y="134" width="510" height="195" rx="6" fill="#e0d5e7" stroke="#ac9cb7" stroke-width="1.2" />
+    <rect x="284" y="126" width="510" height="195" rx="6" fill="#eee7f3" stroke="#ac9cb7" stroke-width="1.2" />
+    <rect x="275" y="118" width="510" height="195" rx="6" fill="white" stroke="#927e9f" stroke-width="1.6" />
+    <polyline points="402.00,128.00 402.00,297.00" fill="none" stroke="#e0dae3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+    <polyline points="529.00,128.00 529.00,297.00" fill="none" stroke="#e0dae3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+    <polyline points="656.00,128.00 656.00,297.00" fill="none" stroke="#e0dae3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+    <text x="339" y="154" font-size="21" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Image</text>
+    <text x="465" y="154" font-size="21" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Goal</text>
+    <text x="592" y="154" font-size="21" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Candidate</text>
+    <text x="720" y="154" font-size="21" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Target</text>
+    <g transform="translate(286 176) scale(0.525)">
+      <rect x="0" y="0" width="200" height="126" rx="0" fill="#ebefed" stroke="none" stroke-width="1.2" />
+      <polygon points="0.00,0.00 83.00,38.00 83.00,73.00 0.00,126.00" fill="#bdc8cb" />
+      <polygon points="200.00,0.00 124.00,38.00 124.00,73.00 200.00,126.00" fill="#d8c7ac" />
+      <polygon points="0.00,126.00 83.00,70.00 124.00,70.00 200.00,126.00" fill="#efe4d2" />
+      <rect x="83" y="38" width="41" height="34" rx="0" fill="#e2e6e0" stroke="none" stroke-width="1.2" />
+      <rect x="107" y="43" width="13" height="28" rx="0" fill="#82928d" stroke="none" stroke-width="1.2" />
+      <rect x="109" y="45" width="9" height="26" rx="0" fill="#556767" stroke="none" stroke-width="1.2" />
+      <polyline points="8.00,126.00 88.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="72.00,126.00 98.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="161.00,126.00 114.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="200.00,115.00 123.00,73.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="27.00,107.00 176.00,107.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="57.00,88.00 148.00,88.00" fill="none" stroke="#c5bba9" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" />
+      <polygon points="23.00,8.00 31.00,12.00 31.00,104.00 23.00,110.00" fill="#a2b0b4" />
+      <polygon points="156.00,23.00 168.00,18.00 168.00,102.00 156.00,94.00" fill="#b8a78d" />
+      <polygon points="52.00,21.00 64.00,25.00 64.00,89.00 52.00,88.00" fill="#889fae" />
+      <polygon points="64.00,25.00 71.00,22.00 71.00,85.00 64.00,89.00" fill="#577480" />
+      <polygon points="116.00,66.00 117.55,69.86 121.71,70.15 118.51,72.82 119.53,76.85 116.00,74.64 112.47,76.85 113.49,72.82 110.29,70.15 114.45,69.86" fill="#ffc52f" stroke="#232931" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="126" rx="0" fill="none" stroke="#9da7a9" stroke-width="1.2" />
+    </g>
+    <polygon points="465.00,190.00 469.40,200.95 481.17,201.75 472.11,209.31 474.99,220.75 465.00,214.48 455.01,220.75 457.89,209.31 448.83,201.75 460.60,200.95" fill="#ffc52f" stroke="#232931" stroke-width="1.2" />
+    <g transform="translate(538 188) scale(0.9727272727272728)">
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="white" stroke-width="4.3" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="#54606e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3" />
+      <circle cx="20" cy="31" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="37" cy="27" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="54" cy="22" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="71" cy="20" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="88" cy="18" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="104" cy="17" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="3" cy="36" r="2.7" fill="white" stroke="#232931" stroke-width="1" />
+    </g>
+    <g transform="translate(666 188) scale(0.9727272727272728)">
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="white" stroke-width="4.3" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="#54606e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3" />
+      <circle cx="20" cy="31" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="37" cy="27" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="54" cy="22" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="71" cy="20" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="88" cy="18" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <circle cx="104" cy="17" r="1.9" fill="#fafafa" stroke="#54606e" stroke-width="0.85" />
+      <polyline points="37.00,27.00 41.00,15.00" fill="none" stroke="#116575" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" />
+      <polygon points="41.00,15.00 41.51,20.02 37.58,18.71" fill="#116575" />
+      <polyline points="71.00,20.00 75.00,8.00" fill="none" stroke="#116575" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" />
+      <polygon points="75.00,8.00 75.51,13.02 71.58,11.71" fill="#116575" />
+      <polyline points="104.00,17.00 108.00,5.00" fill="none" stroke="#116575" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" />
+      <polygon points="108.00,5.00 108.51,10.02 104.58,8.71" fill="#116575" />
+      <circle cx="3" cy="36" r="2.7" fill="white" stroke="#232931" stroke-width="1" />
+    </g>
+    <text x="339" y="270" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Observation</text>
+    <text x="465" y="270" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Doorway</text>
+    <text x="592" y="270" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Current path</text>
+    <text x="720" y="270" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Correction</text>
+    <text x="530" y="353" font-size="18" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Earlier examples stay in replay.</text>
+    <polyline points="804.00,211.00 857.00,211.00" fill="none" stroke="#232931" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="857.00,211.00 849.00,214.60 849.00,207.40" fill="#232931" />
+  </g>
+  <g id="learn-and-continue">
+    <text x="865" y="91" font-size="23" font-weight="bold" text-anchor="start" fill="#232931" font-style="normal">Use the examples</text>
+    <rect x="864" y="178" width="261" height="64" rx="3" fill="#fae3de" stroke="#c8cdd1" stroke-width="1.2" />
+    <text x="994.5" y="211.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Train GEAR</text>
+    <text x="994.5" y="230.0" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Sample retained rounds</text>
+    <polyline points="996.00,243.00 996.00,265.00" fill="none" stroke="#232931" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="996.00,265.00 992.40,257.00 999.60,257.00" fill="#232931" />
+    <rect x="864" y="271" width="261" height="58" rx="3" fill="white" stroke="#c8cdd1" stroke-width="1.2" />
+    <text x="994.5" y="301.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#232931" font-style="normal">Full-dataset training</text>
+    <text x="994.5" y="320.0" font-size="16" font-weight="normal" text-anchor="middle" fill="#505b65" font-style="normal">Extend to more scenes</text>
+    <polyline points="900.00,242.00 900.00,255.00 837.00,255.00 837.00,393.00" fill="none" stroke="#232931" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+    <polyline points="837.00,393.00 132.00,393.00 132.00,333.00" fill="none" stroke="#232931" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="132.00,333.00 135.60,341.00 128.40,341.00" fill="#232931" />
+    <text x="495" y="385" font-size="17" font-weight="normal" text-anchor="middle" fill="#232931" font-style="normal">Generate the next candidate with the trained model</text>
+  </g>
+  <g id="readout">
+    <rect x="25" y="410" width="1110" height="36" rx="3" fill="#f3f5f4" stroke="none" stroke-width="1.2" />
+    <text x="39" y="434" font-size="18" font-weight="bold" text-anchor="start" fill="#232931" font-style="normal">At deployment</text>
+    <text x="189" y="434" font-size="18" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Image, goal and current path</text>
+    <polyline points="411.00,428.00 450.00,428.00" fill="none" stroke="#232931" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="450.00,428.00 443.00,431.15 443.00,424.85" fill="#232931" />
+    <text x="474" y="434" font-size="18" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">GEAR predicts a correction</text>
+    <polyline points="695.00,428.00 733.00,428.00" fill="none" stroke="#232931" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="733.00,428.00 726.00,431.15 726.00,424.85" fill="#232931" />
+    <text x="755" y="434" font-size="18" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Apply bounded update and repeat</text>
+    <g transform="translate(1054 409) scale(0.6454545454545455)">
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="white" stroke-width="4.3" stroke-linejoin="round" stroke-linecap="round" />
+      <polyline points="3.00,36.00 20.00,31.00 37.00,27.00 54.00,22.00 71.00,20.00 88.00,18.00 104.00,17.00" fill="none" stroke="#e25b19" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+      <circle cx="20" cy="31" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="37" cy="27" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="54" cy="22" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="71" cy="20" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="88" cy="18" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="104" cy="17" r="1.9" fill="#ffc52f" stroke="#e25b19" stroke-width="0.85" />
+      <circle cx="3" cy="36" r="2.7" fill="white" stroke="#232931" stroke-width="1" />
+    </g>
+    <polyline points="25.00,457.00 1135.00,457.00" fill="none" stroke="#c8cdd1" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+    <polyline points="33.00,476.00 66.00,476.00" fill="none" stroke="#54606e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 4" />
+    <text x="75" y="482" font-size="16" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Candidate path</text>
+    <polyline points="224.00,476.00 259.00,476.00" fill="none" stroke="#e25b19" stroke-width="2.7" stroke-linejoin="round" stroke-linecap="round" />
+    <circle cx="243" cy="476" r="2.8" fill="#ffc52f" stroke="#e25b19" stroke-width="1" />
+    <text x="271" y="482" font-size="16" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Updated path</text>
+    <polyline points="428.00,479.00 460.00,471.00" fill="none" stroke="#116575" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+    <polygon points="460.00,471.00 453.97,475.75 452.45,469.64" fill="#116575" />
+    <text x="472" y="482" font-size="16" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Oracle correction</text>
+    <polygon points="676.00,469.00 677.81,473.51 682.66,473.84 678.93,476.95 680.11,481.66 676.00,479.08 671.89,481.66 673.07,476.95 669.34,473.84 674.19,473.51" fill="#ffc52f" stroke="#232931" stroke-width="1.2" />
+    <text x="691" y="482" font-size="16" font-weight="normal" text-anchor="start" fill="#232931" font-style="normal">Goal</text>
+    <text x="1134" y="482" font-size="16" font-weight="normal" text-anchor="end" fill="#505b65" font-style="italic">Illustrative paths and fields</text>
+  </g>
+</svg>
