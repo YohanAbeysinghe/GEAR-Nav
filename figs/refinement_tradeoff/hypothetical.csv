@@ -1,0 +1,6 @@
+step,aggregation_progress_pct,aggregation_clearance_m,initial_only_progress_pct,initial_only_clearance_m
+0,28,0.30,28,0.30
+1,49,0.27,47,0.245
+3,66,0.34,60,0.218
+6,77,0.41,66,0.198
+12,85,0.44,69,0.19
