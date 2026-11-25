@@ -33,23 +33,32 @@ def arrange_key(root, width, panel_bottom):
         "y1": str(line_y), "y2": str(line_y),
     })
 
-    # Keep the original swatches, arrows, goal, gradient, and editable text.
-    # At single-column width the two legend rows can use the same type size.
     stages = element(key, "shared_refinement_key_items")
     goal_label, = stages.xpath('./*[local-name()="text" and text()="Goal"]')
-    goal_symbol = goal_label.getprevious()
-    scale_key = ET.SubElement(key, SVG + "g", id="goal_and_distance_key")
-    for item in list(stages)[stages.index(goal_symbol):]:
-        scale_key.append(item)
+    for item in list(goal_label.itersiblings()):
+        stages.remove(item)
 
-    # Coordinates 620 and 1681 are the horizontal centers of the two source
-    # legend segments. Both share a swatch centerline at y=536.
-    for row, source_center, y in (
-        (stages, 620, panel_bottom + 39),
-        (scale_key, 1681, panel_bottom + 86),
+    for stage, left, label in (
+        ("initial", 50, "Initial"),
+        ("early", 290, "Ref 1"),
+        ("intermediate", 520, "Ref 2"),
+        ("refined", 751, "GEAR-Nav"),
     ):
-        row.set("transform", f"translate({width / 2:g} {y:.5f}) scale(.86) "
-                             f"translate({-source_center} -536)")
+        swatch = element(stages, f"legend_{stage}_swatch")
+        swatch.set("x1", str(left))
+        swatch.set("x2", str(left + 52))
+        caption = swatch.getnext()
+        caption.set("x", str(left + 67))
+        caption.text = label
+
+    arrows = stages.findall(f"{SVG}path[@fill='none']")
+    for arrow, left in zip(arrows, (220, 448, 677), strict=True):
+        arrow.set("d", f"M {left} 536 h 46 m -8 -7 l 8 7 -8 7")
+    goal_label.getprevious().set("transform", "translate(-290 0)")
+    goal_label.set("x", "1053")
+    # Center the complete key within the same width as the three scene pairs.
+    stages.set("transform", f"translate({width / 2:g} {panel_bottom + 39:.5f}) "
+                            "scale(.92) translate(-584 -536)")
 
 
 def stack(source):
@@ -74,7 +83,7 @@ def stack(source):
 
     width = int(float(frame.get("width"))) + 2 * PADDING
     panel_bottom = next_top - ROW_GAP
-    height = math.ceil(panel_bottom + 137)
+    height = math.ceil(panel_bottom + 66)
     arrange_key(root, width, panel_bottom)
     root.attrib.update({"viewBox": f"0 0 {width} {height}",
                         "width": f"{width}px", "height": f"{height}px"})
