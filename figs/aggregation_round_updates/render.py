@@ -13,7 +13,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.lines import Line2D
+from matplotlib.patches import FancyBboxPatch
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -43,45 +43,56 @@ def render():
     rounds = data["round"]
     selected, = data[data["continuation_source"] == 1]
     k = int(selected["round"])
-    orange, blue, ink = "#bf4e21", "#486680", "#26313b"
-    plt.rcParams.update({"font.family": "STIXGeneral", "font.size": 10.5,
-                         "text.color": ink, "xtick.color": ink, "ytick.color": ink,
-                         "axes.labelcolor": ink, "pdf.fonttype": 42, "svg.fonttype": "none",
-                         "svg.hashsalt": "gear-aggregation-rounds"})
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.55))
-    fig.subplots_adjust(left=.10, right=.975, top=.675, bottom=.20, wspace=.22)
-    fig.text(.043, .905, "Path corrections shrink over aggregation rounds",
-             weight="bold", fontsize=17)
-    handles = [Line2D([], [], color=orange, lw=2.3, label="Median"),
-               Line2D([], [], color=blue, lw=1.5, ls="--", label="95th percentile"),
-               Line2D([], [], color="#65727a", lw=1.2, ls=":", label=f"Continuation checkpoint (round {k})")]
-    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(.042, .876),
-               ncol=3, frameon=False, borderaxespad=0, columnspacing=1.4, handlelength=1.9)
-    for ax, first, ymax, yticks, xticks, title in [
-        (axes[0], 1, 92, [0, 20, 40, 60, 80], [1, 14, 30, 45, 61], "All recorded rounds"),
-        (axes[1], 10, 8, [0, 2, 4, 6, 8], [10, 20, 30, 40, 50, 61], "Detail from round 10"),
+    ink, orange, blue = "#222b32", "#bd4a1d", "#466781"
+    plt.rcParams.update({
+        "font.family": "STIXGeneral", "font.size": 8, "text.color": ink,
+        "axes.labelcolor": ink, "xtick.color": ink, "ytick.color": ink,
+        "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "gear-aggregation-rounds",
+    })
+    fig = plt.figure(figsize=(3.4, 2.13))
+    main = fig.add_axes([.148, .195, .835, .68])
+    detail_color = "#f5f7f8"
+    main.add_patch(FancyBboxPatch((.386, .23), .605, .745, transform=main.transAxes,
+                                  boxstyle="round,pad=0.005,rounding_size=0.012",
+                                  facecolor=detail_color, edgecolor="#dce2e5", lw=.5, zorder=2.5))
+    detail = main.inset_axes([.445, .335, .525, .51], facecolor=detail_color)
+    for ax, start, limit, xticks, yticks in [
+        (main, 1, 92, [1, k, 30, 45, 61], [0, 20, 40, 60, 80]),
+        (detail, 10, 8, [10, 35, 61], [0, 4, 8]),
     ]:
-        mask = rounds >= first
-        ax.grid(axis="y", lw=.55, color="#dce1e4")
+        mask = rounds >= start
         ax.set_axisbelow(True)
-        ax.axvline(k, ls=":", lw=1.1, color="#65727a", zorder=1)
-        for key, color, style in [("p95_cm", blue, "--"), ("median_cm", orange, "-")]:
-            ax.plot(rounds[mask], data[key][mask], color=color, ls=style,
-                    lw=1.6 if style == "--" else 2, zorder=2)
-            ax.plot(k, selected[key], "o", ms=5.2, mec="white", mew=.7, color=color, zorder=3)
-        ax.set(xlim=(first-.7, rounds[-1]+.8), ylim=(-.023*ymax, ymax), xticks=xticks, yticks=yticks)
-        ax.set_title(title, loc="left", weight="bold", fontsize=11.5, pad=6)
-        ax.spines[["left", "top", "right"]].set_visible(False)
-        ax.spines["bottom"].set_color("#b6c0c6")
-        ax.tick_params(length=0, pad=3)
-    axes[0].set_ylabel("RMS path change (cm)", labelpad=4)
-    for key, color, offset in [("median_cm", orange, (11, 4)), ("p95_cm", blue, (11, 7))]:
-        axes[1].annotate(f"{selected[key]:.2f} cm", (k, selected[key]), xytext=offset,
-                         textcoords="offset points", color=color, fontsize=9, weight="bold")
-    fig.text(.54, .057, "Aggregation round", ha="center", fontsize=12)
+        ax.grid(axis="y", color="#dce2e5", linewidth=.45)
+        ax.axvline(k, color="#656a6e", linestyle=":", linewidth=.85, zorder=1)
+        for key, color, style, label in [
+            ("p95_cm", blue, (0, (3, 1.65)), "95th percentile"),
+            ("median_cm", orange, "-", "Median"),
+        ]:
+            ax.plot(rounds[mask], data[key][mask], color=color, linestyle=style,
+                    linewidth=1.05 if ax is detail else 1.35, label=label)
+            ax.plot(k, selected[key], "o", color=color, ms=2.6 if ax is detail else 3.6,
+                    mec="white", mew=.4, zorder=3)
+        ax.set(xlim=(start-.65, rounds[-1]+.65), ylim=(-.022*limit, limit),
+               xticks=xticks, yticks=yticks)
+        ax.spines[["top", "right", "left"]].set_visible(False)
+        ax.spines["bottom"].set_color("#9ca6ac")
+        ax.spines["bottom"].set_linewidth(.5)
+        ax.tick_params(length=0, pad=2, labelsize=7 if ax is detail else 8)
+
+    main.set_xlabel("Aggregation round", labelpad=2, fontsize=9)
+    main.set_ylabel("RMS path change (cm)", labelpad=2, fontsize=9)
+    detail.set_title("Rounds 10–61 (cm)", fontsize=7.6, pad=3, loc="left")
+    handles, labels = main.get_legend_handles_labels()
+    fig.legend(handles[::-1], labels[::-1], loc="upper left", bbox_to_anchor=(.138, .997),
+               ncol=2, frameon=False, borderaxespad=0, columnspacing=1.35, handlelength=1.9)
+    main.annotate("Round 14", xy=(k, 48), xytext=(2, 0), textcoords="offset points",
+                  color="#545b60", fontsize=7.4)
     for ext in ["pdf", "svg", "png"]:
-        fig.savefig(HERE / f"round_updates.{ext}", dpi=220)
+        fig.savefig(HERE / f"round_updates.{ext}", dpi=320,
+                    metadata={"Date": None} if ext == "svg" else {})
     plt.close(fig)
+    svg = HERE / "round_updates.svg"
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
 
 
 if __name__ == "__main__":
