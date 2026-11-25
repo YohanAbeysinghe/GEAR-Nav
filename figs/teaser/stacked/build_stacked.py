@@ -97,11 +97,47 @@ def stack(source):
     return ET.ElementTree(root)
 
 
+def apply_panel_style(root):
+    """Place shared headings and margin labels around the three scene pairs."""
+    width, height = 1104, 1388
+    root.attrib.update({"viewBox": f"0 0 {width} {height}",
+                        "width": f"{width}px", "height": f"{height}px"})
+    root.find(SVG + "rect").attrib.update({"width": str(width), "height": str(height)})
+    font = element(root, "scene_1_panel_label").find(SVG + "text").get("font-family")
+    for x, label in ((56, "ESDF"), (365.45, "Camera view")):
+        heading = ET.SubElement(root, SVG + "text", x=str(x), y="36", fill="#30363D")
+        heading.attrib.update({"font-family": font, "font-size": "28", "font-weight": "700"})
+        heading.text = label
+
+    for index, number in enumerate((1, 2, 4)):
+        scene = element(root, f"scene_{number}")
+        scene.set("transform", f"translate(44 {40 + 10 * index}) {scene.get('transform')}")
+        frame = element(scene, f"scene_{number}_frame")
+        left, top = float(frame.get("x")), float(frame.get("y"))
+        scene.remove(frame)
+        inset = element(scene, f"scene_{number}_ESDF_inset")
+        esdf, = inset.xpath('./*[local-name()="text" and text()="ESDF"]')
+        inset.remove(esdf.getprevious())
+        inset.remove(esdf)
+        panel = element(scene, f"scene_{number}_panel_label")
+        panel.remove(panel.find(SVG + "rect"))
+        letter = panel.find(SVG + "text")
+        letter.attrib.update({"x": str(left - 9), "y": str(top + 22), "font-size": "26",
+                              "font-weight": "700", "fill": "#30363D"})
+        for suffix, color, weight in (("halo", "#FFFFFF", "6"), ("path", "#F34B0B", "2")):
+            path = element(scene, f"scene_{number}_camera_refined_{suffix}")
+            path.attrib.update({"stroke": color, "stroke-width": weight,
+                                "stroke-linejoin": "round"})
+
+    element(root, "shared_refinement_key").set("transform", "translate(44 62)")
+
+
 def build():
     svg = OUTPUT.with_suffix(".svg")
     pdf = OUTPUT.with_suffix(".pdf")
     with ZipFile(KIT) as kit, TemporaryDirectory() as tmp:
         tree = stack(kit.read("Editable SVG/04-Teaser.svg"))
+        apply_panel_style(tree.getroot())
         tree.write(str(svg), encoding="UTF-8", xml_declaration=True)
         work = Path(tmp)
         for face in ("STIXTwoText-Regular.ttf", "STIXTwoText-Bold.ttf"):
@@ -121,7 +157,8 @@ def build():
             "-dDownsampleColorImages=false", "-dDownsampleGrayImages=false",
             "-dEmbedAllFonts=true", f"-sOutputFile={pdf}", intermediate,
         ], env=env, check=True)
-        subprocess.run(["pdftocairo", "-png", "-singlefile", "-scale-to-x", "1048",
+        width = tree.getroot().get("viewBox").split()[2]
+        subprocess.run(["pdftocairo", "-png", "-singlefile", "-scale-to-x", width,
                         "-scale-to-y", "-1", pdf, OUTPUT], env=env, check=True)
 
 
