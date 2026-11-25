@@ -13,7 +13,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import FancyBboxPatch
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -49,44 +48,31 @@ def render():
         "axes.labelcolor": ink, "xtick.color": ink, "ytick.color": ink,
         "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "gear-aggregation-rounds",
     })
-    fig = plt.figure(figsize=(3.4, 2.13))
-    main = fig.add_axes([.148, .195, .835, .68])
-    detail_color = "#f5f7f8"
-    main.add_patch(FancyBboxPatch((.386, .23), .605, .745, transform=main.transAxes,
-                                  boxstyle="round,pad=0.005,rounding_size=0.012",
-                                  facecolor=detail_color, edgecolor="#dce2e5", lw=.5, zorder=2.5))
-    detail = main.inset_axes([.445, .335, .525, .51], facecolor=detail_color)
-    for ax, start, limit, xticks, yticks in [
-        (main, 1, 92, [1, k, 30, 45, 61], [0, 20, 40, 60, 80]),
-        (detail, 10, 8, [10, 35, 61], [0, 4, 8]),
+    fig, ax = plt.subplots(figsize=(3.4, 2.13))
+    fig.subplots_adjust(left=.13, right=.975, bottom=.195, top=.84)
+    ax.set_yscale("function", functions=(np.sqrt, np.square))
+    ax.set(xlim=(0, rounds[-1] + 1), ylim=(0, 100),
+           xticks=[1, k, 30, 45, rounds[-1]], yticks=[0, 1, 4, 10, 25, 50, 100])
+    ax.set_axisbelow(True)
+    ax.grid(axis="y", color="#dce2e5", linewidth=.45)
+    ax.vlines(k, 0, 69, color="#6b757b", linestyle=":", linewidth=.8)
+    for key, color, style, label in [
+        ("median_cm", orange, "-", "Median"),
+        ("p95_cm", blue, (0, (3, 1.65)), "95th percentile"),
     ]:
-        mask = rounds >= start
-        ax.set_axisbelow(True)
-        ax.grid(axis="y", color="#dce2e5", linewidth=.45)
-        ax.axvline(k, color="#656a6e", linestyle=":", linewidth=.85, zorder=1)
-        for key, color, style, label in [
-            ("p95_cm", blue, (0, (3, 1.65)), "95th percentile"),
-            ("median_cm", orange, "-", "Median"),
-        ]:
-            ax.plot(rounds[mask], data[key][mask], color=color, linestyle=style,
-                    linewidth=1.05 if ax is detail else 1.35, label=label)
-            ax.plot(k, selected[key], "o", color=color, ms=2.6 if ax is detail else 3.6,
-                    mec="white", mew=.4, zorder=3)
-        ax.set(xlim=(start-.65, rounds[-1]+.65), ylim=(-.022*limit, limit),
-               xticks=xticks, yticks=yticks)
-        ax.spines[["top", "right", "left"]].set_visible(False)
-        ax.spines["bottom"].set_color("#9ca6ac")
-        ax.spines["bottom"].set_linewidth(.5)
-        ax.tick_params(length=0, pad=2, labelsize=7 if ax is detail else 8)
-
-    main.set_xlabel("Aggregation round", labelpad=2, fontsize=9)
-    main.set_ylabel("RMS path change (cm)", labelpad=2, fontsize=9)
-    detail.set_title("Rounds 10–61 (cm)", fontsize=7.6, pad=3, loc="left")
-    handles, labels = main.get_legend_handles_labels()
-    fig.legend(handles[::-1], labels[::-1], loc="upper left", bbox_to_anchor=(.138, .997),
-               ncol=2, frameon=False, borderaxespad=0, columnspacing=1.35, handlelength=1.9)
-    main.annotate("Round 14", xy=(k, 48), xytext=(2, 0), textcoords="offset points",
-                  color="#545b60", fontsize=7.4)
+        ax.plot(rounds, data[key], color=color, linestyle=style, linewidth=1.35, label=label)
+        ax.plot(k, selected[key], "o", color=color, ms=3.8,
+                mec="white", mew=.5, zorder=3)
+    ax.annotate("Continuation checkpoint", (k, 69), xytext=(3, 0),
+                textcoords="offset points", va="center", color=ink, fontsize=8)
+    ax.spines[["top", "right", "left"]].set_visible(False)
+    ax.spines["bottom"].set_color("#9ca6ac")
+    ax.spines["bottom"].set_linewidth(.5)
+    ax.tick_params(length=0, pad=2)
+    ax.set_xlabel("Aggregation round", labelpad=3, fontsize=9)
+    ax.set_ylabel("RMS path change (cm)", labelpad=3, fontsize=9)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.04), ncol=2, frameon=False,
+              borderaxespad=0, columnspacing=1.2, handlelength=2)
     for ext in ["pdf", "svg", "png"]:
         fig.savefig(HERE / f"round_updates.{ext}", dpi=320,
                     metadata={"Date": None} if ext == "svg" else {})
