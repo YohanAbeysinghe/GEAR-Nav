@@ -1,0 +1,55 @@
+{
+  "clip": "Amsterdam_3",
+  "frame": "000657",
+  "timestamp_s": 3880.0,
+  "video": "https://www.youtube.com/watch?v=D0JVK0XAceY",
+  "sampled_goal_index": 1,
+  "goal_forward_left_m": [
+    10.33,
+    -1.39
+  ],
+  "goal_image_uv": [
+    0.63125,
+    0.8555555555555555
+  ],
+  "goal_ground_return_xy_error_m": 0.016230531590567726,
+  "bollard_image_uv": [
+    0.56625,
+    0.9222222222222223
+  ],
+  "bollard_surface_forward_left_up_m": [
+    5.619854832283039,
+    -0.40109437506798035,
+    0.3843216150087643
+  ],
+  "rgb_size_wh": [
+    1920,
+    1080
+  ],
+  "esdf_extent_right_forward_m": [
+    -3.4,
+    4.6,
+    0.0,
+    11.4
+  ],
+  "esdf_resolution_m": 0.02,
+  "footprint_radius_m": 0.5,
+  "unknown_is_occupied": true,
+  "source_paths": {
+    "rgb": "Amsterdam_3/images/000657.jpg",
+    "esdf": "Amsterdam_3/esdf_fix/000657.npy",
+    "point_map": "Amsterdam_3/pointclouds/000657.npz"
+  },
+  "source_sha256": {
+    "rgb": "960a8cfc407269542d69b440f4a152b7012cf4f1ac990e397f96eed48815368a",
+    "esdf": "99e69b79eae65afe488ed94a177bb53612a6e59f3a2ecf08b736499624317fb2",
+    "point_map": "88a6710a5ce7e2ac893739935fa9ada47d4a7706cf3c8417396f1b2f602f185f"
+  },
+  "esdf_crop_sha256": "0694bf145140ad747ccb2bcdd675442f9a6a10c63962cc51fde9c252de821c79",
+  "esdf_crop_rows_cols": [
+    270,
+    670,
+    0,
+    570
+  ]
+}
