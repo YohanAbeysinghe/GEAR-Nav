@@ -1,0 +1,10 @@
+{
+  "description": "Hand-drawn GEAR update for the three qualitative layouts. Both sketches turn right of the bollard, with a more lateral oracle arrow. Neither update is a planner output.",
+  "coordinates": "[camera right, forward] displacement in meters from the candidate in ../artwork.json",
+  "displacements": [
+    [0.00, 0.00], [0.01, 0.06], [0.02, 0.11], [0.03, 0.17],
+    [0.04, 0.24], [0.07, 0.32], [0.13, 0.38], [0.23, 0.41],
+    [0.35, 0.45], [0.48, 0.44], [0.51, 0.42], [0.45, 0.37],
+    [0.35, 0.34], [0.23, 0.38], [0.12, 0.41], [0.04, 0.44]
+  ]
+}
