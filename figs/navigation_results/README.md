@@ -1,5 +1,9 @@
 # Two figures for the GEAR-Nav results section
 
+## Navigation outcomes
+
+The [current paper table](https://github.com/YohanAbeysinghe/Overleaf---Action-free-Spatial-Trajectory-Refinement-via-Energy-based-Aggregation/blob/6de9539/sections/5_Results.tex) and [numeric export](aggregate_results.csv) report 92, 89 and 86 goal reaches over 100 GEAR-Nav trials per scenario. Of these, 87, 80 and 79 reached the goal without collision. The three baseline rows per scenario are from VEGA's Isaac Sim evaluation (50 trials per baseline and scenario). On the separate Vision 60 routes in Table I, GEAR-Nav reached the goal without contact in 16/20, 16/20 and 20/20 trials.
+
 ## How far does one refined plan get?
 
 **Suggested caption.** Each frame–goal pair contributes the endpoint of its sampled initial path and the endpoint after 14 learned updates. The dashed line shows the smallest geometrically possible endpoint error given the 15 m maximum path length. The right panel shows the change for each pair when inference continues from 14 to 30 updates on the same image and goal. Positive values indicate that the endpoint moved closer. [Figure PDF](goal_progress.pdf) · [Editable SVG](goal_progress.svg)
@@ -8,6 +12,8 @@ The evaluation covers 300 sampled metric goals across eight clips excluded from 
 
 | Quantity | Measured value |
 | --- | ---: |
+| Median progress at initialization / 14 updates | 2.43 / 9.66 m |
+| Endpoints within 0.5 m at 14 updates | 83 / 300 |
 | Median endpoint error at initialization | 8.87 m |
 | Median endpoint error at 14 updates | 1.26 m |
 | Pairs with a closer endpoint at 14 updates than at initialization | 287 / 300 |
