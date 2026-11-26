@@ -1,0 +1,399 @@
+\section{Analysis and Results}
+
+Our evaluation addresses three questions:
+\textbf{(1)} Can video-derived supervision enable reliable goal reaching and obstacle avoidance on a physical robot?
+\textbf{(2)} How does VEGA compare with existing VLAs on trajectory quality and multimodal goal reaching?
+\textbf{(3)} How reliable is the generated geometric supervision, and how robust are VEGA's performance gains to the geometry source and collision criteria?
+
+\begin{figure*}[t]
+    \centering
+
+    % ==================== Left: Real-world qualitative results ====================
+    \begin{minipage}[t]{0.57\textwidth}
+        \vspace{0pt}
+        \centering
+
+        \includegraphics[width=\linewidth]{fig/vega_comps.jpg}
+
+        \captionof{figure}{
+        \textbf{Real-world goal-conditioned navigation with VEGA.}
+        Qualitative comparison across three real-world scenarios with static and dynamic obstacles.
+        Each trajectory is directed toward the yellow-star goal; check marks indicate success and X marks indicate collisions or failures.
+        VEGA reaches the goal while avoiding obstacles, whereas baseline VLAs often collide, stop short, or miss the target.
+        }
+        \label{fig:comps}
+    \end{minipage}
+    \hfill
+    % ==================== Middle: navigation scenarios ====================
+    \begin{minipage}[t]{0.19\textwidth}
+        \vspace{0pt}
+        \centering
+
+        \includegraphics[width=\linewidth]{fig/sim_fig.jpg}
+
+        \captionof{figure}{
+        \textbf{navigation scenarios.}
+        Robot-view snapshots for Scenarios~1--3; the stationary person in white is the goal.
+        }
+        \label{fig:isaac_scenarios}
+    \end{minipage}
+    \hfill
+    % ==================== Right: navigation quantitative results ====================
+    \begin{minipage}[t]{0.22\textwidth}
+        \vspace{0pt}
+        \centering
+
+        \scriptsize
+        \setlength{\tabcolsep}{1.5pt}
+        \renewcommand{\arraystretch}{1.22}
+
+        \begin{tabular}{llrrr}
+        \toprule
+        Scene & Method & S$\uparrow$ & C$\downarrow$ & Cl$\uparrow$ \\
+        \midrule
+        Scn1 & VEGA & \textbf{1.00} & \textbf{0.00} & \textbf{0.85} \\
+           & OmniVLA     & 0.42 & 0.58 & 0.04 \\
+           & NaVILA      & 0.80 & \textbf{0.00} & 0.84 \\
+           & TIC-VLA     & 0.18 & 0.50 & 0.45 \\
+        \midrule
+        Scn2 & VEGA & \textbf{0.90} & \textbf{0.10} & 0.49 \\
+           & OmniVLA     & 0.06 & 0.96 & 0.00 \\
+           & NaVILA      & \textbf{0.90} & 0.02 & \textbf{0.53} \\
+           & TIC-VLA     & \textbf{0.90} & 0.04 & 0.48 \\
+        \midrule
+        Scn3 & VEGA & \textbf{1.00} & \textbf{0.00} & 1.06 \\
+           & OmniVLA     & 0.04 & 0.16 & 0.13 \\
+           & NaVILA      & 0.00 & 0.00 & 1.52 \\
+           & TIC-VLA     & 0.74 & 0.06 & 0.61 \\
+        \bottomrule
+        \end{tabular}
+
+        \captionof{table}{
+        navigation results over 50 trials per method and scenario.
+        $S$ and $C$ are rates; $Cl$ is clearance in meters. \ours{} outperforms baselines overall in 50 evaluations per scenario.
+        }
+        \label{tab:isaac_sim}
+    \end{minipage}
+
+    \vspace{-4ex}
+\end{figure*}
+\subsection{Experimental Setup}
+
+\noindent \textbf{Baselines.}
+We compare VEGA with OmniVLA~\cite{hirose2025omnivlaomnimodalvisionlanguageactionmodel}, TIC-VLA~\cite{huang2026tic}, and NaVILA~\cite{cheng2025navilaleggedrobotvisionlanguageaction}, three state-of-the-art navigation VLAs.
+This comparison assesses whether geometric supervision derived from unlabeled Internet videos enables effective goal-directed navigation and obstacle avoidance relative to VLAs trained using robot demonstrations.
+Goal specifications are provided through each model's supported interface while preserving the intended target across methods.
+For real-world execution, policy outputs are passed to a shared control stack~\cite{seneviratne2026chop} that provides no additional path planning or obstacle avoidance, but allows all methods to replan from updated observations before completing a prediction.
+NaVILA's high-level navigation commands are converted into equivalent local waypoints and executed through this shared stack.
+We do not use NaVILA's native LiDAR-conditioned obstacle-avoiding locomotion policy, since our goal is to evaluate obstacle avoidance encoded in the VLA predictions themselves rather than corrections introduced by downstream navigation modules.
+Thus, all methods are evaluated under a common execution interface without additional obstacle avoidance.
+
+\paragraph{Implementation Details.}
+During dataset construction, we use a $25\,\mathrm{m}\times20\,\mathrm{m}$ BEV at $0.02\,\mathrm{m}$/cell resolution, centered on the robot's forward workspace. We use a safety distance of $d_{\mathrm{safe}}=0.5\,\mathrm{m}$, corresponding to the robot radius, and generate waypoint chunks with horizon $H=50$. Goal reaching is defined as terminating within 0.5\,m of the target.
+
+\noindent \textbf{Metrics.}
+We evaluate each method along three axes:
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{Goal reaching.}
+    On VEGA-Bench, we report average normalized goal progress, defined as the fractional reduction in goal distance normalized by the initial robot-goal distance.
+    In real-world trials, success requires the robot to reach within a threshold distance of the intended goal without any collision or safety intervention.
+
+    \item \textbf{Collision avoidance.}
+    On VEGA-Bench, collision rate is the fraction of trajectories that enter occupied, unknown, or out-of-bounds ESDF regions.
+    In real-world trials, collision rate is the fraction of trials with physical contact or safety intervention.
+
+    \item \textbf{Obstacle clearance.}
+    We report the average minimum distance to the nearest obstacle along non-colliding trajectories.
+\end{itemize}
+
+\begin{table}[t]
+\vspace{2ex}
+\centering
+% \footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}l*{12}{c}@{}}
+\toprule
+& \multicolumn{3}{c}{Scenario 1}
+& \multicolumn{3}{c}{Scenario 2}
+& \multicolumn{3}{c}{Scenario 3}
+& \multicolumn{3}{c}{Scenario 4} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+\cmidrule(lr){11-13}
+Method
+& S$\uparrow$ & C$\downarrow$ & Cl$\uparrow$
+& S$\uparrow$ & C$\downarrow$ & Cl$\uparrow$
+& S$\uparrow$ & C$\downarrow$ & Cl$\uparrow$
+& S$\uparrow$ & C$\downarrow$ & Cl$\uparrow$ \\
+\midrule
+OmniVLA
+& 0.15 & 0.85 & 0.35
+& 0.0 & 0.65 & 0.32
+& 0.0 & 0.5 & 0.44
+& 0 & 1.0 & N/A \\
+TIC-VLA
+& 0.0 & 1.0 & N/A
+& 0.1 & 0.85 & 0.37
+& 0.0 & 1.0 & N/A
+& 0 & 1.0 & N/A \\
+NaVILA
+& 0.0 & 1.0 & N/A
+& 0.0 & 0.8 & 0.35
+& 0.0 & 0.45 & 0.31
+& 0 & 0.75 & 0.25 \\
+\textbf{VEGA}
+& \textbf{0.95} & \textbf{0.05} & \textbf{0.93}
+& \textbf{0.75} & \textbf{0.25} & \textbf{0.56}
+& \textbf{1.0} & \textbf{0.0} & \textbf{0.94}
+& \textbf{0.95} & \textbf{0.05} & \textbf{0.52} \\
+\bottomrule
+\end{tabular}%
+}
+
+\caption{Real-world navigation over 20 trials.
+S: success rate; Cl: clearance in meters, with N/A when
+all trials collide; C: average collision rate
+for Scenarios 1--4.}
+\label{tab:real_results}
+\label{tab:scenario4}
+\vspace{-2ex}
+\end{table}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}l*{9}{c}@{}}
+\toprule
+& \multicolumn{3}{c}{VEGA-Bench}
+& \multicolumn{3}{c}{Collision composition}
+& \multicolumn{3}{c}{Goal conditioning} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+Method
+& G$\uparrow$ & C$\downarrow$ & Cl$\uparrow$
+& $C_{\mathrm{occ}}$ & $C_{\mathrm{unk}}$ & $C_{\mathrm{oob}}$
+& Text$\uparrow$ & Image$\uparrow$ & WP$\uparrow$ \\
+\midrule
+OmniVLA
+& 0.88 & 6.75 & 2.35
+& 71.4\% & 23.8\% & 4.74\%
+& 0.8 & 0.2 & 0.6 \\
+TIC-VLA
+& 0.84 & 9.01 & 1.34
+& 68.1\% & 26.6\% & 5.27\%
+& 0.8 & N/A & N/A \\
+NaVILA
+& 0.77 & 7.40 & 2.18
+& 68.4\% & 26.8\% & 4.9\%
+& 0.6 & N/A & N/A \\
+\textbf{VEGA}
+& \textbf{0.89} & \textbf{5.52} & \textbf{2.87}
+& 75.9\% & 20.93\% & 3.16\%
+& \textbf{1.0} & \textbf{1.0} & \textbf{0.8} \\
+\bottomrule
+\end{tabular}%
+}
+
+\caption{VEGA-Bench evaluation, collision composition,
+and goal-reaching performance by modality.
+G: goal progress; C: collision percentage;
+Cl: clearance in meters.
+Collision composition reports percentages of collisions
+in occupied ($C_{\mathrm{occ}}$), unknown ($C_{\mathrm{unk}}$),
+and out-of-bounds ($C_{\mathrm{oob}}$) cells. Goal-modality results report success over 20 real-world trials per supported modality using the Scenario~4 layout with dynamic obstacles removed.;
+WP denotes waypoint goals.}
+\label{tab:vega_bench_results}
+\label{tab:collision_decomposition}
+\label{tab:goal_modality_results}
+\vspace{-5ex}
+\end{table}
+
+
+
+\subsection{Real-World Robot Evaluation}
+
+% For real-world trials, all methods are executed through the shared ROS-based stack from CHOP~\cite{seneviratne2026chop}.
+% NaVILA's native action outputs are mapped to equivalent local waypoints for execution, while the other methods retain their native navigation outputs.
+% The shared stack performs no additional path planning or obstacle avoidance and allows all methods to replan from updated observations before completing a prediction.
+
+To assess real-world transfer, we deploy the methods on a quadruped in cluttered environments with both static and dynamic obstacles, as shown in Fig.~\ref{fig:comps}.
+Across four scenarios with 20 trials per scenario, VEGA achieves the highest success rate and the fewest collisions among the evaluated baselines (Table~\ref{tab:real_results}). 
+These results demonstrate that video-derived trajectory supervision enables effective goal reaching and obstacle avoidance on a physical robot in the tested environments.
+
+To separately evaluate goal conditioning from dynamic-obstacle avoidance, we conduct 20 trials per supported goal modality using the Scenario~4 layout with the dynamic obstacles removed (Table~\ref{tab:vega_bench_results}).
+These trials test whether each policy can interpret the specified goal and generate goal-directed motion under a simpler navigation setting.
+Across text, image, and waypoint goals, VEGA produces distinct trajectories that reach the corresponding targets, while some baselines often generate similar paths despite changes in the goal specification.
+
+\subsection{navigation Evaluation}
+
+We additionally evaluate navigation in three navigation scenarios containing static obstacles and moving pedestrians.
+%illustrated in Fig.~\ref{fig:isaac_scenarios}. 
+Trials vary pedestrian motion onset using identical timing conditions across methods.
+Following the real-world evaluation, we report success rate, collision rate, and average minimum clearance over non-collision trials in Table~\ref{tab:isaac_sim}.
+
+% % Requires \usepackage{booktabs}
+% \begin{table}[t]
+% \raggedleft
+% \footnotesize
+% \setlength{\tabcolsep}{2pt}
+% \begin{tabular}{llrrr}
+% \toprule
+% Scene & Method & S & C & Cl \\
+% \midrule
+% S1 & VEGA (ours) & 100 &   0 & 0.805 \\
+%    & OmniVLA     &  25 &  75 & 0.106 \\
+%    & NaVILA      & 100 &   0 & 1.047 \\
+%    & TIC-VLA     &  50 & 100 & --    \\
+% \midrule
+% S2 & VEGA (ours) & 100 &   0 & 0.599 \\
+%    & OmniVLA     &   0 & 100 & --    \\
+%    & NaVILA      & 100 &   0 & 0.455 \\
+%    & TIC-VLA     & 100 &   0 & 0.368 \\
+% \midrule
+% S3 & VEGA (ours) &  75 &  25 & 0.064 \\
+%    & OmniVLA     & 100 &   0 & 0.256 \\
+%    & NaVILA      &   0 &  25 & 0.311 \\
+%    & TIC-VLA     &  75 &  50 & -0.018 \\
+% \bottomrule
+% \end{tabular}
+% \caption{navigation results with fifty trials per method
+% per scenario. S and C are percentages. Cl denotes average
+% minimum clearance over non-collision trials, in meters;
+% ``--'' indicates no eligible trials.}
+% \label{tab:isaac_sim}
+% \vspace{-5ex}
+% \end{table}
+% \begin{figure}[t]
+% \centering
+
+% ==================== Left: navigation scenarios ====================
+% \begin{minipage}[t]{0.5\columnwidth}
+%     \vspace{0pt}
+%     \centering
+
+%     \includegraphics[width=\linewidth]{fig/sim_fig.jpg}
+
+%     \captionof{figure}{
+%     \textbf{navigation scenarios.}
+%     Robot-view snapshots for Scenarios~1--3; the stationary person in white is the goal.
+%     }
+%     \label{fig:isaac_scenarios}
+% \end{minipage}
+% \hfill
+% % ==================== Right: navigation results ====================
+% \begin{minipage}[t]{0.45\columnwidth}
+%     \vspace{0pt}
+%     \centering
+
+%     \scriptsize
+%     \setlength{\tabcolsep}{1.5pt}
+%     \renewcommand{\arraystretch}{1.05}
+
+%     \begin{tabular}{llrrr}
+%     \toprule
+%     Scene & Method & S & C & Cl \\
+%     \midrule
+%     S1 & VEGA (ours) & 100 &   0 & 0.805 \\
+%        & OmniVLA     &  25 &  75 & 0.106 \\
+%        & NaVILA      & 100 &   0 & 1.047 \\
+%        & TIC-VLA     &  50 & 100 & --    \\
+%     \midrule
+%     S2 & VEGA (ours) & 100 &   0 & 0.599 \\
+%        & OmniVLA     &   0 & 100 & --    \\
+%        & NaVILA      & 100 &   0 & 0.455 \\
+%        & TIC-VLA     & 100 &   0 & 0.368 \\
+%     \midrule
+%     S3 & VEGA (ours) &  75 &  25 & 0.064 \\
+%        & OmniVLA     & 100 &   0 & 0.256 \\
+%        & NaVILA      &   0 &  25 & 0.311 \\
+%        & TIC-VLA     &  75 &  50 & -0.018 \\
+%     \bottomrule
+%     \end{tabular}
+
+%     \captionof{table}{
+%     navigation results over 50 trials per method and scenario.
+%     $S$ and $C$ are percentages; $Cl$ is clearance in meters.
+%     }
+%     \label{tab:isaac_sim}
+% \end{minipage}
+
+% \vspace{-3ex}
+% \end{figure}
+
+\begin{table*}[!t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}l*{12}{c}@{}}
+\toprule
+& \multicolumn{3}{c}{OmniVLA}
+& \multicolumn{3}{c}{TIC-VLA}
+& \multicolumn{3}{c}{NaVILA}
+& \multicolumn{3}{c}{VEGA} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+\cmidrule(lr){11-13}
+Pointcloud source
+& $G$$\uparrow$ & $C$$\downarrow$ & $Cl$$\uparrow$
+& $G$$\uparrow$ & $C$$\downarrow$ & $Cl$$\uparrow$
+& $G$$\uparrow$ & $C$$\downarrow$ & $Cl$$\uparrow$
+& $G$$\uparrow$ & $C$$\downarrow$ & $Cl$$\uparrow$ \\
+\midrule
+MoGe-2
+& 0.88/1.00 & 6.75 & 2.35/1.00
+& 0.84/1.00 & 9.01 & 1.34/1.00
+& 0.77/1.00 & 7.40 & 2.18/1.00
+& 0.89/1.00 & 5.52 & 2.87/1.00 \\
+UniDepthV2
+& 0.87/0.97 & 6.91 & 2.31/0.95
+& 0.84/0.95 & 9.43 & 1.91/0.94
+& 0.76/0.96 & 7.56 & 2.14/0.94
+& 0.86/0.97 & 5.89 & 2.61/0.91 \\
+UniK3D
+& 0.86/0.95 & 6.58 & 2.39/0.93
+& 0.80/0.94 & 8.96 & 1.97/0.92
+& 0.75/0.94 & 7.23 & 2.22/0.92
+& 0.85/0.95 & 5.39 & 2.82/0.95 \\
+Metric3Dv2
+& 0.84/0.92 & 7.09 & 2.27/0.90
+& 0.76/0.90 & 9.65 & 1.82/0.89
+& 0.73/0.92 & 7.79 & 2.10/0.90
+& 0.83/0.92 & 5.88 & 2.64/0.92 \\
+% \midrule
+% SCAND (LiDAR)
+% & 0.37 & 5.42 & 2.64
+% & 0.31 & 7.68 & 2.19
+% & 0.29 & 6.13 & 2.47
+% & 0.34 & 3.61 & 3.06 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Benchmark sensitivity to pointcloud source.
+For goal progress ($G$) and clearance ($Cl$), each monocular-model entry reports mean $\mu$/Spearman $\rho$ relative to MoGe-2.
+Collision ($C$) reports mean collision percentage.
+$G$: goal progress ($\uparrow$);
+$C$: collision percentage ($\downarrow$);
+$Cl$: clearance in meters ($\uparrow$).}
+\label{tab:geometry_sensitivity}
+\vspace{-4ex}
+\end{table*}
+
+\subsection{VEGA-Bench Evaluation}
+
+To evaluate goal-conditioned navigation at scale, we benchmark all methods on VEGA-Bench.
+For the main comparison, all methods are evaluated on the common text-conditioned subset, while modality-specific real-world evaluations are reported separately.
+The VEGA-Bench test set contains approximately 12.5 hours of held-out videos, with the split performed at the city-level so that frames and their derived goals and trajectories from a given video do not appear in both training and evaluation.
+Predicted trajectories are evaluated against the reconstructed scene geometry using goal progress, collision rate, and obstacle clearance.
+As shown in Table~\ref{tab:vega_bench_results}, VEGA achieves competitive goal progress while reducing collision rate and increasing obstacle clearance relative to the evaluated baselines.

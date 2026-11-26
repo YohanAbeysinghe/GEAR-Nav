@@ -1,0 +1,36 @@
+% Included after the main paper and references in the arXiv version only.
+\section*{SUPPLEMENTARY MATERIAL}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig/gear_supplementary.pdf}
+  \caption{\textbf{Expanded GEAR architecture and refinement.}
+    (a) In the recorded adapter-only run, SigLIP, the Gemma context backbone,
+    and the action expert are frozen. The metric-goal MLP, waypoint projections,
+    and time MLP train; $t=1$ throughout.
+    (b) Half-MSE supervises the 15 non-origin waypoints. Capped predictions are
+    scaled by fixed waypoint weights $A$ and passed through the origin/segment
+    bounding map $\Pi_{\mathcal K}$. Inference uses no ESDF or energy acceptance test.
+    (c) Recorded iterates 0, 1, and 14 show the initial path, first update,
+    and refined path.
+    Dashed gray paths denote the initial candidate. The ESDF is a visualization
+    reference; the example uses a metric goal.}
+  \label{fig:supplementary_architecture_refinement}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig/gear_realworld_isaacsim.pdf}
+  \caption{\textbf{Real-world and navigation scenes.}
+    (a) Real-world navigation toward person, blue-chair, and scooter goals.
+    Orange routes summarize selected GEAR-Nav recordings; baseline overlays
+    are schematic adaptations of VEGA's qualitative comparison~\cite{vega},
+    not calibrated tracks or newly measured baseline trials. Crosses mark
+    reference failure endpoints. (b) Illustrative third-person views of the
+    navigation hospital lobby, corridor, and warehouse from separate
+    oracle-goal runs, not matched to the aggregate evaluation in
+    Table~\ref{tab:isaac_sim}. Stars mark goals.}
+  \label{fig:supplementary_realworld_isaacsim}
+\end{figure}

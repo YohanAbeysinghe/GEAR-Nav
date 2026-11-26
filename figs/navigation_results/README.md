@@ -2,7 +2,7 @@
 
 ## Navigation outcomes
 
-The [current paper table](https://github.com/YohanAbeysinghe/Overleaf---Action-free-Spatial-Trajectory-Refinement-via-Energy-based-Aggregation/blob/6de9539/sections/5_Results.tex) and [numeric export](aggregate_results.csv) report 92, 89 and 86 goal reaches over 100 GEAR-Nav trials per scenario. Of these, 87, 80 and 79 reached the goal without collision. The three baseline rows per scenario are from VEGA's Isaac Sim evaluation (50 trials per baseline and scenario). On the separate Vision 60 routes in Table I, GEAR-Nav reached the goal without contact in 16/20, 16/20 and 20/20 trials.
+The [current paper table](https://github.com/YohanAbeysinghe/Overleaf---Action-free-Spatial-Trajectory-Refinement-via-Energy-based-Aggregation/blob/6de9539/sections/5_Results.tex) and [numeric export](aggregate_results.csv) report 92, 89 and 86 goal reaches over 100 GEAR-Nav trials per scenario. Of these, 87, 80 and 79 reached the goal without collision. The three baseline rows per scenario are from VEGA's navigation evaluation (50 trials per baseline and scenario). On the separate Vision 60 routes in Table I, GEAR-Nav reached the goal without contact in 16/20, 16/20 and 20/20 trials.
 
 ## How far does one refined plan get?
 

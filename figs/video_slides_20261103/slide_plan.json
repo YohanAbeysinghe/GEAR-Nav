@@ -1,0 +1,204 @@
+[
+  {
+    "slide_id": "p",
+    "number": 1,
+    "start": 0,
+    "end": 8,
+    "duration_seconds": 8,
+    "title": "GEAR-Nav",
+    "narration": "GEAR-Nav learns to refine navigation paths from geometric energy, then applies those corrections using visual observations and goal conditioning.",
+    "editing_notes": "00:00–00:08. Start all three muted clips together. Keep the title visible. Clip playback is 1.5× indoors and 2× outdoors; see source manifest. No claim of equal run duration.",
+    "sources": [],
+    "layout_id": "p2",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_02",
+    "number": 2,
+    "start": 8,
+    "end": 20,
+    "duration_seconds": 12,
+    "title": "Can geometry teach navigation without target paths?",
+    "narration": "A scene can support many destinations, but a traversal shows only one route. We ask whether geometric objectives can instead teach a visual policy how to improve a candidate path.",
+    "editing_notes": "00:08–00:20. Reveal the scene, then the question. The action-free claim concerns navigation adaptation, not the pretrained VLA backbone.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Introduction and Action-Free Navigation Conditions",
+      "figs/pipeline/assets/rgb.jpg"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_03",
+    "number": 3,
+    "start": 20,
+    "end": 28,
+    "duration_seconds": 8,
+    "title": "Geometry defines how a path should improve",
+    "narration": "During training, reconstructed geometry defines an energy that balances goal reaching, progress, obstacle avoidance, heading, and smoothness.",
+    "editing_notes": "00:20–00:28. Reveal goal/progress, then obstacle terms, then motion regularity. Energy terms are a formulation; this slide does not claim every term has a nonzero weight in every run.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Geometric Trajectory Energy",
+      "figs/pipeline/assets/scene_data.npz"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_04",
+    "number": 4,
+    "start": 28,
+    "end": 36,
+    "duration_seconds": 8,
+    "title": "Supervise corrections, not target paths",
+    "narration": "We query a projection-aware descent direction at the current path. The VLA learns this local correction directly, rather than fitting an optimized target trajectory.",
+    "editing_notes": "00:28–00:36. Reveal the oracle arrow first; then reveal the learned model and regression connection. The plotted oracle arrows are cached directions scaled for display, not final projected displacements.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Projection-Aware Energy Oracle",
+      "figs/model_variant_utils.py: Scene.oracle_glyph"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_05",
+    "number": 5,
+    "start": 36,
+    "end": 45,
+    "duration_seconds": 9,
+    "title": "Learn on the paths the model visits",
+    "narration": "Each correction changes the path seen by the next prediction. Dataset aggregation collects oracle labels at these visited paths and retains them across training rounds.",
+    "editing_notes": "00:36–00:45. Reveal the four steps left to right, the return arrow, then the replay banks. Initial paths come from the goal-biased unicycle prior. Training collection uses projected energy backtracking; deployment removes this guard.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Energy-Based Dataset Aggregation"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_06",
+    "number": 6,
+    "start": 45,
+    "end": 55,
+    "duration_seconds": 10,
+    "title": "Deployment uses the learned field alone",
+    "narration": "At deployment, the same learned field repeatedly corrects a candidate path. Only the image, goal, current path, and lightweight kinematic projection are required.",
+    "editing_notes": "00:45–00:55. Reveal inputs, model, bounded update, then the feedback arrow. Keep training-only geometry absent. The backbone is pretrained; the recorded example uses adapter-only training.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Model-Only Trajectory Refinement at Inference"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_07",
+    "number": 7,
+    "start": 55,
+    "end": 65,
+    "duration_seconds": 10,
+    "title": "One model, repeated path corrections",
+    "narration": "This recorded example shows the initial path, the first learned update, and the path after fourteen updates. The distance field is displayed for reference and is never queried by this rollout.",
+    "editing_notes": "00:55–01:05. Reveal the panels in order. Actual cached depths are 0, 1, and 14. Do not reuse the older figure’s incorrect sixth-iteration label. This selected qualitative example does not establish a safety rate or a benchmark improvement.",
+    "sources": [
+      "figs/model_simple/provenance.json",
+      "figs/pipeline/assets/scene_data.npz"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_08",
+    "number": 8,
+    "start": 65,
+    "end": 90,
+    "duration_seconds": 25,
+    "title": "Person goal, intervening chair",
+    "narration": "The first scenario requires approaching a person beyond an intervening chair. Compare the recorded approaches, paying attention to how the robot passes the furniture.",
+    "editing_notes": "01:05–01:30. Autoplay both muted excerpts. GEAR shows source 0–32.4 s at 1.5×; OmniVLA shows source 15–50 s at 1.5×. Hold the final frames to the cut. These are representative separate trials, not synchronized experiments. The label is a scene description, not a transcription of the original goal prompt. TIC-VLA is omitted because no recording identity has been verified; NaVILA scenario-1 raw footage is not verified in the supplied folder.",
+    "sources": [
+      "GEAR Scene 1/IMG_4558.MOV",
+      "Baseline Scene1/OmniVLA/IMG_3131.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_09",
+    "number": 9,
+    "start": 90,
+    "end": 115,
+    "duration_seconds": 25,
+    "title": "Blue-chair goal, moving person",
+    "narration": "The second scenario approaches the blue chair while a person moves through the scene. The continuous excerpt keeps the encounter and the subsequent approach visible.",
+    "editing_notes": "01:30–01:55. Autoplay both muted excerpts at 1.5×. GEAR source 0–29.6 s; OmniVLA source 0–34.5 s. Separate trials and lighting conditions. Do not infer exact collisions or success from an ambiguous frame. The goal label is descriptive, not a recorded command. No TIC-VLA or unverified NaVILA raw footage is substituted.",
+    "sources": [
+      "GEAR Scene 2/IMG_4552.MOV",
+      "Baseline Scene2/OnmiVLA/IMG_3150.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_10",
+    "number": 10,
+    "start": 115,
+    "end": 145,
+    "duration_seconds": 30,
+    "title": "Scooter goal, pedestrian encounters",
+    "narration": "Outdoors, the destination is the scooter beyond the pedestrians. This longer example shows the pedestrian encounters and the final GEAR approach, alongside OmniVLA and NaVILA recordings.",
+    "editing_notes": "01:55–02:25. Autoplay all three muted clips at 2×. GEAR source 0–55.4 s; OmniVLA and NaVILA source 0–58 s. GEAR ends at about 27.7 s, baselines at about 29 s. Hold to the cut. Do not interpret playback or selected intervals as comparative completion times. Do not label an exact collision without review of the full source.",
+    "sources": [
+      "GEAR Scene 3/IMG_4546.MOV",
+      "Baseline Scene3/OmniVLA/IMG_3188.MOV",
+      "Baseline Scene3/Navilla/IMG_3193.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_11",
+    "number": 11,
+    "start": 145,
+    "end": 165,
+    "duration_seconds": 20,
+    "title": "Additional GEAR-Nav deployments",
+    "narration": "Additional recordings show the policy operating across the indoor and outdoor settings.",
+    "editing_notes": "02:25–02:45. This implements the approved additional-deployments fallback. Available navigation recordings use exact goals and are not matched to the supplied comparison-table values; they are therefore not presented as RGB-language benchmark evidence. Autoplay the three additional GEAR clips, labelled 2×, 2×, and 3×. They are qualitative excerpts, not an aggregate result.",
+    "sources": [
+      "GEAR Scene 1/IMG_4560.MOV",
+      "GEAR Scene 2/IMG_4554.MOV",
+      "GEAR Scene 3/IMG_4547.MOV"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_12",
+    "number": 12,
+    "start": 165,
+    "end": 175,
+    "duration_seconds": 10,
+    "title": "Geometry teaches a reusable correction rule",
+    "narration": "GEAR combines energy-derived corrections, trajectory-space dataset aggregation, and model-only iterative refinement. Geometry supplies supervision during adaptation and is removed from the deployed refinement loop.",
+    "editing_notes": "02:45–02:55. Reveal the three contributions in order. No success percentages or collision reductions are inserted: GEAR real-world entries remain pending and supplied navigation metrics require provenance verification.",
+    "sources": [
+      "GEAR-Nav Overleaf/main.tex: Contributions and Methodology",
+      "GEAR-Nav Overleaf/BASELINE_RESULTS.md"
+    ],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  },
+  {
+    "slide_id": "gear_video_13",
+    "number": 13,
+    "start": 175,
+    "end": 180,
+    "duration_seconds": 5,
+    "title": "GEAR-Nav",
+    "narration": "Learn corrections from geometry. Refine paths from vision.",
+    "editing_notes": "02:55–03:00. Hold the final message. Add a public project URL only when the release URL and anonymity requirements are settled; no invented URL or author identity is shown.",
+    "sources": [],
+    "layout_id": "p12",
+    "construction": "new composition; supplied slide p has no local content or media"
+  }
+]

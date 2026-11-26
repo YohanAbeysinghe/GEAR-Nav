@@ -1,0 +1,492 @@
+GEAR-Nav: Geometric Energy-Guided Aggregation and Refinement for
+                  Vision-Language Navigation
+                                                                    anonymous
+
+ ESDF                                                                           ESDF
+  5m
+
+
+
+
+                                                                                5m
+                                                                        (a)                                                                          (b)
+
+ ESDF                                                                           ESDF
+  5m
+
+
+
+
+                                                                                5m
+
+
+
+
+                                                                        (c)                                                                          (d)
+        Initial           Refining 1               Refining 2                 GEAR-Nav            Goal     ESDF (m)
+                                                                                                                      −3             0              +3
+
+
+Fig. 1. Learning to refine paths from geometric energy. GEAR learns a trajectory-correction field from energy-derived supervision, then repeatedly
+refines a candidate path using the image, goal, and current path. Across (a) a café sidewalk, (b) a rainy night sidewalk, (c) an indoor dining concourse,
+and (d) a market passage, conceptual stages extend and reshape short sampled priors toward the goal. Later paths are authored to illustrate progression
+observed in a recorded rollout; stage numbers are not update counts. Each ESDF and uncropped camera view shows the same metric paths through the
+saved camera projection. ESDFs visualize training geometry; inference requires neither the distance field nor the energy function.
+
+   Abstract— Vision-Language-Action (VLA) models provide a                      obstacle clearance, and trajectory progress. Our results show
+promising framework for goal-conditioned robot navigation,                      that [RESULTS]. These findings demonstrate that geometric
+but training obstacle-aware policies typically relies on target                 energy can directly supervise navigation VLAs, eliminating the
+trajectories obtained from robot demonstrations or offline                      need to first convert scene geometry into planner-generated
+trajectory optimization. We introduce GEAR-Nav (GEAR),                          target trajectories.
+a framework for training navigation VLAs from in-the-wild
+egocentric video without target trajectory supervision. Given                                         I. INTRODUCTION
+an RGB observation and navigation goal, we reconstruct local
+                                                                                   Vision-Language-Action (VLA) models connect visual ob-
+scene geometry and define an analytic energy over candidate
+waypoint trajectories that captures goal reaching, collision                    servations and language instructions to robot actions, bring-
+avoidance, progress, and motion smoothness. Rather than                         ing semantic knowledge from large-scale pretraining into
+solving this energy to produce a trajectory label, we use its                   embodied control [?]. Navigation VLAs extend this interface
+local descent direction as privileged supervision for learning an               to destinations specified by language, images, or spatial
+autonomous trajectory-refinement field. Starting from simple,
+                                                                                coordinates [4], [2]. Scaling these capabilities to everyday
+kinematically feasible trajectory priors, the learned field iter-
+atively improves candidate paths. To address the distribution                   mobile robots, however, requires supervision that covers
+shift between initial priors and model-induced trajectories, we                 diverse environments, goals, and obstacle configurations.
+introduce an energy-oracle dataset aggregation procedure that                   Collecting robot demonstrations across these combinations
+repeatedly queries projection-aware energy-descent directions                   is costly, particularly in cluttered indoor and outdoor spaces
+at trajectories visited by the current model, aggregates these
+                                                                                where recognizing a destination must be coupled with close-
+state-direction pairs, and trains the VLA on the resulting replay
+distribution. Geometry and the analytic energy are used only                    range geometric reasoning.
+during training; at inference time, the model iteratively refines                  The challenge is not simply to record more motion. A
+trajectories using visual observations, goal conditioning, and                  traversal shows how to move toward one destination, while
+kinematic projection alone, without access to a distance field,                 the same observation may support many other goals, each
+energy function, or online trajectory optimizer. We evaluate our
+                                                                                requiring a different route through the available free space.
+approach on held-out egocentric scenes and real-world robot
+navigation tasks, measuring goal reaching, collision avoidance,                 Reaching a doorway, approaching an object, or passing
+                                                                                around furniture can demand different choices even from
+the same starting viewpoint. A broadly goal-conditioned            field, queries oracle corrections at the resulting states, and
+policy therefore needs supervision that relates the requested      retains these examples across training rounds. An energy
+destination to obstacle clearance, traversability, and progress,   acceptance guard controls frontier updates during collection.
+rather than relying only on the path that happened to be           At deployment, both the guard and the oracle are removed:
+demonstrated. Geometric planning objectives express these          refinement uses only the RGB observation, goal, candidate
+requirements explicitly; transferring them into a visual pol-      path, and lightweight kinematic projection. Neither an ESDF
+icy offers a way to teach obstacle-aware behavior without          nor analytic energy evaluations or gradients are required
+requiring online geometric mapping at deployment.                  at inference. The absence of target trajectories applies to
+   In-the-wild egocentric videos offer a scalable source of        this navigation adaptation; it does not imply action-free
+observations for this purpose. Walking tours and other first-      pretraining of the VLA backbone.
+person recordings capture varied layouts, viewpoints, and             Our contributions are threefold:
+obstacles without dedicated robot data collection. Yet these          • Local geometric supervision for navigation VLAs:
+videos do not directly provide robot-executable paths toward             We formulate navigation adaptation using energy-
+every potential goal in a scene. Existing approaches recover             derived trajectory corrections, without demonstrated or
+motion from video [?] or use a pretrained navigation policy              planner-generated target paths.
+to supply trajectory supervision [?]. Reconstructed geometry          • Projection-aware supervision and trajectory-space
+provides another route: VEGA [1] generates obstacle-aware                aggregation: We construct local correction labels con-
+reference paths toward scene-derived goals and uses them to              sistent with projected updates and aggregate them at
+train a flow-matching navigation VLA. In each case, learning             model-induced candidate paths to train repeated refine-
+relies on a target trajectory, whether observed, predicted, or           ment beyond the initial prior distribution.
+planned. Geometry, however, contains more than a preferred            • Autonomous visual trajectory refinement: We adapt
+final path: it also indicates how a candidate path should                a pretrained VLA into a reusable, multimodal goal-
+change to improve clearance and goal-directed progress.                  conditioned correction field that refines candidate paths
+   This raises the question: can geometric objectives teach a            without the training-time geometry, analytic energy, or
+navigation VLA to refine trajectories without first producing            acceptance guard at deployment.
+target paths? Learning navigation directly from differentiable
+costs is established by methods such as iPlanner and ViPlan-                          II. RELATED WORK
+ner [?], [?]. Our focus is on learning local corrections condi-    A. Navigation VLAs and Learning from Video
+tioned on the image, goal, and current candidate trajectory,          Navigation VLAs connect visual-language representations
+so that the same model can be applied repeatedly as that           with embodied control. NaVILA [4] uses a hierarchical
+trajectory evolves. This requires both a geometric supervision     architecture in which a VLA generates intermediate spatial
+signal that respects the constraints on path updates and           commands for a visual locomotion policy. OmniVLA [2]
+training coverage of the candidate paths encountered during        supports language, image, and spatial goals, including com-
+learned refinement.                                                binations of modalities. These approaches establish useful
+   We introduce GEAR-Nav (GEAR), Geometric Energy-                 interfaces for goal-conditioned navigation; GEAR focuses
+Guided Aggregation and Refinement for Vision-Language              on the supervision used to learn obstacle-aware waypoint
+Navigation. GEAR adapts a pretrained VLA using ego-                updates within such an interface.
+centric observations and goals expressed through language,            Egocentric video provides an alternative to collecting
+image regions, or robot-frame waypoints. During training,          task-specific robot demonstrations. CityWalker [?] extracts
+reconstructed scene geometry defines an analytic energy            motion supervision from web-scale walking and driving
+over candidate paths that encodes collision avoidance, obsta-      videos using visual odometry. LeLaN [?] combines semantic
+cle clearance, goal reaching, progress, and smooth motion.         goal annotation and goal-reaching objectives with trajectory-
+Instead of minimizing this energy to create a reference            based distillation from a pretrained navigation model to teach
+trajectory, we query its local descent direction. A projection-    obstacle avoidance. VEGA [1] instead reconstructs local
+aware oracle scales this correction through backtracking on        geometry and generates MPPI trajectories toward multiple
+projected proposals, accounting for the fixed origin and           multimodal goals, using these paths to supervise a flow-
+bounded waypoint segments. The VLA learns to predict the           matching VLA. GEAR shares VEGA’s use of video-derived
+resulting correction from the observation, goal, and candidate     geometry and aligned goals, but changes the supervision: it
+path. Its field is autonomous: the update rule depends on the      queries local corrections at candidate paths instead of con-
+current path, without a refinement-time input or a noise-to-       structing optimized target trajectories. Thus, its distinction is
+target interpolation.                                              not the use of action-free video or multimodal goals alone,
+   Repeated prediction creates a second challenge: each            but how geometry supervises the navigation model.
+learned correction changes the candidate supplied to the
+next update. Training only on initial paths leaves these later     B. Cost-Supervised Planning and Learned Optimization
+inputs outside the supervised distribution. Inspired by dataset      Trajectory optimization methods such as CHOMP [?] im-
+aggregation [?], GEAR starts from goal-biased unicycle             prove initial paths using geometric gradients and smoothness
+priors, advances candidate paths with the current learned          objectives. Their update rules provide a classical foundation
+for iterative trajectory refinement, but require access to the    new states. The resulting method combines trajectory-space
+planning objective when solving a new problem. Learning-          aggregation with projection-aware local supervision, while
+based approaches can transfer these objectives into a policy.     evaluating the deployed policy without the oracle or accep-
+iPlanner [?] trains a navigation network through differ-          tance guard.
+entiable planning costs without labeled trajectories, while
+ViPlanner [?] extends imperative learning to geometric and                            III. BACKGROUND
+semantic traversability. Consequently, learning navigation        A. Goal-Conditioned Navigation VLAs
+from costs without target paths is established prior work.
+                                                                    Let I denote the current RGB observation and g the goal
+   GEAR differs in the quantity it learns: a conditional cor-
+                                                                  specification, which may be a language instruction, an image
+rection field over candidate trajectories. Analytic gradients
+                                                                  region, or a robot-frame coordinate. We represent a local
+are converted into cached, projection-aware direction labels,
+                                                                  navigation trajectory as
+and network training regresses those labels rather than back-
+propagating the trajectory energy through the network. This              x = (p0 , . . . , pH−1 ) ∈ RH×2 ,      p0 = (0, 0),   (1)
+also relates to learned optimization, where parameterized
+                                                                  where H is the number of waypoints and all positions are ex-
+update rules exploit structure shared across optimization
+                                                                  pressed in the robot’s local frame. A navigation policy mod-
+problems [?]. Unlike the gradient-input recurrent optimizer
+                                                                  els πθ (x | I, g). Pretrained VLAs provide visual-language
+of Andrychowicz et al., GEAR predicts updates from visual
+                                                                  context that can condition an action expert, while navigation-
+observations, goal conditioning, and the current path; ana-
+                                                                  specific encoders accommodate spatial goal inputs [?], [2]. In
+lytic energy gradients are training targets, not deployment
+                                                                  this work, action-free refers to the task-specific training data:
+inputs.
+                                                                  no demonstrated actions or optimized target paths supervise
+C. Generative Trajectory Models and Cost Guidance                 GEAR’s navigation adaptation. It does not imply that the
+                                                                  pretrained VLA was learned without robot-action data.
+   Diffusion Policy [?] models robot actions through con-
+ditional denoising, while flow matching [?] learns transport      B. Flow Matching with Target Trajectories
+fields between source and target distributions. These methods
+motivate expressive action generators, but their conventional        Flow matching learns a vector field that transports a simple
+supervised formulations learn from action or trajectory sam-      source distribution toward a target data distribution [?]. For
+ples. Motion Planning Diffusion [?] combines a learned            trajectory prediction, let z1 collect the non-origin waypoints
+trajectory prior with cost gradients during denoising, allow-     of a target path and let z0 be an independent standard
+ing generated motions to adapt to new planning constraints.       Gaussian sample of the same dimension. A common linear
+Such cost-guided inference retains explicit access to the task    interpolation is
+objective.                                                                  zτ = (1 − τ )z0 + τ z1 ,         τ ∼ U[0, 1].      (2)
+   GEAR also performs iterative updates, but its training tar-
+gets are local energy corrections rather than denoising targets   The conditional vector field is trained with
+                                                                                     h                                i
+or noise-to-trajectory displacements. It learns an autonomous                                                       2
+                                                                        LFM (θ) = E kvθ (zτ , τ, I, g) − (z1 − z0 )kF ,        (3)
+refinement field, with no refinement-time conditioning, and
+removes the analytic energy at deployment. Its objective is       where the expectation is over observation-goal pairs, target
+to learn repeated trajectory improvement, not to match a          trajectories, source noise, and interpolation times. At infer-
+prescribed trajectory distribution. This separates GEAR from      ence, integrating the learned field from τ = 0 to τ = 1
+both trajectory-supervised generative policies and inference-     produces a trajectory sample. This supervised construction
+time cost-guided samplers.                                        requires target trajectory samples. An energy gradient at a
+                                                                  candidate path is a different supervision signal; substituting
+D. Dataset Aggregation and Planner Distillation                   it for z1 − z0 does not by itself retain the same distribution-
+   DAgger [?] addresses sequential distribution shift by          matching objective.
+querying expert labels at states encountered by the learner
+and aggregating these examples across training iterations.        C. Geometric Energy and Local Refinement
+This principle has also been applied to planning: Deep-              A local Euclidean Signed Distance Field (ESDF) Φ assigns
+PANTHER [?] uses dataset aggregation to train a trajectory-       signed distances to positions in the navigation plane. In
+generating policy from an optimization-based expert. These        the visibility-aware representation used here, positive values
+precedents distinguish dataset aggregation itself from the        indicate observed free space, while occupied and unobserved
+specific oracle and state space used in GEAR.                     regions receive non-positive values. Interpolating this field
+   In GEAR, the aggregated states are candidate waypoint          along a candidate path allows geometric preferences to be ex-
+paths associated with fixed observation-goal conditions, and      pressed through a trajectory energy E(x; g, Φ). For language
+the labels are local energy-descent directions rather than        or image goals, geometric goal terms use the corresponding
+complete expert trajectories. The learned field advances          training-time metric goal annotation; this annotation is not
+the candidate frontier under a training-only energy guard,        an additional input to the learned field unless waypoint
+and subsequent oracle queries supervise corrections at the        conditioning is explicitly selected.
+  Where the energy is differentiable and its gradient is             Importantly, no reference navigation trajectory is associ-
+nonzero, −∇x E(x; g, Φ) gives an unconstrained local de-          ated with a training condition. In particular, planned trajec-
+scent direction. A projected gradient step takes the form         tories, robot demonstrations, and trajectory actions are not
+                                                                  used as supervision. The geometric representation is used
+              x+ = ΠK (x − α∇x E(x; g, Φ)) ,                (4)
+                                                                  only to evaluate candidate trajectories and construct the local
+where α > 0 is a step size and ΠK enforces the chosen             energy-descent supervision described below.
+waypoint constraints, including the fixed origin. Finite steps       For a waypoint p, we define robot-footprint clearance as
+and constraint handling require care: an arbitrary projected
+                                                                                      c(p) = Φ(p) − rrobot ,
+proposal need not decrease the energy. GEAR therefore
+accounts for the acceptance of projected proposals when           where rrobot is the robot radius. Occupied, unknown, invalid,
+constructing oracle labels, as detailed in Sec. IV-C. Waypoint    and out-of-map regions are treated conservatively when
+constraints alone do not guarantee obstacle avoidance.            evaluating candidate trajectories.
+D. Dataset Aggregation for Sequential Prediction                  B. Geometric Trajectory Energy
+   When a predictor’s output determines its next input,             We define a differentiable trajectory energy
+prediction errors can move subsequent inputs away from                                       X
+the training distribution. DAgger addresses this issue by                     E(x; g, Φ) =        λq Eq (x; g, Φ),
+collecting states encountered by the current policy, obtaining                                 q∈Q
+
+expert labels at those states, and retraining on their union      where the energy terms
+with earlier data [?]. In trajectory refinement, the analogous
+                                                                                Q = {collision, clearance, goal,
+state is a candidate path rather than a newly executed robot
+state. GEAR applies this principle in trajectory space, using                   progress, heading, smoothness}
+an analytic energy oracle to label corrections. Its aggregation   capture complementary properties of a desirable navigation
+mechanism targets the states encountered during refinement,       trajectory.
+rather than only the initial trajectory distribution.                The collision term penalizes trajectories that violate robot-
+                                                                  footprint clearance or enter unsupported geometric regions.
+                  IV. METHODOLOGY
+                                                                  The clearance term can encourage separation from nearby
+   We introduce GEAR, an approach for training goal-              obstacles, while the goal and progress terms encourage the
+conditioned navigation VLAs without target trajectory su-         trajectory to move toward the requested target. An early-
+pervision. Rather than first solving a trajectory optimization    heading term discourages initially moving away from the
+problem and using the resulting trajectory as a training          goal, and a smoothness term regularizes abrupt changes along
+label, GEAR uses reconstructed scene geometry to define an        the trajectory. Safety-related terms are evaluated on dense
+analytic energy over candidate trajectories. The local descent    samples along waypoint segments rather than only at the
+direction of this energy provides privileged supervision for      predicted waypoints.
+learning an autonomous trajectory-refinement field. Figure 2         Unlike planner-based supervision, we do not minimize E
+summarizes the training pipeline.                                 offline to obtain a target path. Instead, the energy defines
+   Given an RGB observation I, a goal specification g, and        how the current candidate trajectory should locally change.
+a candidate waypoint trajectory
+                                                                  C. Projection-Aware Energy Oracle
+                x = {ph }H−1
+                         h=0 ,       ph ∈ R2 ,
+                                                                     For a candidate trajectory xk at aggregation depth k,
+the learned field predicts a direction                            we query an analytic energy oracle by differentiating the
+                     Fθ (I, g, x) ∈ RH×2                          trajectory energy with respect to the trajectory itself:
+
+that improves the current trajectory. During training, an                             gk = ∇x E(xk ; g, Φ).
+ESDF Φ is available as privileged geometric information. At          We convert the raw gradient into a normalized descent
+deployment, the ESDF and the analytic energy are discarded,       direction. Let ρ(gk ) denote the root-mean-square gradient
+and the learned field is iteratively applied using only the       magnitude over all non-origin waypoints. The initial oracle
+visual observation, goal conditioning, and current candidate      direction is
+                                                                                                     gk
+trajectory.                                                                        d˜k = −                      .
+                                                                                           max (ρ(gk ), grad )
+A. Action-Free Navigation Conditions                              Directions below a minimum gradient magnitude are set to
+   We construct training conditions from in-the-wild egocen-      zero, and large directions are capped to prevent unstable
+tric observations. Each condition consists of an RGB image        trajectory updates.
+I, a navigation goal g, and a local Euclidean Signed Distance        Candidate updates must additionally satisfy the trajectory
+Field (ESDF) Φ reconstructed from scene geometry. Goals           parameterization and kinematic constraints. Let ΠK denote
+can be specified through language, an image region, or a          the projection that keeps the first waypoint fixed at the robot
+robot-frame waypoint.                                             origin and converts the candidate into a bounded, physically
+                   Inputs / Paths           Goals            Energy / Oracle               Replay                GEAR              Backbone / Fixed Ops
+
+    1. Inputs & Initialization               2. Energy-Based Dataset Aggregation                                                    3. Full-Dataset
+                                                                                                                                    Training
+           RGB Observation                           O                Query Energy Oracle
+                                                                                                                                        Images + Goals
+                                                                                                                                      Sample Training Split
+                                               Grow Replay Dataset
+                                                                  Same Scene · Schematic Progression                                          GEAR
+                                                  Round 1            Round 2         Round 3                  Round r
+                                                                                                                                      Generate Path States
+     Text Goal Image Goal Metric Goal
+     No Target Trajectory Labels                                                                                                       Sample Depth
+                                                                                                                                       Learn Corrections
+          Structured Random
+              Initial Path
+
+                                                                                                                                       O Energy Oracle
+     Connected Path · Fixed Origin
+                                                                                                                                      Compute Corrections
+                                                Retained Replay
+                                                                                  Sample All                   Train
+      O       Energy Oracle
+                                                                              Retained Banks                   GEAR                        Repeat with
+                                                                                                                                          Updated GEAR
+                                                                       GEAR Refinement Step
+                                                                         See Model Figure                                               Trained GEAR
+
+
+      O   Energy Oracle — Expanded View                           Training Only
+
+
+                                                                  Inputs: ESDF · Metric Goal · Robot Radius · Current Path
+
+
+            Footprint                         Goal                          Retreat                            Early                        Path
+           Clearance                         Progress                       Penalty                           Heading                     Smoothness
+    Obstacle
+                         Robot
+           Clearance
+              m
+
+
+     Φ(p): ESDF Value         q: Required Progress       a: Achieved Progress        D: Goal Distance          s: Progress Scale      L: Step-Length Scale
+
+     Trajectory Energy
+
+
+          Descent Direction                Scale Correction                         Select Step Size                               Oracle Correction
+                                        Normalize the gradient;                   Apply path bounds;
+                                         limit correction size.                reduce step if energy rises.
+
+
+
+Fig. 2. GEAR training pipeline. Local energy supervision supplies correction targets, which are aggregated over candidate paths before continuation on
+additional training conditions. In full-dataset training, the current GEAR model generates candidate paths, the energy oracle supplies correction targets,
+and the same model learns from those targets. The updated model generates paths for the next cycle. The positive-part operator is [z]+ = max(0, z).
+
+
+valid waypoint sequence. Starting from a nominal step size                          D. Autonomous VLA Trajectory Field
+η, we evaluate                                                                         Figure 3 shows the correction model and iterative refine-
+                                     
+                 x0k = ΠK xk + αd˜k ,                                               ment procedure.
+                                                                                       GEAR builds on a pretrained π0.5 VLA backbone. Visual
+and geometrically backtrack α until a finite, non-energy-
+                                                                                    and goal conditioning form the prefix context, while the
+increasing proposal is found:
+                                                                                    current candidate waypoint trajectory is provided to the
+                  E(x0k ; g, Φ) ≤ E(xk ; g, Φ) + E .                               action expert. The action expert is repurposed to predict a
+   If αk is the accepted step size, the cached oracle label is                      trajectory-improvement field
+the correspondingly scaled pre-projection direction
+                                                                                                                 Fθ (I, g, xk ) ≈ d?k .
+                               αk ˜
+                        d?k =     dk .
+                                η                                                      In contrast to standard flow-matching training, we do
+This construction makes the oracle supervision consistent                           not construct an interpolation between noise and a ground-
+with the projected update that is subsequently applied to                           truth trajectory. The model time token is fixed to a constant
+candidate trajectories.                                                             value throughout training and inference. Consequently, Fθ
+  (a) Path Correction Model                      Frozen          Trainable          For every training condition, we first sample a structured
+                                                                                 trajectory x0 from a goal-biased forward unicycle prior:
+    RGB               Goal                           Current Path
+              Text / Image / Metric                                                                    x0 ∼ qprior (x | g).
+                   Metric MLP                                                    Unlike Gaussian noise, this initialization provides a coarse,
+                                                                                 kinematically plausible trajectory that approximately points
+          Pretrained VLA              Context          Waypoint                  toward the goal.
+      π₀.₅ · SigLIP + Gemma                           Action Expert                At aggregation round k, we perform the following steps:
+                                                                                   1) Query the geometric oracle once at the current trajec-
+                                                                 Correction
+                                                                                      tory xk to obtain d?k .
+    Training only
+                                                                                   2) Add the state-direction tuple (I, g, xk , d?k ) to the replay
+     Energy Oracle            Regression Loss                                         dataset.
+                                                                                   3) Train the VLA field on samples drawn from all previ-
+                                                                                      ously aggregated rounds.
+                       Bounded Path Update                                         4) Apply the newly trained field to the current frontier to
+                                                                                      obtain the next model-induced trajectory state.
+                                                                                   After K rounds, the replay distribution is
+                                                                 Repeat                               K−1
+                                                                                                      [                                  N
+                                                                                                             (Ii , gi , xi,k , d?i,k )
+                                                                                                            
+                                                                                              DK =                                             .
+  (b) Model-Only Refinement                                                                                                              i=1
+                                                                                                      k=0
+                   No ESDF or Energy Queries
+      Initial Path      Intermediate         Refined Path                           During aggregation only, the learned update is protected
+      0th Iteration             6th Iteration             14th Iteration         by the same projection-aware energy backtracking used to
+                                                                                 validate an oracle step. Thus, the next training frontier
+                                                                                 is obtained from the learned field while preventing early
+                                                                                 inaccurate models from moving the replay distribution into
+                                                                                 high-energy or invalid regions. The oracle is then queried
+       1m           Goal           Initial                 0 m Boundary          again only after this new frontier has been reached.
+                                                                                    Aggregation continues until the trajectory updates con-
+  ESDF (m) · Reference Only                     −3           0             +3    verge or improvement on a fixed, clip-disjoint model-only
+                                                                                 validation set plateaus. After collection stops, the cached
+Fig. 3. GEAR correction model and refinement. (a) RGB/goal context               replay can optionally be used for additional SGD without
+and the current path enter the Waypoint Action Expert, shown as one
+block with trainable adapters and correction head that predict d(`) . Dashed     querying the oracle again.
+branches regress energy-oracle corrections at aggregated paths, without
+target trajectories. Half-MSE excludes the fixed origin. The update caps cor-    F. Model-Only Trajectory Refinement at Inference
+rection magnitude, applies waypoint weights A, and enforces origin/segment          The analytic energy guard used during aggregation is
+bounds through ΠK ; the next path re-enters the same model. (b) Recorded
+initial, intermediate, and refined paths at a shared metric scale; dashed gray   strictly a training-time mechanism. At inference, GEAR first
+paths show the initial candidate. The ESDF is a visualization reference.         constructs the same goal-biased trajectory prior x(0) and
+Inference uses no ESDF or energy queries.                                        repeatedly applies the learned autonomous field:
+                                                                                                                                 
+represents an autonomous vector field over trajectory space:                                  x(`+1) = ΠK x(`) + ηFθ (I, g, x(`) ) ,
+its prediction depends on the observation, goal, and current
+                                                                                                        ` = 0, . . . , L − 1.
+trajectory, but not on aggregation depth k.
+   For an aggregated training tuple (I, g, xk , d?k ), the field is                 We use a fixed refinement budget of L = 12 steps in our
+trained using                                                                    experiments. No ESDF query, trajectory-energy evaluation,
+                    1                                     2
+                                                                                 negative-energy gradient, or energy-based acceptance test is
+       Lfield (θ) =   Fθ (I, g, xk )1:H−1 − d?k,1:H−1 2 .                        performed during this rollout. The resulting policy therefore
+                    2
+The first waypoint is excluded because it is fixed at the robot                  requires only the visual observation, goal specification, and
+origin. The ESDF and energy computation do not appear                            lightweight kinematic projection at deployment.
+inside this supervised SGD objective; they are used only                                       V. ANALYSIS AND RESULTS
+when querying the oracle.
+                                                                                 A. Experimental Setup
+E. Energy-Based Dataset Aggregation                                                Baselines. We adopt the same three navigation baselines
+   Training the field only around a fixed initialization would                   as VEGA [1]: OmniVLA [2], an omni-modal navigation
+introduce distribution shift: after several learned refinement                   VLA supporting language, image, and spatial goals; TIC-
+steps, the model may encounter trajectories that are substan-                    VLA [3], a think-in-control VLA for navigation in dynamic
+tially different from the initial training states. We therefore                  environments; and NaVILA [4], a vision-language-action
+train GEAR using an iterative dataset aggregation procedure.                     model for legged robot navigation.
+                               TABLE I                                                                                 TABLE II
+    I SAAC -S IM NAVIGATION . VEGA BASELINES USE 50 TRIALS PER                    R EAL - WORLD NAVIGATION (20 TRIALS PER METHOD AND SCENARIO ).
+                                 SCENARIO .
+                                                                                                       Scenario 1              Scenario 2                Scenario 3
+                    Scenario 1            Scenario 2           Scenario 3
+                                                                                 Method          S↑      C↓     Cl ↑      S↑        C↓     Cl ↑    S↑      C↓         Cl ↑
+Method         S↑     C↓     Cl ↑    S↑     C↓     Cl ↑     S↑     C↓    Cl ↑
+                                                                                 OmniVLA         0.15 0.85      0.35     0.00 0.65         0.32   0.00 0.50           0.44
+OmniVLA        0.42 0.58     0.04    0.06 0.96     0.00    0.04 0.16      0.13   TIC-VLA         0.00 1.00      N/A      0.10 0.85         0.37   0.00 1.00           N/A
+TIC-VLA        0.18 0.50     0.45    0.90 0.04     0.48    0.74 0.06      0.61   NaVILA          0.00 1.00      N/A      0.00 0.80         0.35   0.00 0.45           0.31
+NaVILA         0.80 0.00     0.84    0.90 0.02     0.53    0.00 0.00      1.52
+                                                                                 GEAR-Nav          –      –       –        –        –       –       –        –         –
+GEAR-Nav 0.92 0.06           0.78    0.84 0.10     0.46    0.86 0.12      0.71   S: success rate; C: collision rate; Cl: clearance (m).
+S: success rate; C: collision rate; Cl: clearance (m).                           Baselines: VEGA [1]. “–”: pending; N/A: all trials collide.
+Baselines: VEGA [1]. GEAR-Nav values supplied separately; run provenance and
+                                                                                          Scenario 1                   Scenario 2                   Scenario 3
+protocol comparability require verification.
+
+
+   GEAR-Nav’s task-level evaluation will use the model-only
+rollout defined in Sec. IV-F, without the energy oracle or the
+training-time acceptance guard.
+   Evaluation protocol. Our comparison covers navigation
+navigation and real-world robot navigation. The baseline
+values in Tables I and II are reproduced from VEGA [1]; they
+are not new measurements from our evaluation. The GEAR-
+Nav navigation values in Table I were supplied separately;
+their run provenance and comparability with the reference                                 GEAR-Nav       OmniVLA        TIC-VLA         NaVILA    Goal      Failure
+
+protocol remain to be verified. Real-world GEAR-Nav results
+are pending. In the reference real-world evaluation, policy
+outputs use a shared waypoint-tracking stack without addi-
+                                                                                 C. Real-World Robot Evaluation
+tional path planning or obstacle avoidance. NaVILA’s high-
+level commands are converted to local waypoints; its native                         Our real-world comparison covers three cluttered scenarios
+LiDAR-conditioned obstacle-avoiding locomotion policy is                         containing static and dynamic obstacles. Table II reproduces
+not used [1].                                                                    the baseline results for Scenarios 1–3 of VEGA’s real-
+                                                                                 world evaluation, with 20 trials per method and scenario [1].
+   Metrics. For the navigation and real-world comparisons,
+                                                                                 GEAR-Nav’s quantitative results remain pending. Figure 4
+we retain the metrics and units reported in VEGA [1]:
+                                                                                 illustrates schematic routes in these scenarios. GEAR-Nav
+   •   Success rate (S): fraction of successful goal-reaching                    routes summarize our recordings; the baseline overlays are
+       trials. In the real-world evaluation, success requires                    adapted from the qualitative VEGA comparison [1].
+       reaching the goal without collision or safety interven-                      The real-world experiments will test whether the geo-
+       tion.                                                                     metric behavior distilled through energy-based aggregation
+   •   Collision rate (C): fraction of trials with a collision;                  transfers to scenes where no ESDF or trajectory-energy com-
+       real-world safety interventions also count as collisions.                 putation is available to the deployed policy. In particular, we
+   •   Obstacle clearance (Cl): average minimum distance                         will examine whether GEAR can remain goal-directed while
+       to obstacles over non-colliding trials, in meters. N/A                    modifying its trajectory around intervening static obstacles
+       denotes cases in which all trials collide.                                and newly observed dynamic obstacles.
+Success and collision rates are reported on a [0, 1] scale.                      D. Analysis of Learned Energy Refinement
+   For the refinement analysis in Sec. V-D, we additionally                         We next isolate whether the learned field actually improves
+consider goal progress, required-progress ratio, dense colli-                    the structured trajectory prior and how closely it approaches
+sion rate, and safe success under the robot-footprint margin.                    privileged geometric optimization. We compare four rollout
+These geometric diagnostics are distinct from the trial-level                    modes:
+metrics in the comparison tables.                                                   • Prior: the goal-biased unicycle initialization without
+                                                                                       learned refinement.
+                                                                                    • Model-only: the deployable GEAR rollout using only
+B. navigation Evaluation
+                                                                                       the learned field and kinematic projection.
+   We adopt three navigation scenarios containing static                             • Guarded: the learned field combined with privileged
+obstacles and moving pedestrians. The reference evalua-                                analytic-energy backtracking.
+tion varies pedestrian motion onset using identical timing                          • Oracle: direct refinement using the analytic negative-
+conditions across methods, with 50 trials per method and                               energy-gradient oracle.
+scenario [1]. Table I records the reported baseline results                         Guarded and Oracle use privileged scene geometry and are
+and the supplied GEAR-Nav values.                                                included only as diagnostic references. These comparisons
+will evaluate the final trajectory after the fixed refinement                               APPENDIX
+budget.                                                                             ACKNOWLEDGMENT
+   The comparison between Prior and Model-only measures
+                                                                                            R EFERENCES
+the improvement provided by the learned trajectory field
+itself. The difference between Model-only and Oracle char-       [1] G. Seneviratne, Y. Abeysinghe, J. An, V. Shende, R. Kumar, and
+                                                                     D. Manocha, “VEGA: Learning Navigation VLAs from In-the-Wild
+acterizes the remaining gap between the visual policy and            Egocentric Video with Geometric Trajectory Supervision,” manuscript.
+the privileged analytic optimizer, while the Guarded result      [2] N. Hirose, C. Glossop, D. Shah, and S. Levine, “OmniVLA: An
+indicates how much of this gap is caused by occasional               Omni-Modal Vision-Language-Action Model for Robot Navigation,”
+                                                                     arXiv:2509.19480, 2025.
+inaccurate learned update directions or step magnitudes.         [3] Z. Huang, Y. Zhang, J. Liu, R. Song, C. Tang, and J. Ma, “TIC-
+   We additionally analyze performance as a function of              VLA: A Think-in-Control Vision-Language-Action Model for Robot
+refinement depth. A successful autonomous field should               Navigation in Dynamic Environments,” arXiv:2602.02459, 2026.
+                                                                 [4] A.-C. Cheng et al., “NaVILA: Legged Robot Vision-Language-Action
+progressively transform the structured prior into trajectories       Model for Navigation,” arXiv:2412.04453, 2025.
+with greater goal progress and lower collision rate, without
+requiring access to the geometric energy during inference.
+

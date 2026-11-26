@@ -1,0 +1,60 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Vision-Language-Action (VLA) models map visual observations and language instructions directly to robot actions, offering a promising route toward general-purpose robot control by transferring semantic knowledge from vision-language pretraining into embodied action policies~\cite{brohan2023rt2visionlanguageactionmodelstransfer,intelligence2025pi_,kim2024openvla,nvidia2025gr00tn1openfoundation}.
+Their recent progress has been most visible in manipulation, where large task-oriented robot datasets spanning diverse embodiments have enabled scalable policy training \cite{intelligence2025pi_, o2024open, black2024pi_0, kawaharazuka2025vision, kim2024openvla}. 
+In contrast, ground mobile robot navigation lacks comparably large-scale demonstrations in complex navigation scenarios, making it difficult to scale navigation VLA training in the same way as manipulation \cite{karnan2022scand, liang2025gndglobalnavigationdataset, shah2023gnm}.
+% In contrast, ground mobile robot navigation has far fewer large-scale demonstrations than manipulation, and existing datasets either remain relatively small or focus on specific settings such as social navigation, rather than providing broad goal-conditioned, obstacle-aware trajectories across cluttered everyday environments \cite{karnan2022scand, liang2025gndglobalnavigationdataset, shah2023gnm}. 
+While autonomous driving datasets provide large-scale navigation data \cite{caesar2020nuscenes, chang2019argoverse, sun2020scalability}, they target structured driving scenarios and are not designed to capture the close-range obstacle avoidance, object-centric goals, and indoor--outdoor clutter encountered by general mobile robots.
+This limited availability of suitable training data makes it difficult to scale navigation VLA training in the same way as manipulation, motivating methods that convert widely available egocentric videos into supervision for goal-conditioned mobile robot navigation.
+
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=\linewidth]{fig/scenario4.png}
+% \caption{\textbf{Real-world goal-conditioned navigation with VEGA.}
+% Scenario~4 requires navigating toward a specified goal among two dynamic and two static obstacles.
+% Using only RGB observations and a goal at deployment, VEGA achieves 95\% success with 5\% collisions over 20 trials, whereas OmniVLA, $\pi_{0.5}$, and NaVILA achieve no successful trials.
+% These results demonstrate the transfer of video-derived geometric supervision to physical robot navigation in cluttered, dynamic environments.}
+% \label{fig:scenario4}
+% \vspace{-4.15ex}
+
+% \end{figure}
+
+% Existing robot navigation datasets provide useful demonstrations for visual goal reaching, and cross-embodiment policy learning~\cite{karnan2022scand,shah2023gnm,liang2025gndglobalnavigationdataset}, but they provide only sparse goal-conditioned supervision. 
+% A recorded trajectory typically demonstrates motion toward a single implicit or specified destination, while the same scene may contain many other semantically meaningful and physically reachable goals, such as people, doorways, furniture, objects, or intermediate viewpoints. 
+% Moreover, existing datasets offer limited coverage of dense, close-range, object-centric clutter, where safe behavior depends on how the trajectory changes with the chosen goal, nearby obstacles, and available free space. 
+% Training a broadly goal-conditioned navigation policy therefore requires far denser supervision than simply recording one path through each environment; for each scene, the policy must observe how feasible trajectories vary across many possible goals, obstacle configurations, and start locations while preserving traversability and clearance \cite{glossop2025castcounterfactuallabelsimprove, seneviratne2026chop}. 
+% Without such supervision, learned navigation policies may learn goal-agnostic shortcuts or overfit to dominant traversal patterns, resulting in weak goal grounding, poor close-range obstacle avoidance, and unsafe trajectories in cluttered everyday scenes~\cite{hirose2025omnivlaomnimodalvisionlanguageactionmodel,zhang2025creste,seneviratne2025halohumanpreferencealigned}.
+
+Existing robot navigation datasets provide useful demonstrations for visual goal reaching, and cross-embodiment policy learning~\cite{karnan2022scand,shah2023gnm,liang2025gndglobalnavigationdataset}, but they offer limited coverage of navigation toward object goals in dense, close-range clutter, where safe behavior depends not only on the goal, but also on nearby obstacles, and available free space. Furthermore, these datasets provide sparse goal-conditioned supervision: a recorded trajectory typically demonstrates motion toward a single implicit or specified destination, while the same scene may contain multiple semantically meaningful and physically reachable goals.
+% , including people, doorways, furniture and other objects, as well as intermediate viewpoints.
+Therefore, training a broadly goal-conditioned navigation policy requires denser supervision than a single recorded path through a largely unobstructed environment. Such supervision must capture how feasible trajectories vary with the chosen goal and surrounding obstacles while maintaining traversability and obstacle clearance.
+Without sufficient coverage of obstacle-aware trajectories toward diverse goals, a policy may rely on dominant traversal patterns in the demonstrations, limiting its ability to reach goals that require different routes through clutter~\cite{glossop2025castcounterfactuallabelsimprove, seneviratne2026chop,zhang2025creste}.
+
+% Collecting teleoperated data to learn this behavior scales poorly with the required coverage of environments, goals, obstacle layouts, and feasible paths.
+Classical navigation systems explicitly reason about free space and obstacle clearance using geometric maps, but typically require online mapping and may rely on additional depth or LiDAR sensors. These systems also lack the inherent open-vocabulary semantic reasoning capabilities of VLAs~\cite{werby2024hierarchical,inglin2026less}.
+This motivates methods that combine the semantic reasoning capabilities of VLAs with the obstacle-aware geometric planning of classical methods.
+
+To learn such behavior without costly robot data collection, we turn to egocentric videos readily available on the internet, including walking tours, bike rides, and other first-person navigation activities.
+These videos capture diverse layouts, viewpoints, obstacles, traversability cues, and natural motion patterns, but lack robot action annotations, explicit navigation goals, and robot-executable trajectories.
+The challenge therefore is to transform these unlabeled videos into goal-conditioned, obstacle-aware trajectory supervision for robot navigation.
+
+We present \textbf{VEGA} (\textbf{V}ision-language navigation from \textbf{E}gocentric Video with \textbf{G}eometric \textbf{A}ction supervision), an approach for training navigation VLAs from unlabeled egocentric videos. 
+VEGA reconstructs local 3D structure, and generates an obstacle-aware trajectory dataset toward scene-derived multimodal-goals; language, image, or waypoint. 
+These trajectories supervise a flow-matching VLA that predicts navigation actions from RGB observations and a goal at inference time.
+
+We also introduce \textbf{VEGA-Bench}, an evaluation suite with 250k scenes and 8 million multimodal targets for measuring goal progress, collision rate, and obstacle clearance. 
+
+Our main contributions are summarized as follows:
+\begin{itemize}
+    \item \textbf{Automatic trajectory supervision from egocentric video:} We introduce VEGA, a novel method that converts unlabeled egocentric video into goal-conditioned navigation trajectory labels by reconstructing scene geometry and generating obstacle-aware paths, without manual action annotation or robot demonstrations.
+    \item \textbf{Large-scale multimodal trajectory dataset:} We construct a dataset with approximately 8 million goal-conditioned trajectories aligned with language, image-region, and spatial-waypoint goal annotations, together with reconstructed 3D point clouds, Euclidean Signed Distance Fields (ESDFs), and obstacle-aware reference trajectories.
+
+    \item \textbf{VEGA-Bench:} We introduce an evaluation tool that uses the generated scene geometry to assess trajectories proposed by navigation VLAs in terms of goal alignment, collision rate, and obstacle clearance.
+
+    \item \textbf{Real-world validation:}
+    We deploy VEGA on a physical robot, improving success by at least 65 percentage points, reducing collisions by at least 61.5\%, and increasing obstacle clearance by at least 51.4\% over state-of-the-art baselines. We further evaluate VEGA on a held-out VEGA-Bench test set and in dynamic navigation scenarios.
+\end{itemize}
+
+These gains are achieved with navigation supervision derived from only 250 hours of egocentric video, approximately 2.6\% of the strongest navigation baseline's training-data duration.
+We will release the trained model weights, dataset, and VEGA-Bench evaluation suite upon publication.
