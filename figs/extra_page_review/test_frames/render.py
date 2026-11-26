@@ -39,7 +39,7 @@ def minimum(path, field, config):
     return float(scores[index]), points[index]
 
 
-def plot_case(fig, column, archive, case):
+def load_case(archive, case):
     clip, frame, goal_id, title, expected = case
     clip_dir = ROOT.parent / "data" / clip
     with (clip_dir / "metadata.jsonl").open() as records:
@@ -58,6 +58,12 @@ def plot_case(fig, column, archive, case):
     minima = [minimum(path, field, config) for path in (straight, learned)]
     np.testing.assert_allclose([v for v, point in minima], expected, atol=2e-5)
 
+    return clip_dir, rec, config, field, straight, learned, minima
+
+
+def plot_case(fig, column, archive, case):
+    clip, frame, goal_id, title, expected = case
+    clip_dir, rec, config, field, straight, learned, minima = load_case(archive, case)
     left = 0.085 + column * 0.49
     fig.text(left, .962, title, weight="bold", size=13)
     minutes, seconds = divmod(int(rec["timestamp_sec"]), 60)

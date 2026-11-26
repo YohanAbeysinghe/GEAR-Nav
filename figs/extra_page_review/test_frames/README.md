@@ -14,3 +14,14 @@ Each column pairs a source frame with its footprint-clearance map. The straight 
 We inspected the paired camera views and path maps for all 48 observations where exactly one path had negative clearance among the 278 scored frame–goal pairs. Of those 48, 35 flagged the straight path and 13 flagged GEAR-Nav. The two examples illustrate opposite outcomes with a visible path separation, minima on opposite sides of zero, and a negative minimum well beyond the 2 m scoring cutoff. The median paired improvement over all 278 pairs was 0.005 m.
 
 Run `.venv/bin/python figs/extra_page_review/test_frames/render.py` from the workspace root. The renderer checks membership in the evaluation split and exclusion from the training split, loads checkpoint 57,500 model-only predictions from `eval/best_model/model_paths_checkpoint57500.npz`, matches the sampled metric goal, and resolves the image and ESDF from each frame's metadata under `../data/<clip>/`. It samples each path segment at 20 equal increments, bilinearly interpolates signed distances after subtracting the 0.50 m footprint radius, and verifies both minima against the recorded evaluation values.
+
+## First figure drafts
+
+[Compare both scenes at two-column width (PDF)](first_drafts.pdf) · [Preview](first_drafts.png)
+
+- **Daylight plaza.** The straight path reaches −0.32 m of footprint clearance 6.03 m ahead. GEAR-Nav stays farther inside the mapped free region, with a minimum of +0.19 m. [Draft PDF](spain_plaza.pdf) · [Editable SVG](spain_plaza.svg)
+- **Amsterdam street.** The learned path reaches −0.36 m of footprint clearance at its endpoint, 10.07 m ahead. The matched straight path maintains at least +0.27 m. [Draft PDF](amsterdam_street.pdf) · [Editable SVG](amsterdam_street.svg)
+
+**Shared caption.** Each camera image shows the visible portions of a GEAR-Nav prediction (orange) and a straight reference (dashed) with equal endpoint error for the same goal. In the maps below, blue indicates negative footprint clearance. The box encloses the enlarged region. The cross marks the lowest-clearance sample on the flagged path. The dotted line marks the 2 m forward scoring cutoff.
+
+Run `.venv/bin/python figs/extra_page_review/test_frames/draft_figures.py` to rebuild the drafts. Camera overlays project the metric plan onto a floor plane fitted to the frame's source point cloud. The renderer checks the recorded intrinsics against the point map and the saved frame transform against object-goal coordinates. It draws path samples that project inside the image with valid depth and pass the foreground occlusion check. The ESDF panels show the complete paths. Camera overlays are approximate ground-plane projections of offline predictions.
