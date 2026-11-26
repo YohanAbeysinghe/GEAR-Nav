@@ -271,7 +271,7 @@ def build(with_pptx):
             from editable_pptx import Slide
 
             deck = staged.with_suffix(".pptx")
-            Slide(root, work, "GEAR-Nav real-world and Isaac Sim scenes").save(deck)
+            Slide(root, work, "GEAR-Nav real-world and navigation scenes").save(deck)
             exports.append(deck)
         for path in exports:
             path.replace(HERE / path.name)

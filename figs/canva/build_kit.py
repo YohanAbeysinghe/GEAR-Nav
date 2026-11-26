@@ -98,7 +98,7 @@ FIGURES = (
     ),
     Figure(
         "06-Real-World-and-Isaac-Sim",
-        "Real-world and Isaac Sim",
+        "Navigation scenarios",
         "realworld_isaacsim/figma_import.svg",
         "3RjwsUydxXrFOknU4HhcTy/GEAR-Realworld-Issacsim?node-id=3-8",
     ),

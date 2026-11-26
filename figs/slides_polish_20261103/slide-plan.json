@@ -2616,7 +2616,7 @@
     "duration_seconds": 20,
     "title": "Additional robot deployments",
     "narration": "Additional recordings show GEAR-Nav navigating the indoor, lounge, and outdoor settings.",
-    "editing_notes": "02:25–02:45. Use the additional-deployment fallback. The deck plays all original clips at 1×. Final-video edit targets are 2× indoor, 2× lounge, and 3× outdoor. Available simulation clips use privileged exact goals and are omitted from benchmark evidence.",
+    "editing_notes": "02:25–02:45. Use the additional-deployment fallback. The deck plays all original clips at 1×. Final-video edit targets are 2× indoor, 2× lounge, and 3× outdoor. Available navigation clips use privileged exact goals and are omitted from benchmark evidence.",
     "sources": [
       "GEAR Scene 1/IMG_4560.MOV",
       "GEAR Scene 2/IMG_4554.MOV",
@@ -2709,7 +2709,7 @@
     "duration_seconds": 10,
     "title": "From geometric supervision to visual refinement",
     "narration": "Geometry supplies local correction labels during training. Aggregation covers model-visited paths. At deployment, the learned field repeatedly refines a path from visual inputs.",
-    "editing_notes": "02:45–02:55. Reveal the three contributions in order. No success percentages or collision reductions are inserted: GEAR real-world entries remain pending and supplied simulation metrics require provenance verification.",
+    "editing_notes": "02:45–02:55. Reveal the three contributions in order. No success percentages or collision reductions are inserted: GEAR real-world entries remain pending and supplied navigation metrics require provenance verification.",
     "sources": [
       "GEAR-Nav Overleaf/main.tex: Contributions and Methodology",
       "GEAR-Nav Overleaf/BASELINE_RESULTS.md"
