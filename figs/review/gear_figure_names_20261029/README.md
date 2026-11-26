@@ -6,7 +6,7 @@ The six renamed files are byte-identical to their previous versions;
 use the new names. The previously untracked combined PDF already in the
 paper folder matched the verified local master and was retained.
 
-The combined real-world and navigation figure replaces the real-world-only
+The combined real-world and Isaac Sim figure replaces the real-world-only
 placement. It is Figure 4 on page 7, spanning the full text width with an
 explicit caption and references to its two rows. The earlier real-world-only
 PDF is retained as `gear_realworld.pdf`, and is not included separately.

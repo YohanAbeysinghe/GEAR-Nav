@@ -1,4 +1,4 @@
-# Combined real-world and navigation figure
+# Combined real-world and Isaac Sim figure
 
 The current paper uses the [single-column version](single_column/README.md),
 with all six scenes and labels sized at 7.14 pt. The original full-width
@@ -9,7 +9,7 @@ master and its existing Figma copy are documented below.
 · [prepared Figma import](figma_import.svg)
 
 The figure uses an aligned three-column grid with a larger real-world row
-and a shallow navigation row. GEAR-Nav appears first in a pale-orange legend
+and a shallow simulation row. GEAR-Nav appears first in a pale-orange legend
 highlight; its orange routes are drawn last and slightly thicker than the
 baseline curves. Gold stars consistently mark all six goals. Numerical
 evaluations remain in the existing paper table.
@@ -28,14 +28,14 @@ Every route control point remains within its new image viewport.
 
 The real-world baseline curves are schematic transfers from VEGA's qualitative
 comparison. GEAR-Nav routes summarize selected recordings; none of these
-curves is presented as a calibrated track. The navigation photos and manually
+curves is presented as a calibrated track. The simulation photos and manually
 marked target people come from the previously approved scene strip and its
 recorded instructions. They illustrate separate runs, and do not establish
 a relationship to the current aggregate evaluation values.
 
 `caption.tex` records this scope. `provenance.json` contains source hashes,
 display crops, and verification that the paper and original masters did not
-change. No measurements, statistical claims, or navigation paths are added.
+change. No measurements, statistical claims, or simulation paths are added.
 
 ## Editing and delivery
 

@@ -232,7 +232,7 @@ for x,key,label,speed in [(80,'extra_s1','Indoor',2),(286,'extra_s2','Lounge',2)
     s.video(key,x,123,140.625,250)
     s.text(x,375,141,19,'1× playback',10,'#B5BDC7',align='CENTER',caption=True)
 s.narration='Additional recordings show the policy operating across the indoor and outdoor settings.'
-s.edit='02:25–02:45. This implements the approved additional-deployments fallback. Available navigation recordings use exact goals and are not matched to the supplied comparison-table values; they are therefore not presented as RGB-language benchmark evidence. Autoplay the three additional GEAR clips, labelled 2×, 2×, and 3×. They are qualitative excerpts, not an aggregate result.'
+s.edit='02:25–02:45. This implements the approved additional-deployments fallback. Available simulation recordings use exact goals and are not matched to the supplied comparison-table values; they are therefore not presented as RGB-language benchmark evidence. Autoplay the three additional GEAR clips, labelled 2×, 2×, and 3×. They are qualitative excerpts, not an aggregate result.'
 s.sources=['GEAR Scene 1/IMG_4560.MOV','GEAR Scene 2/IMG_4554.MOV','GEAR Scene 3/IMG_4547.MOV']
 
 s=new(165,175,'Geometry teaches a reusable correction rule')

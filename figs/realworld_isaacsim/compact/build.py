@@ -1,4 +1,4 @@
-"""One-column qualitative example using recorded real and navigation views."""
+"""One-column qualitative example using recorded real and simulation views."""
 import base64
 import hashlib
 import io
@@ -35,13 +35,13 @@ def main():
     assert view['image'] == goal['image']
     root = ET.Element(f'{{{shared.SVG}}}svg', width=f'{WIDTH_MM}mm',
                       height=f'{WIDTH_MM*H/W}mm', viewBox=f'0 0 {W} {H}')
-    shared.element(root, 'title').text = 'Representative real-world and navigation scenes'
+    shared.element(root, 'title').text = 'Representative real-world and Isaac Sim scenes'
     shared.element(root, 'desc').text = (
         'The orange route summarizes a selected real-world GEAR-Nav recording. '
         'The navigation image is an illustrative separate recorded run. '
         'Gold stars mark the target in each view.')
     shared.element(root, 'rect', width=W, height=H, fill='white')
-    for i, label in enumerate(['(a) Real world', '(b) Navigation']):
+    for i, label in enumerate(['(a) Real world', '(b) Isaac Sim']):
         x = MARGIN+i*(PW+GAP)
         shared.text(root, x+PW/2, 41, label, 37, anchor='middle', bold=True)
     panel = shared.group(root, 'real-world-example')

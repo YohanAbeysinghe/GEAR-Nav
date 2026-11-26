@@ -13,7 +13,7 @@
 | 03-Paper-Model | Compact model diagram used in the paper |
 | 04-Teaser | Four scenes with camera views, ESDF maps, and the GEAR-Nav trajectory key |
 | 05-Supplementary | Expanded architecture, supervision, and refinement at iterations 0, 6, and 14 |
-| 06-Real-World-and-Isaac-Sim | Three physical scenarios and three navigation environments. [Restyled single-column figure and Canva import](../realworld_isaacsim/styled/README.md) |
+| 06-Real-World-and-Isaac-Sim | Three physical scenarios and three simulation environments. [Restyled single-column figure and Canva import](../realworld_isaacsim/styled/README.md) |
 
 ## Edit individual elements
 

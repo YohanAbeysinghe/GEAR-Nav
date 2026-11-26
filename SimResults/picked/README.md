@@ -4,7 +4,7 @@ This directory contains qualitative-only Scene 3 variants designed to place a
 pedestrian on the robot's nominal start-to-goal line. The original benchmark
 configurations and metric results are not modified.
 
-The evaluation system's scripted-human interface uses native `GoTo` commands and does
+The simulator's scripted-human interface uses native `GoTo` commands and does
 not expose a supported per-person speed field. Challenge timing is controlled
 through route geometry and `initial_idle`; the first two cases use stationary
 people so their challenge does not depend on animation timing.

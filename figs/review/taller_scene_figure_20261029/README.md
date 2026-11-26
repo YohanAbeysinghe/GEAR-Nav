@@ -8,7 +8,7 @@ The figure remains 3.4 inches wide and increases from 2.36 to 2.75 inches
 high (about 16%). The three real-world panels restore 70% of the original
 photo height rather than the preceding 50% crops. More of the robots and
 surroundings is visible; the previous image regions are all retained.
-The navigation panels already show their full 16:9 frames and are unchanged.
+The simulation panels already show their full 16:9 frames and are unchanged.
 
 The image aspect ratios, path control points, failure endpoints, goal
 locations, colors, marker sizes, and 7.14 pt minimum type are preserved.

@@ -12,7 +12,7 @@ failure crosses have line weights appropriate for the paper column.
 
 The figure is 3.4 × 2.36 inches before its caption. The shorter caption
 avoids repeating the legend and retains the scientific interpretation of
-the schematic baseline paths and separate oracle-goal navigation recordings.
+the schematic baseline paths and separate oracle-goal simulation recordings.
 
 All source path control points and goal positions are preserved. The figure
 contains six photographs, six panel goal stars, twelve real-world paths, and

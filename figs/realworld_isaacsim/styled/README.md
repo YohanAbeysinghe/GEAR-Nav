@@ -1,6 +1,6 @@
-# Real-world navigation and navigation environments
+# Real-world navigation and Isaac Sim environments
 
-[![Three real-world navigation scenarios above the hospital lobby, hospital corridor and warehouse in navigation.](gear_realworld_isaacsim.png)](gear_realworld_isaacsim.svg)
+[![Three real-world navigation scenarios above the hospital lobby, hospital corridor and warehouse in Isaac Sim.](gear_realworld_isaacsim.png)](gear_realworld_isaacsim.svg)
 
 [Editable SVG](gear_realworld_isaacsim.svg) · [Single-column PDF](gear_realworld_isaacsim.pdf) · [PowerPoint with editable text](gear_realworld_isaacsim.pptx) · [Verified Canva page import](gear_realworld_isaacsim_canva.pptx)
 

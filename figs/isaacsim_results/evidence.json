@@ -1,5 +1,5 @@
 {
-  "source_table": "tab:navigation",
+  "source_table": "tab:isaac_sim",
   "models": [
     "OmniVLA",
     "TIC-VLA",
@@ -112,7 +112,7 @@
       "role": "Illustrative recorded view; not matched to the supplied aggregate results."
     }
   ],
-  "baseline_source": "Previously reported VEGA navigation results, transcribed in the current paper.",
+  "baseline_source": "Previously reported VEGA simulation results, transcribed in the current paper.",
   "gear_source": "User-supplied aggregate values in the current paper.",
   "baseline_trials_per_scenario": 50,
   "gear_trials_per_scenario": 100,

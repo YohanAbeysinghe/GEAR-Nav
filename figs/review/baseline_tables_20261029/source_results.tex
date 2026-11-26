@@ -24,7 +24,7 @@ Our evaluation addresses three questions:
         \label{fig:comps}
     \end{minipage}
     \hfill
-    % ==================== Middle: navigation scenarios ====================
+    % ==================== Middle: Isaac Sim scenarios ====================
     \begin{minipage}[t]{0.19\textwidth}
         \vspace{0pt}
         \centering
@@ -32,13 +32,13 @@ Our evaluation addresses three questions:
         \includegraphics[width=\linewidth]{fig/sim_fig.jpg}
 
         \captionof{figure}{
-        \textbf{navigation scenarios.}
+        \textbf{Isaac Sim scenarios.}
         Robot-view snapshots for Scenarios~1--3; the stationary person in white is the goal.
         }
         \label{fig:isaac_scenarios}
     \end{minipage}
     \hfill
-    % ==================== Right: navigation quantitative results ====================
+    % ==================== Right: Isaac Sim quantitative results ====================
     \begin{minipage}[t]{0.22\textwidth}
         \vspace{0pt}
         \centering
@@ -69,7 +69,7 @@ Our evaluation addresses three questions:
         \end{tabular}
 
         \captionof{table}{
-        navigation results over 50 trials per method and scenario.
+        Isaac Sim results over 50 trials per method and scenario.
         $S$ and $C$ are rates; $Cl$ is clearance in meters. \ours{} outperforms baselines overall in 50 evaluations per scenario.
         }
         \label{tab:isaac_sim}
@@ -233,9 +233,9 @@ To separately evaluate goal conditioning from dynamic-obstacle avoidance, we con
 These trials test whether each policy can interpret the specified goal and generate goal-directed motion under a simpler navigation setting.
 Across text, image, and waypoint goals, VEGA produces distinct trajectories that reach the corresponding targets, while some baselines often generate similar paths despite changes in the goal specification.
 
-\subsection{navigation Evaluation}
+\subsection{Isaac Sim Evaluation}
 
-We additionally evaluate navigation in three navigation scenarios containing static obstacles and moving pedestrians.
+We additionally evaluate navigation in three Isaac Sim scenarios containing static obstacles and moving pedestrians.
 %illustrated in Fig.~\ref{fig:isaac_scenarios}. 
 Trials vary pedestrian motion onset using identical timing conditions across methods.
 Following the real-world evaluation, we report success rate, collision rate, and average minimum clearance over non-collision trials in Table~\ref{tab:isaac_sim}.
@@ -265,7 +265,7 @@ Following the real-world evaluation, we report success rate, collision rate, and
 %    & TIC-VLA     &  75 &  50 & -0.018 \\
 % \bottomrule
 % \end{tabular}
-% \caption{navigation results with fifty trials per method
+% \caption{Isaac Sim results with fifty trials per method
 % per scenario. S and C are percentages. Cl denotes average
 % minimum clearance over non-collision trials, in meters;
 % ``--'' indicates no eligible trials.}
@@ -275,7 +275,7 @@ Following the real-world evaluation, we report success rate, collision rate, and
 % \begin{figure}[t]
 % \centering
 
-% ==================== Left: navigation scenarios ====================
+% ==================== Left: Isaac Sim scenarios ====================
 % \begin{minipage}[t]{0.5\columnwidth}
 %     \vspace{0pt}
 %     \centering
@@ -283,7 +283,7 @@ Following the real-world evaluation, we report success rate, collision rate, and
 %     \includegraphics[width=\linewidth]{fig/sim_fig.jpg}
 
 %     \captionof{figure}{
-%     \textbf{navigation scenarios.}
+%     \textbf{Isaac Sim scenarios.}
 %     Robot-view snapshots for Scenarios~1--3; the stationary person in white is the goal.
 %     }
 %     \label{fig:isaac_scenarios}
@@ -320,7 +320,7 @@ Following the real-world evaluation, we report success rate, collision rate, and
 %     \end{tabular}
 
 %     \captionof{table}{
-%     navigation results over 50 trials per method and scenario.
+%     Isaac Sim results over 50 trials per method and scenario.
 %     $S$ and $C$ are percentages; $Cl$ is clearance in meters.
 %     }
 %     \label{tab:isaac_sim}

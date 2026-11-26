@@ -1,4 +1,4 @@
-"""Combine recorded real-world routes and illustrative navigation scene views.
+"""Combine recorded real-world routes and illustrative Isaac Sim scene views.
 
 Local-only figure: .venv/bin/python figs/realworld_isaacsim/build.py
 No inference, paper edits, Git staging, or remote calls are performed.
@@ -191,10 +191,10 @@ def build():
                     SIM_DIR/'evidence.json', SIM_DIR/'space_review/goal_annotations.json']
     root = ET.Element(f'{{{SVG}}}svg', width=f'{WIDTH_MM}mm',
                       height=f'{WIDTH_MM*H/W}mm', viewBox=f'0 0 {W} {H}')
-    element(root, 'title').text = 'GEAR-Nav real-world and navigation qualitative scenes'
+    element(root, 'title').text = 'GEAR-Nav real-world and Isaac Sim qualitative scenes'
     element(root, 'desc').text = (
         'Real-world GEAR-Nav routes summarized from recordings, with schematic '
-        'baseline paths adapted from VEGA. The navigation row contains illustrative '
+        'baseline paths adapted from VEGA. The Isaac Sim row contains illustrative '
         'recordings with manually marked target people. This figure contains no '
         'evaluation metrics and does not associate the illustrative runs with '
         'the aggregate evaluation table.')
@@ -238,8 +238,8 @@ def build():
                               'all_original_path_control_points_visible': True,
                               'goal': scene['goal'], 'bounds_svg': bounds})
     legend(root)
-    sim_layer = layer(root, 'isaac-sim', 'B — Navigation environments')
-    header(sim_layer, 876, '(b) Navigation environments')
+    sim_layer = layer(root, 'isaac-sim', 'B — Isaac Sim environments')
+    header(sim_layer, 876, '(b) Isaac Sim environments')
     for i, (view, goal) in enumerate(zip(SIM, SIM_GOALS)):
         x = MARGIN+i*(PW+GAP)
         assert view['image'] == goal['image']
@@ -268,7 +268,7 @@ def build():
         assert sha(p) == before[str(p.relative_to(ROOT))], p
     source_hashes = {str(p.relative_to(ROOT)): sha(p) for p in source_paths}
     record = {
-        'title': 'GEAR-Nav real-world and navigation qualitative scenes',
+        'title': 'GEAR-Nav real-world and Isaac Sim qualitative scenes',
         'size_svg': [W, H], 'size_inches': [7, 7*H/W],
         'target_figma_file': '3RjwsUydxXrFOknU4HhcTy',
         'figma_update': 'Cloud delivery is recorded separately in figma_sync/delivery.json; a local rebuild does not update Figma.',
@@ -279,7 +279,7 @@ def build():
         'realworld_model_routes': 12, 'realworld_failure_markers': 9,
         'route_coordinates': 'All source control points are preserved exactly; only the display crop changes.',
         'realworld_baselines': REAL['interpretation'],
-        'navigation_scope': 'Illustrative separate recordings; no trajectory or linkage to aggregate metrics is inferred.',
+        'simulation_scope': 'Illustrative separate recordings; no trajectory or linkage to aggregate metrics is inferred.',
         'minimum_text_size_at_7_inches_pt': 32/W*7*72,
         'evaluation_numbers': 0,
         'output_sha256': {p.name: sha(p) for p in [svg, svg.with_suffix('.pdf'),

@@ -1761,7 +1761,7 @@ z
    <text style="font-size: 17px; font-family: 'STIXGeneral'; text-anchor: end; fill: #1a1a1a" x="874.944" y="27.853669" transform="rotate(-0 874.944 27.853669)">GEAR-Nav and navigation baselines</text>
   </g>
   <g id="text_96">
-   <text style="font-weight: 700; font-size: 16px; font-family: 'STIXGeneral'; text-anchor: start; fill: #1a1a1a" x="17.856" y="46.0224" transform="rotate(-0 17.856 46.0224)">Recorded navigation views</text>
+   <text style="font-weight: 700; font-size: 16px; font-family: 'STIXGeneral'; text-anchor: start; fill: #1a1a1a" x="17.856" y="46.0224" transform="rotate(-0 17.856 46.0224)">Recorded simulation views</text>
   </g>
   <g id="text_97">
    <text style="font-size: 14px; font-family: 'STIXGeneral'; text-anchor: end; fill: #555555" x="874.944" y="46.0224" transform="rotate(-0 874.944 46.0224)">Illustrative images from separate runs</text>
@@ -1800,7 +1800,7 @@ z
    <text style="font-weight: 700; font-size: 16px; font-family: 'STIXGeneral'; text-anchor: start; fill: #1a1a1a" x="17.856" y="522.4896" transform="rotate(-0 17.856 522.4896)">Clearance ↑ (m)</text>
   </g>
   <g id="text_109">
-   <text style="font-size: 12.5px; font-family: 'STIXGeneral'; text-anchor: start; fill: #555555" x="17.856" y="653.112" transform="rotate(-0 17.856 653.112)">GEAR-Nav: navigation trials. Baselines: VEGA, navigation.</text>
+   <text style="font-size: 12.5px; font-family: 'STIXGeneral'; text-anchor: start; fill: #555555" x="17.856" y="653.112" transform="rotate(-0 17.856 653.112)">GEAR-Nav: navigation trials. Baselines: VEGA, Isaac Sim.</text>
   </g>
   <g id="text_110">
    <text style="font-size: 12.5px; font-family: 'STIXGeneral'; text-anchor: end; fill: #555555" x="874.944" y="653.112" transform="rotate(-0 874.944 653.112)">Bars show aggregate values.</text>

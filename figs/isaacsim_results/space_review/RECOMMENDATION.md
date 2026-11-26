@@ -21,7 +21,7 @@ will fit without further editing.
 
 | Visual | Width in paper | Image height, excluding caption |
 | --- | ---: | ---: |
-| Current nine-chart navigation figure, if added full width | 7.00 in | 5.31 in |
+| Current nine-chart simulation figure, if added full width | 7.00 in | 5.31 in |
 | Proposed qualitative scene strip | 3.40 in | 0.85 in |
 | Current training pipeline | 7.00 in | 6.37 in |
 | Current correction-model figure | 3.40 in | 4.96 in |
@@ -35,7 +35,7 @@ replaced at the user's request to avoid repeating evaluations in the figure.
 
 ## Recommended use of the available space
 
-1. **navigation: images in the figure, numbers in the existing table.** Use
+1. **Simulation: images in the figure, numbers in the existing table.** Use
    three equal-sized recorded views with 7 pt environment labels. The figure
    provides scene context; Table I already contains all 36 evaluation values.
    Gold stars identify the target people from each recorded instruction,

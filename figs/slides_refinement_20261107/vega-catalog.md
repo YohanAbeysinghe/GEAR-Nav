@@ -116,6 +116,6 @@ This is derived evidence, not a model-authored contract. Confirm semantic roles 
 | 10 | `hafc60ecc078485b_16_55` | `p17` | VEGA : Training | 2 | 1.78 ratio; 68% area; center-middle | MEDIA_OR_EVIDENCE |
 | 11 | `p12` | `p17` | Results | 2 | 1.78 ratio; 75% area; center-middle | MEDIA_OR_EVIDENCE |
 | 12 | `p10` | `p17` | VEGA Architecture | 2 | 1.81 ratio; 72% area; center-middle | DELIVERED_SLIDE_SKIPPED, MEDIA_OR_EVIDENCE |
-| 13 | `p15` | `p17` | Future Work: Dynamic Worlds and Physics navigation | 4 | none | DELIVERED_SLIDE_SKIPPED |
+| 13 | `p15` | `p17` | Future Work: Dynamic Worlds and Physics Simulation | 4 | none | DELIVERED_SLIDE_SKIPPED |
 | 14 | `hafc60ecc078485b_16_46` | `p17` | Thank You | 1 | none | DELIVERED_SLIDE_SKIPPED |
 

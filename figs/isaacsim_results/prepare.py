@@ -23,7 +23,7 @@ def write(path, value):
 
 
 def paper_values(text):
-    block = text.split(r'\label{tab:navigation}', 1)[1].split(r'\end{table}', 1)[0]
+    block = text.split(r'\label{tab:isaac_sim}', 1)[1].split(r'\end{table}', 1)[0]
     block = re.sub(r'\\textbf\{([\d.]+)\}', r'\1', block)
     pattern = r'(OmniVLA|TIC-VLA|NaVILA|\\textbf\{GEAR-Nav\})\s*&(.+?)\\\\'
     result = {}
@@ -42,7 +42,7 @@ def paper_values(text):
 
 
 def reference_values(text):
-    # Only the active navigation table at the start of the reference manuscript.
+    # Only the active simulation table at the start of the reference manuscript.
     block = text.split(r'\begin{tabular}{llrrr}', 1)[1].split(r'\end{tabular}', 1)[0]
     block = re.sub(r'\\textbf\{([^}]+)\}', r'\1', block)
     result, scene = {}, None
@@ -79,10 +79,10 @@ def main():
                       'source_prediction': source['prediction'], 'frame': source['frame'],
                       'role': 'Illustrative recorded view; not matched to the supplied aggregate results.'})
     evidence = {
-        'source_table': 'tab:navigation', 'models': list(MODELS),
+        'source_table': 'tab:isaac_sim', 'models': list(MODELS),
         'scenarios': [{'number': i+1, 'metrics': {m: values[m][i] for m in MODELS}} for i in range(3)],
         'illustrative_views': views,
-        'baseline_source': 'Previously reported VEGA navigation results, transcribed in the current paper.',
+        'baseline_source': 'Previously reported VEGA simulation results, transcribed in the current paper.',
         'gear_source': 'User-supplied aggregate values in the current paper.',
         'baseline_trials_per_scenario': 50,
         'gear_trials_per_scenario': 100,
@@ -99,7 +99,7 @@ def main():
                                  'clearance_m': metrics['clearance_m']})
     protected = ['sections/5_Results.tex', 'fig/gear_realworld.pdf']
     write(HERE / 'provenance.json', {
-        'result_source': 'GEAR-Nav Overleaf/sections/5_Results.tex, table tab:navigation',
+        'result_source': 'GEAR-Nav Overleaf/sections/5_Results.tex, table tab:isaac_sim',
         'paper_commit_at_extraction': subprocess.check_output(['git', '-C', str(PAPER), 'rev-parse', 'HEAD'], text=True).strip(),
         'results_section_sha256': sha(main_tex),
         'reference_source': str(reference.relative_to(ROOT)), 'reference_sha256': sha(reference),

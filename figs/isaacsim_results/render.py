@@ -90,7 +90,7 @@ def full_figure():
     fig = plt.figure(figsize=(12.4, 9.4))
     fig.text(.020, .980, 'Navigation evaluation', fontsize=24, weight='bold', va='top')
     fig.text(.980, .976, 'GEAR-Nav and navigation baselines', fontsize=17, ha='right', va='top')
-    fig.text(.020, .932, 'Recorded navigation views', fontsize=16, weight='bold')
+    fig.text(.020, .932, 'Recorded simulation views', fontsize=16, weight='bold')
     fig.text(.980, .932, 'Illustrative images from separate runs', fontsize=14, ha='right', color=STYLE['muted'])
     image_y, image_h = .703, WIDTH*12.4/9.4*9/16
     for i, view in enumerate(DATA['illustrative_views']):
@@ -107,7 +107,7 @@ def full_figure():
             bars(fig, scene, i, metric)
     for _, label, unit, bottom, _, _ in METRICS:
         fig.text(.020, bottom+.125, f'{label} ({unit})', fontsize=16, weight='bold')
-    fig.text(.020, .035, 'GEAR-Nav: navigation trials. Baselines: VEGA, navigation.', fontsize=12.5, color=STYLE['muted'])
+    fig.text(.020, .035, 'GEAR-Nav: navigation trials. Baselines: VEGA, Isaac Sim.', fontsize=12.5, color=STYLE['muted'])
     fig.text(.980, .035, 'Bars show aggregate values.', fontsize=12.5,
              ha='right', color=STYLE['muted'])
     export(fig, 'isaacsim_results')

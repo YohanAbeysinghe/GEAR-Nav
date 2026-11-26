@@ -9,14 +9,14 @@ export shrank to approximately 3.7 pt when included in one column.
 
 The three real-world photographs show 70% of their original image height,
 restoring more robot body and scene context than the earlier 50% crops.
-The navigation images already show their complete 16:9 frames. All 12 source
+The Isaac Sim images already show their complete 16:9 frames. All 12 source
 route segments, control points, nine reference failure endpoints, and three
 real-world goal locations are retained. Orange GEAR-Nav paths are emphasized
 with a slightly thicker stroke and a bold legend entry. The four method
 labels share a single compact row. The caption explains the stars and crosses,
 avoiding two additional entries in the legend.
 
-All three navigation photographs retain their full 16:9 framing and the same
+All three simulation photographs retain their full 16:9 framing and the same
 goal annotations. These are illustrative separate oracle-goal recordings,
 not matched to the aggregate evaluation values. Baseline real-world routes
 remain schematic reference transfers, not new measured tracks.

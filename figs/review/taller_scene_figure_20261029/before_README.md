@@ -18,7 +18,7 @@ All figure filenames use the `gear_` prefix. The main paper uses the full
 and the method legend are sized for a 3.4-inch column (at least 7 pt), with
 tighter real-world framing and all original route control points retained.
 The caption distinguishes recorded GEAR-Nav routes, reference-derived schematic
-baseline overlays, and illustrative navigation views. The original
+baseline overlays, and illustrative simulation views. The original
 real-world-only asset remains available as `fig/gear_realworld.pdf`.
 Editable masters, previews, and figure-generation scripts remain in the
 workspace's local, ignored `figs/` directory.
@@ -29,8 +29,8 @@ supplement and produces the paper alone. Restore `true` for arXiv.
 
 Compile twice with pdfLaTeX to resolve figure and section references.
 
-The navigation and real-world tables contain the OmniVLA, TIC-VLA, and
-NaVILA results reported in VEGA. GEAR-Nav navigation values are supplied
+The simulation and real-world tables contain the OmniVLA, TIC-VLA, and
+NaVILA results reported in VEGA. GEAR-Nav simulation values are supplied
 separately; the GEAR-Nav real-world entries remain pending.
 See [baseline result provenance](BASELINE_RESULTS.md) for source tables,
 scenario coverage, units, and evaluation settings.

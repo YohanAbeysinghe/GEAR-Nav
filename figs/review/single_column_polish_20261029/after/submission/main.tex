@@ -702,10 +702,10 @@ and lightweight kinematic projection at deployment.
 \begin{figure}[!t]
     \centering
     \includegraphics[width=\columnwidth]{fig/gear_realworld_isaacsim.pdf}
-    \caption{\textbf{Real-world and navigation navigation scenes.}
+    \caption{\textbf{Real-world and Isaac Sim navigation scenes.}
     (a) Orange paths summarize selected GEAR-Nav recordings; baseline paths
     are schematic adaptations of VEGA's qualitative comparison~\cite{vega}.
-    Crosses mark reference failures. (b) Illustrative navigation hospital
+    Crosses mark reference failures. (b) Illustrative Isaac Sim hospital
     lobby, corridor, and warehouse views from separate oracle-goal runs,
     not matched to Table~\ref{tab:isaac_sim}. Stars mark goals.}
     \label{fig:realworld_isaacsim}
@@ -726,10 +726,10 @@ defined in Sec.~\ref{sec:inference}, without the energy oracle or the
 training-time acceptance guard.
 
 \textbf{Evaluation protocol.}
-Our comparison covers navigation navigation and real-world robot navigation.
+Our comparison covers Isaac Sim navigation and real-world robot navigation.
 The baseline values in Tables~\ref{tab:isaac_sim} and~\ref{tab:real_world}
 are reproduced from VEGA~\cite{vega}; they are not new measurements from
-our evaluation. The GEAR-Nav navigation values in Table~\ref{tab:isaac_sim}
+our evaluation. The GEAR-Nav simulation values in Table~\ref{tab:isaac_sim}
 were supplied separately; their run provenance and comparability with the
 reference protocol remain to be verified. Real-world GEAR-Nav results are
 pending. In the reference real-world evaluation,
@@ -739,7 +739,7 @@ to local waypoints; its native LiDAR-conditioned obstacle-avoiding locomotion
 policy is not used~\cite{vega}.
 
 \textbf{Metrics.}
-For the navigation and real-world comparisons, we retain the metrics and
+For the simulation and real-world comparisons, we retain the metrics and
 units reported in VEGA~\cite{vega}:
 \begin{itemize}
     \item \textbf{Success rate ($S$)}: fraction of successful goal-reaching
@@ -758,10 +758,10 @@ consider goal progress, required-progress ratio, dense collision rate, and
 safe success under the robot-footprint margin. These geometric diagnostics
 are distinct from the trial-level metrics in the comparison tables.
 
-\subsection{navigation Evaluation}
-\label{sec:navigation}
+\subsection{Isaac Sim Evaluation}
+\label{sec:simulation}
 
-We adopt three navigation scenarios containing static obstacles and moving
+We adopt three Isaac Sim scenarios containing static obstacles and moving
 pedestrians. The reference evaluation varies pedestrian motion onset using
 identical timing conditions across methods, with 50 trials per method and
 scenario~\cite{vega}. Table~\ref{tab:isaac_sim} records the reported baseline
@@ -771,7 +771,7 @@ navigation environments.
 
 \begin{table}[!tb]
 \centering
-\caption{navigation navigation. VEGA baselines use 50 trials per scenario.}
+\caption{Isaac Sim navigation. VEGA baselines use 50 trials per scenario.}
 \label{tab:isaac_sim}
 \footnotesize
 \setlength{\tabcolsep}{2pt}

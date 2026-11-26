@@ -1,5 +1,5 @@
 {
-  "title": "GEAR-Nav real-world and navigation qualitative scenes",
+  "title": "GEAR-Nav real-world and Isaac Sim qualitative scenes",
   "size_svg": [
     2100,
     1386
@@ -24,7 +24,7 @@
   "source_sha256": {
     "figs/realworld_paths/annotations.json": "e03894086ec643327fadde41dd521cb829a03b674756e1aee4ffd9ec228d8aa1",
     "figs/realworld_paths/reference_priors.json": "3950c1b3d8bca8eff55f730f33b4e8baa057e24657587951de9f8c71c84ae70c",
-    "figs/isaacsim_results/evidence.json": "6a047c0a83c9e19b62eab8996ed37f186a0562a9a9c301b4e6ae8a15a34a79f9",
+    "figs/isaacsim_results/evidence.json": "5184f185906fc42a6296e3fb1d02cab73517d3521fc9d16439673ba3c13b981e",
     "figs/isaacsim_results/space_review/goal_annotations.json": "b927945fd882b2e948c9a26fc7ea1cfe06a719fdfe292675a9c633d56c67376c",
     "figs/realworld_scene_frames/scene_1_start.png": "43a61ca4073a04967b4a5f74d5b91edf14779353e1b225eb10a8b9ad98b5c33a",
     "figs/realworld_scene_frames/scene_2_start.png": "0af91efd757f4e7bc486e475578805c5e6187f988fb276028a1219e2c82cb0ce",
@@ -110,13 +110,13 @@
   "realworld_failure_markers": 9,
   "route_coordinates": "All source control points are preserved exactly; only the display crop changes.",
   "realworld_baselines": "Schematic qualitative route overlays on common GEAR-Nav starting photographs. GEAR-Nav paths summarize the selected recordings and are unchanged. OmniVLA, TIC-VLA, and NaVILA paths are manually adapted from the corresponding panels of Overleaf--VEGA/fig/vega_comps.jpg; its TIC-VLA legend is authoritative for these baseline overlays. These are reference-derived illustrations, not calibrated robot tracks or newly measured baseline trials. Crosses mark reference failure endpoints, including collisions; no precise contact location or timestamp is inferred.",
-  "navigation_scope": "Illustrative separate recordings; no trajectory or linkage to aggregate metrics is inferred.",
+  "simulation_scope": "Illustrative separate recordings; no trajectory or linkage to aggregate metrics is inferred.",
   "minimum_text_size_at_7_inches_pt": 7.68,
   "evaluation_numbers": 0,
   "output_sha256": {
-    "gear_realworld_isaacsim.svg": "e7b3b1cd56390677dc8e1e429329525c3f3ab1511cc5c401b8a975b0c29a4ddc",
-    "gear_realworld_isaacsim.pdf": "37f7ce673db9ae504e625b4058cb5d86fdfd7007a1571295a95e9fe6c0af3cbc",
-    "gear_realworld_isaacsim.png": "dcadf000915c1cbdeb37e4fb46f6ef78e64f8a24206cb50a8ad8a54f314cc573",
-    "figma_import.svg": "5b56c14664b592e24497592ed54d0d91fe800938dc96a3b365c8886e45753b12"
+    "gear_realworld_isaacsim.svg": "aecb08ee07f7b4bb0bc4f6d1542d3f619644cd7c3c7e7de1bc6924a0c835dde6",
+    "gear_realworld_isaacsim.pdf": "66f4f21ab91f2bf395bce9fbcfc3005a70b7b0b041080b958a8ab12b9f4e07a2",
+    "gear_realworld_isaacsim.png": "622075bdc28dea921d4bc53186295b6153dccc9a3f1628d5db18ed1608128488",
+    "figma_import.svg": "cadff1bbc637f67b0609780904b1183d82f073909a8ee051e2e455427347a610"
   }
 }

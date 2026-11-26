@@ -94,12 +94,12 @@ def build():
     source_hashes = {str(p.relative_to(shared.ROOT)):shared.sha(p) for p in protected}
     root = ET.Element(f'{{{shared.SVG}}}svg', width=f'{WIDTH_MM}mm',
                       height=f'{WIDTH_MM*H/W}mm', viewBox=f'0 0 {W} {H}')
-    shared.element(root, 'title').text = 'GEAR-Nav real-world and navigation scenes'
+    shared.element(root, 'title').text = 'GEAR-Nav real-world and Isaac Sim scenes'
     shared.element(root, 'desc').text = (
         'All six existing scene views, with unchanged recorded GEAR-Nav route '
         'control points, schematic reference baseline paths, and target markers. '
         'Typography and line weights are sized for a 3.4-inch paper column. '
-        'The navigation views come from separate illustrative oracle-goal runs.')
+        'The simulation views come from separate illustrative oracle-goal runs.')
     shared.element(root, 'rect', width=W, height=H, fill='white')
     real = shared.layer(root, 'real-world', 'A — Real-world routes')
     title(real, 0, '(a) Real world')
@@ -141,8 +141,8 @@ def build():
         scene_records.append({'scene':i+1,'crop_y':crop,'original_goal':scene['goal'],
                               'all_source_control_points_visible':True})
     legend(root)
-    sim = shared.layer(root, 'navigation', 'B — navigation scene views')
-    title(sim, SIM_HEADER_Y, '(b) navigation')
+    sim = shared.layer(root, 'navigation', 'B — Isaac Sim scene views')
+    title(sim, SIM_HEADER_Y, '(b) Isaac Sim')
     for i, (view, goal) in enumerate(zip(shared.SIM, shared.SIM_GOALS)):
         x = MARGIN+i*(PW+GAP)
         image = shared.SIM_DIR/view['image']
@@ -175,7 +175,7 @@ def build():
               'realworld_crops':scene_records,'all_path_control_points_preserved':True,
               'source_sha256':source_hashes,
               'scope':shared.REAL['interpretation'],
-              'navigation_scope':'Separate illustrative oracle-goal runs, not matched to aggregate evaluation metrics.',
+              'simulation_scope':'Separate illustrative oracle-goal runs, not matched to aggregate evaluation metrics.',
               'output_sha256':{p.name:shared.sha(p) for p in [svg,STEM.with_suffix('.pdf'),STEM.with_suffix('.png')]}}
     (HERE/'provenance.json').write_text(json.dumps(record,indent=2)+'\n')
     print(json.dumps({k:record[k] for k in ['size_inches','minimum_type_size_pt','photo_count','realworld_route_segments']},indent=2))

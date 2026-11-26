@@ -714,7 +714,7 @@ defined in Sec.~\ref{sec:inference}, without the energy oracle or the
 training-time acceptance guard.
 
 \textbf{Evaluation protocol.}
-Our comparison covers navigation navigation and real-world robot navigation.
+Our comparison covers Isaac Sim navigation and real-world robot navigation.
 The baseline values in Tables~\ref{tab:isaac_sim} and~\ref{tab:real_world}
 are reproduced from VEGA~\cite{vega}; they are not new measurements from
 our evaluation. GEAR-Nav results are pending and will be added under matched
@@ -725,7 +725,7 @@ to local waypoints; its native LiDAR-conditioned obstacle-avoiding locomotion
 policy is not used~\cite{vega}.
 
 \textbf{Metrics.}
-For the navigation and real-world comparisons, we retain the metrics and
+For the simulation and real-world comparisons, we retain the metrics and
 units reported in VEGA~\cite{vega}:
 \begin{itemize}
     \item \textbf{Success rate ($S$)}: fraction of successful goal-reaching
@@ -744,10 +744,10 @@ consider goal progress, required-progress ratio, dense collision rate, and
 safe success under the robot-footprint margin. These geometric diagnostics
 are distinct from the trial-level metrics in the comparison tables.
 
-\subsection{navigation Evaluation}
-\label{sec:navigation}
+\subsection{Isaac Sim Evaluation}
+\label{sec:simulation}
 
-We adopt three navigation scenarios containing static obstacles and moving
+We adopt three Isaac Sim scenarios containing static obstacles and moving
 pedestrians. The reference evaluation varies pedestrian motion onset using
 identical timing conditions across methods, with 50 trials per method and
 scenario~\cite{vega}. Table~\ref{tab:isaac_sim} records the reported baseline
@@ -755,7 +755,7 @@ results and reserves a row for GEAR-Nav.
 
 \begin{table}[!tb]
 \centering
-\caption{navigation navigation. Baselines are reproduced from
+\caption{Isaac Sim navigation. Baselines are reproduced from
 VEGA~\cite{vega} (50 trials per method per scenario).
 $S$ and $C$ are success and collision rates; $Cl$ is clearance in meters.
 ``--'' denotes pending GEAR-Nav results.}

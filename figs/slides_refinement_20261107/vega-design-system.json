@@ -6383,7 +6383,7 @@
       "layoutId": "p17",
       "masterId": "p16",
       "isSkipped": true,
-      "titlePreview": "Future Work: Dynamic Worlds and Physics navigation",
+      "titlePreview": "Future Work: Dynamic Worlds and Physics Simulation",
       "effectivePageProperties": {
         "pageBackgroundFill": {
           "solidFill": {
@@ -6584,7 +6584,7 @@
               "areaRatio": 0.08294270833333334
             },
             "mediaGeometry": null,
-            "textPreview": "Future Work: Dynamic Worlds and Physics navigation",
+            "textPreview": "Future Work: Dynamic Worlds and Physics Simulation",
             "mediaIdentity": null
           },
           {

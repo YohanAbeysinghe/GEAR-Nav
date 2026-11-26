@@ -10,7 +10,7 @@ rerunning it. The cumulative evaluation is:
   (45 videos total), selected only after all metric trials are complete.
 
 This remains an oracle-goal upper-bound diagnostic. It is not a valid
-language-only result: every policy request receives the evaluation system's exact goal
+language-only result: every policy request receives the simulator's exact goal
 transformed into the robot frame. The checkpoint is step 57500, raw parameters,
 with 14 refinement rounds and the goal-biased prior.
 
